@@ -135,9 +135,9 @@
 
         <form action="execute" class="mt-8 py-4 flex items-center sticky bottom-0 bg-indigo-900 text-white -mx-10 px-10" method="POST" data-action="submit->terminal#execute">
             @csrf
-            <span class="font-bold text-yellow-400 mr-2">$</span>
+            <span class="font-bold text-yellow-400">$</span>
 
-            <input autocomplete="off" autofocus="autofocus" class="bg-transparent w-full" data-target="terminal.input" name="input" type="text" placeholder="Type `help` for more information">
+            <input autocomplete="off" autofocus="autofocus" class="bg-transparent w-full px-2" data-target="terminal.input" name="input" type="text" placeholder="Type `help` for more information">
 
             <button type="submit" class="uppercase tracking-wide bg-indigo-800 rounded text-white text-xs hover:bg-blue-500 px-3 py-1">Execute</button>
         </form>
