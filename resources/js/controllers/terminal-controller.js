@@ -22,7 +22,6 @@ export default class extends Controller {
     render(output) {
         this.outputTarget.innerHTML += output;
         this.inputTarget.value = '';
-        this.inputTarget.focus();
         window.scrollTo(0,document.body.scrollHeight);
     }
 
@@ -34,7 +33,6 @@ export default class extends Controller {
         }).then((output) => {
             this.outputTarget.innerHTML = output;
             this.inputTarget.value = '';
-            this.inputTarget.focus();
             window.scrollTo(0,document.body.scrollHeight);
         });
     }

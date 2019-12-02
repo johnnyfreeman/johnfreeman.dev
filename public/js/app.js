@@ -4401,7 +4401,6 @@ function (_Controller) {
     value: function render(output) {
       this.outputTarget.innerHTML += output;
       this.inputTarget.value = '';
-      this.inputTarget.focus();
       window.scrollTo(0, document.body.scrollHeight);
     }
   }, {
@@ -4415,9 +4414,6 @@ function (_Controller) {
       }).then(function (output) {
         _this.outputTarget.innerHTML = output;
         _this.inputTarget.value = '';
-
-        _this.inputTarget.focus();
-
         window.scrollTo(0, document.body.scrollHeight);
       });
     }
