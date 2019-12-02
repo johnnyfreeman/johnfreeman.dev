@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ mix('css/main.css') }}">
     </head>
-    <body class="min-h-screen font-mono bg-indigo-900 text-white text-base text-white px-10 pt-10 leading-loose" data-controller="terminal">
+    <body class="min-h-screen font-mono bg-indigo-900 text-white text-base text-white px-5 md:px-10 pt-5 md:pt-10 leading-loose" data-controller="terminal">
 
         <header class="flex justify-between pb-8">
             <a class="text-teal-400" href="{{ url('/') }}" data-action="click->terminal#execute" data-terminal-input="intro">
