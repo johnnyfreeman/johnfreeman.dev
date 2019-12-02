@@ -133,7 +133,7 @@
             {{-- <p class="mt-8 italic text-red-400 text-xs">Type <a class="bg-gray-900 text-teal-400 p-1" href="{{ url('help') }}" data-action="click->terminal#execute" data-terminal-input="help">help</a> and hit <span class="border border-indigo-600 uppercase tracking-wide p-1 rounded">Enter</span> for more information<span class="text-red-400">.</span></p> --}}
         </main>
 
-        <form action="execute" class="mt-8 py-4 flex items-center sticky bottom-0 bg-indigo-900 text-white -mx-10 px-10" method="POST" data-action="submit->terminal#execute">
+        <form action="execute" class="mt-8 py-4 flex items-center sticky bottom-0 bg-indigo-900 text-white -mx-5 md:-mx-10 px-5 md:px-10" method="POST" data-action="submit->terminal#execute">
             @csrf
             <span class="font-bold text-yellow-400">$</span>
 
