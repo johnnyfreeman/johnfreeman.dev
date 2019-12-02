@@ -4417,6 +4417,11 @@ function (_Controller) {
         window.scrollTo(0, document.body.scrollHeight);
       });
     }
+  }, {
+    key: "focus",
+    value: function focus(e) {
+      if (e.key == '`') this.inputTarget.focus();
+    }
   }]);
 
   return _default;

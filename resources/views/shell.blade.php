@@ -137,9 +137,11 @@
             @csrf
             <span class="font-bold text-yellow-400">$</span>
 
-            <input autocomplete="off" class="bg-transparent w-full px-2" data-target="terminal.input" name="input" type="text" placeholder="Type `help` for more information">
+            <input autocomplete="off" class="bg-transparent w-full px-2" data-action="keyup@window->terminal#focus" data-target="terminal.input" name="input" type="text" placeholder="Type `help` for more information">
 
-            <button type="submit" class="uppercase tracking-wide bg-indigo-800 rounded text-white text-xs hover:bg-blue-500 px-3 py-1">Execute</button>
+            <span class="uppercase tracking-wide border border-indigo-800 rounded text-indigo-200 text-xs px-3 py-1 mr-2" data-action="click->terminal#focus">`</span>
+
+            <button type="submit" class="uppercase tracking-wide bg-indigo-800 border border-indigo-800 rounded text-white text-xs hover:bg-blue-500 px-3 py-1">Execute</button>
         </form>
 
         <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>

@@ -36,4 +36,8 @@ export default class extends Controller {
             window.scrollTo(0,document.body.scrollHeight);
         });
     }
+
+    focus(e) {
+        if (e.key == '`') this.inputTarget.focus();
+    }
 }
