@@ -1,7 +1,7 @@
 <div data-controller="contact">
     @include('input', ['input' => 'contact'])
 
-    <p class="">You can say hey to me on <a class="bg-gray-900 text-teal-400 p-1" href="{{ url('social') }}" data-action="click->terminal#execute" data-terminal-input="social">social</a><span class="text-red-400">,</span> or send me an email below<span class="text-red-400">.</span></p>
+    <p class="">You can say hey to me on <a class="bg-gray-900 text-teal-400 p-1" href="{{ url('social') }}" data-action="click->terminal#execute" data-terminal-input="social">social</a><span class="text-red-400">,</span> or send me an email<span class="text-red-400">.</span></p>
 
     <form action="" class="mt-3 w-full max-w-2xl font-sans bg-white rounded-lg shadow p-6" data-action="submit->contact#submit" data-target="contact.form" method="POST">
         @csrf
