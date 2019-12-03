@@ -4420,7 +4420,10 @@ function (_Controller) {
   }, {
     key: "focus",
     value: function focus(e) {
-      if (e.key == '`') this.inputTarget.focus();
+      if (e.key == '/') {
+        e.preventDefault();
+        this.inputTarget.focus();
+      }
     }
   }]);
 
