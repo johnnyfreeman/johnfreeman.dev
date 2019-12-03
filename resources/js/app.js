@@ -1,4 +1,3 @@
-require('./bootstrap');
 import { Application } from "stimulus";
 import { definitionsFromContext } from "stimulus/webpack-helpers";
 

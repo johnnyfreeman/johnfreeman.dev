@@ -1,7 +1,18 @@
 import { Controller } from 'stimulus';
+import axios from 'axios';
 
 export default class extends Controller {
     static targets = [ 'input', 'output' ];
+
+    connect() {
+        this.api = axios.create({
+            headers: {
+                'Accept': 'text/html, */*',
+                'X-Requested-With': 'XMLHttpRequest',
+                'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
+            }
+        });
+    }
 
     execute(e) {
         e.preventDefault();
@@ -14,13 +25,13 @@ export default class extends Controller {
             return this[input](e);
         }
 
-        return axios(`api/${input}`).then((response) => {
+        return this.api(`partials/${input}`).then((response) => {
             return response.data;
-        }).then(this.render.bind(this));
+        }).then(this.write.bind(this));
     }
 
-    render(output) {
-        this.outputTarget.innerHTML += output;
+    write(output) {
+        this.outputTarget.insertAdjacentHTML('beforeend', output);
         this.inputTarget.value = '';
         window.scrollTo(0,document.body.scrollHeight);
     }
@@ -28,7 +39,7 @@ export default class extends Controller {
     clear(e) {
         if (e) e.preventDefault();
 
-        axios('api/clear').then((response) => {
+        return this.api('partials/clear').then((response) => {
             return response.data;
         }).then((output) => {
             this.outputTarget.innerHTML = output;
