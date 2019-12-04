@@ -1,6 +1,6 @@
 @include('input', ['input' => 'help'])
 
-<p class="">My website is built like a command<span class="text-red-400">-</span>line application<span class="text-red-400">.</span> Here are a list of commands you can execute<span class="text-red-400">.</span> For your convenience<span class="text-red-400">,</span> you can also click around too<span class="text-red-400">.</span> :)</p>
+<p class="w-full max-w-3xl">My website is built like a command<span class="text-red-400">-</span>line application<span class="text-red-400">.</span> Here are a list of commands you can execute<span class="text-red-400">.</span> For your convenience<span class="text-red-400">,</span> you can also click around too<span class="text-red-400">.</span> :)</p>
 
 <table class="mt-8">
     {{-- <tr>
