@@ -8,23 +8,23 @@
         <td class="pl-4">Technologies used building this</td>
     </tr> --}}
     <tr>
-        <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1" href="{{ url('clear') }}" data-action="click->terminal#execute" data-terminal-input="clear">clear</a></th>
+        <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('clear') }}" data-action="click->terminal#execute" data-terminal-input="clear">clear</a></th>
         <td class="pl-4">Clear all output</td>
     </tr>
     <tr>
-        <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1" href="{{ url('help') }}" data-action="click->terminal#execute" data-terminal-input="help">help</a></th>
+        <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('help') }}" data-action="click->terminal#execute" data-terminal-input="help">help</a></th>
         <td class="pl-4">This</td>
     </tr>
     <tr>
-        <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1" href="{{ url('intro') }}" data-action="click->terminal#execute" data-terminal-input="intro">intro</a></th>
+        <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('intro') }}" data-action="click->terminal#execute" data-terminal-input="intro">intro</a></th>
         <td class="pl-4">Let me introduce myself</td>
     </tr>
     <tr>
-        <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1" href="{{ url('menu') }}" data-action="click->terminal#execute" data-terminal-input="menu">menu</a></th>
+        <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('menu') }}" data-action="click->terminal#execute" data-terminal-input="menu">menu</a></th>
         <td class="pl-4">Website menu</td>
     </tr>
     <tr>
-        <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1" href="{{ url('social') }}" data-action="click->terminal#execute" data-terminal-input="social">social</a></th>
+        <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('social') }}" data-action="click->terminal#execute" data-terminal-input="social">social</a></th>
         <td class="pl-4">Social links</td>
     </tr>
 </table>

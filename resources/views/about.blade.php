@@ -6,10 +6,10 @@
     </div>
     <div class="ml-6">
         <div class="text-indigo-600 font-bold">John Freeman</div>
-        <p class="text-gray-600">I build things.</p>
+        <p class="text-gray-700">I build things.</p>
 
         <ul class="flex flex-wrap font-sans text-xs">
-            <li class="inline mt-2 mr-2"><a class="inline-block uppercase tracking-wide bg-blue-400 rounded text-white hover:bg-blue-500 px-3 py-1" href="{{ url('contact') }}" data-action="click->terminal#execute" data-terminal-input="contact">Get in touch</a></li>
+            <li class="inline mt-2 mr-2"><a class="inline-block uppercase tracking-wide bg-blue-400 light:bg-blue-600 rounded text-white hover:bg-blue-500 light:hover:bg-blue-700 px-3 py-1" href="{{ url('contact') }}" data-action="click->terminal#execute" data-terminal-input="contact">Get in touch</a></li>
         </ul>
     </div>
 </div>
