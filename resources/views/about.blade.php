@@ -1,10 +1,10 @@
 @include('input', ['input' => 'about'])
 
-<div class="md:flex w-full max-w-sm bg-white text-gray-600 rounded-lg shadow p-6 font-sans">
-    <div class="md:flex-shrink-0">
+<div class="flex w-full max-w-sm bg-white text-gray-600 rounded-lg shadow p-6 font-sans">
+    <div class="flex-shrink-0">
         <img class="rounded-full w-24 h-24" src="{{ asset('img/me.jpg') }}" alt="Picture of me">
     </div>
-    <div class="mt-4 md:mt-0 md:ml-6">
+    <div class="ml-6">
         <div class="text-indigo-600 font-bold">John Freeman</div>
         <p class="text-gray-600">I build things.</p>
 
