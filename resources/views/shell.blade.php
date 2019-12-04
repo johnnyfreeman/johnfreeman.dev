@@ -69,7 +69,7 @@
 
             <input autocomplete="off" class="bg-transparent w-full px-2" data-action="keydown@document->terminal#focus" data-target="terminal.input" name="input" type="text" placeholder="Type `help` for more information">
 
-            <span class="uppercase tracking-wide border border-indigo-800 rounded text-indigo-200 text-xs px-3 py-1 mr-2 light:border-gray-200 light:text-gray-500">/</span>
+            <span class="uppercase tracking-wide border border-indigo-800 rounded text-indigo-200 text-xs px-3 py-1 mr-2 light:border-gray-200 light:text-gray-500" title="Press `/` to focus">/</span>
 
             <button type="submit" class="uppercase tracking-wide bg-indigo-800 border border-indigo-800 rounded text-white text-xs px-3 py-1 hover:bg-blue-500 light:bg-gray-200 light:text-gray-600 light:border-gray-200 light:hover:bg-gray-300">Execute</button>
         </form>
