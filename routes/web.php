@@ -34,5 +34,5 @@ Route::post('contact', function (Request $request) {
 
     Mail::to('prsjohnny@gmail.com')->send(new MessageCreated($request->name, $request->email, $request->message));
 
-    return view('contact');
+    return view('contact-success', $request->only(['name', 'email', 'message']));
 });
