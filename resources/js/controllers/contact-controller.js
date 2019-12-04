@@ -5,7 +5,7 @@ import morphdom from 'morphdom';
 export default class extends Controller {
     static targets = [ 'form', 'submit' ];
 
-    connect() {
+    initialize() {
         this.api = axios.create({
             headers: {
                 'Accept': 'text/html, */*',
@@ -13,6 +13,9 @@ export default class extends Controller {
                 'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
             }
         });
+    }
+
+    connect() {
         this.terminalController = this.application.getControllerForElementAndIdentifier(document.body, 'terminal');
     }
 

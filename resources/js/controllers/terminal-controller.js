@@ -4,7 +4,7 @@ import axios from 'axios';
 export default class extends Controller {
     static targets = [ 'input', 'output' ];
 
-    connect() {
+    initialize() {
         this.api = axios.create({
             headers: {
                 'Accept': 'text/html, */*',

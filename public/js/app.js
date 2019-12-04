@@ -5128,8 +5128,8 @@ function (_Controller) {
   }
 
   _createClass(_default, [{
-    key: "connect",
-    value: function connect() {
+    key: "initialize",
+    value: function initialize() {
       this.api = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create({
         headers: {
           'Accept': 'text/html, */*',
@@ -5137,6 +5137,10 @@ function (_Controller) {
           'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content
         }
       });
+    }
+  }, {
+    key: "connect",
+    value: function connect() {
       this.terminalController = this.application.getControllerForElementAndIdentifier(document.body, 'terminal');
     }
   }, {
@@ -5214,8 +5218,8 @@ function (_Controller) {
   }
 
   _createClass(_default, [{
-    key: "connect",
-    value: function connect() {
+    key: "initialize",
+    value: function initialize() {
       this.api = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create({
         headers: {
           'Accept': 'text/html, */*',
