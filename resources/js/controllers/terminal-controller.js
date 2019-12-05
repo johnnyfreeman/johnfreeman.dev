@@ -39,13 +39,9 @@ export default class extends Controller {
     clear(e) {
         if (e) e.preventDefault();
 
-        return this.api('partials/clear').then((response) => {
-            return response.data;
-        }).then((output) => {
-            this.outputTarget.innerHTML = output;
-            this.inputTarget.value = '';
-            window.scrollTo(0,document.body.scrollHeight);
-        });
+        this.outputTarget.innerHTML = '';
+        this.inputTarget.value = '';
+        window.scrollTo(0,document.body.scrollHeight);
     }
 
     focus(e) {

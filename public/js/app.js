@@ -5252,16 +5252,10 @@ function (_Controller) {
   }, {
     key: "clear",
     value: function clear(e) {
-      var _this = this;
-
       if (e) e.preventDefault();
-      return this.api('partials/clear').then(function (response) {
-        return response.data;
-      }).then(function (output) {
-        _this.outputTarget.innerHTML = output;
-        _this.inputTarget.value = '';
-        window.scrollTo(0, document.body.scrollHeight);
-      });
+      this.outputTarget.innerHTML = '';
+      this.inputTarget.value = '';
+      window.scrollTo(0, document.body.scrollHeight);
     }
   }, {
     key: "focus",
