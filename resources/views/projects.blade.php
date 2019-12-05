@@ -10,6 +10,9 @@
             <span class="inline-block rounded-full bg-red-400 light:bg-red-600 h-3 w-3 mr-2"></span> <a class="hover:underline" href="https://github.com/laravel/laravel">laravel</a>
         </li>
         <li class="inline-flex items-center mr-3">
+            <span class="inline-block rounded-full bg-teal-400 light:bg-teal-600 h-3 w-3 mr-2"></span> <a class="hover:underline" href="https://github.com/tailwindcss/tailwindcss">tailwind</a>
+        </li>
+        <li class="inline-flex items-center mr-3">
             <span class="inline-block rounded-full bg-purple-400 light:bg-purple-600 h-3 w-3 mr-2"></span> <a class="hover:underline" href="https://github.com/stimulusjs/stimulus">stimulus</a>
         </li>
         <li class="inline-flex items-center mr-3">
