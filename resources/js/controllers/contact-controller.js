@@ -1,19 +1,9 @@
 import { Controller } from 'stimulus';
-import axios from 'axios';
+import Api from '../api';
 import morphdom from 'morphdom';
 
 export default class extends Controller {
     static targets = [ 'form', 'submit' ];
-
-    initialize() {
-        this.api = axios.create({
-            headers: {
-                'Accept': 'text/html, */*',
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
-            }
-        });
-    }
 
     connect() {
         this.terminalController = this.application.getControllerForElementAndIdentifier(document.body, 'terminal');
@@ -24,7 +14,7 @@ export default class extends Controller {
 
         this.submitTarget.innerHTML = 'sending';
 
-        return this.api.post(`contact`, new FormData(this.formTarget)).then((response) => {
+        return Api.post(`contact`, new FormData(this.formTarget)).then((response) => {
             return response.data;
         }).then((output) => {
             morphdom(this.element, output);

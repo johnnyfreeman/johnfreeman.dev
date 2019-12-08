@@ -1,18 +1,8 @@
 import { Controller } from 'stimulus';
-import axios from 'axios';
+import Api from '../api';
 
 export default class extends Controller {
     static targets = [ 'input', 'output' ];
-
-    initialize() {
-        this.api = axios.create({
-            headers: {
-                'Accept': 'text/html, */*',
-                'X-Requested-With': 'XMLHttpRequest',
-                'X-CSRF-TOKEN': document.head.querySelector('meta[name="csrf-token"]').content,
-            }
-        });
-    }
 
     execute(e) {
         e.preventDefault();
@@ -25,7 +15,7 @@ export default class extends Controller {
             return this[input](e);
         }
 
-        return this.api(`partials/${input}`).then((response) => {
+        return Api.get(`partials/${input}`).then((response) => {
             return response.data;
         }).then(this.write.bind(this));
     }
