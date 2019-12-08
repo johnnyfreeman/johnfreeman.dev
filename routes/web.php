@@ -2,12 +2,17 @@
 
 use App\Mail\MessageCreated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\View;
 
 Route::get('/', function () {
     return view('terminal', ['input' => 'intro']);
 });
 
 Route::get('{input}', function ($input) {
+    if (!View::exists($input)) {
+        abort('404');
+    }
+
     return view('terminal', compact('input'));
 });
 
@@ -19,6 +24,10 @@ Route::post('execute', function () {
 // Ajax calls made here get output
 // of the command partial
 Route::get('commands/{input}', function ($input) {
+    if (!View::exists("output.$input")) {
+        abort('404');
+    }
+
     return view("output.$input");
 });
 
