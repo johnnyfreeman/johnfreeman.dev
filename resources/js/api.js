@@ -3,7 +3,6 @@ import NProgress from 'nprogress';
 
 function endProgressAndReject(error) {
     NProgress.done();
-    window.console.log(error, error.response);
     window.terminal.write(error.response.data);
     return Promise.reject(error);
 };

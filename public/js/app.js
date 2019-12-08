@@ -4774,7 +4774,6 @@ __webpack_require__.r(__webpack_exports__);
 
 function endProgressAndReject(error) {
   nprogress__WEBPACK_IMPORTED_MODULE_1___default.a.done();
-  window.console.log(error, error.response);
   window.terminal.write(error.response.data);
   return Promise.reject(error);
 }
