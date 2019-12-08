@@ -35,7 +35,7 @@ export default class extends Controller {
     }
 
     clear(event) {
-        if (event) e.preventDefault();
+        if (event) event.preventDefault();
 
         this.outputTarget.innerHTML = '';
         this.inputTarget.value = '';

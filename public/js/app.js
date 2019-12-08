@@ -5007,7 +5007,7 @@ function (_Controller) {
   }, {
     key: "clear",
     value: function clear(event) {
-      if (event) e.preventDefault();
+      if (event) event.preventDefault();
       this.outputTarget.innerHTML = '';
       this.inputTarget.value = '';
     } // Private
