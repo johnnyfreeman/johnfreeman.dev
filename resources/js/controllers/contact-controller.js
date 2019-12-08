@@ -1,26 +1,26 @@
 import { Controller } from 'stimulus';
 import Api from '../api';
-import morphdom from 'morphdom';
 
 export default class extends Controller {
     static targets = [ 'form', 'submit' ];
 
     connect() {
-        this.terminalController = this.application.getControllerForElementAndIdentifier(document.body, 'terminal');
+        this.submitHTML = this.submitTarget.innerHTML;
     }
+
+    // Actions
 
     submit(e) {
         e.preventDefault();
-
         this.submitTarget.innerHTML = 'sending';
+        return Api.post(`contact`, new FormData(this.formTarget))
+            .then(output => window.terminal.write(output))
+            .finally(this.replaceSubmitHTML.bind(this));
+    }
 
-        return Api.post(`contact`, new FormData(this.formTarget)).then((response) => {
-            return response.data;
-        }).then((output) => {
-            morphdom(this.element, output);
-        }).catch((e) => {
-            // console.log(e, e.response);
-            this.terminalController.write(e.message);
-        });
+    // Private
+
+    replaceSubmitHTML() {
+        this.submitTarget.innerHTML = this.submitHTML;
     }
 }

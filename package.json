@@ -14,7 +14,6 @@
         "axios": "^0.19",
         "cross-env": "^5.1",
         "laravel-mix": "^4.0.7",
-        "morphdom": "^2.5.10",
         "nprogress": "^0.2.0",
         "resolve-url-loader": "^2.3.1",
         "source-code-pro": "^2.30.2",

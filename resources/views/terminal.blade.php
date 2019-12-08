@@ -1,5 +1,5 @@
 @extends('shell')
 
 @section('output')
-    @include($input)
+    @include("commands.$input")
 @endsection

@@ -1,21 +1,21 @@
 import axios from 'axios';
 import NProgress from 'nprogress';
 
+function endProgressAndReject(error) {
+    NProgress.done();
+    window.terminal.write(error.response.data);
+    return Promise.reject(error);
+};
+
 axios.interceptors.request.use(function (config) {
     NProgress.start();
     return config;
-}, function (error) {
-    NProgress.done();
-    return Promise.reject(error);
-});
+}, endProgressAndReject);
 
 axios.interceptors.response.use(function (response) {
     NProgress.done();
-    return response;
-}, function (error) {
-    NProgress.done();
-    return Promise.reject(error);
-});
+    return response.data;
+}, endProgressAndReject);
 
 // axios.defaults.baseURL = 'https://johnfreeman.dev/';
 axios.defaults.headers.common['Accept'] = 'text/html, */*';

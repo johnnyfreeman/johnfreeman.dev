@@ -4,40 +4,52 @@ import Api from '../api';
 export default class extends Controller {
     static targets = [ 'input', 'output' ];
 
-    execute(e) {
-        e.preventDefault();
+    connect() {
+        window.terminal = this;
+    }
 
-        const input = e.type == 'click'
-            ? e.currentTarget.dataset.terminalInput
+    // Actions
+
+    execute(event) {
+        event.preventDefault();
+
+        const input = event.type == 'click'
+            ? event.currentTarget.dataset.terminalInput
             : this.inputTarget.value;
 
         if (this[input]) {
-            return this[input](e);
+            return this[input](event);
         }
 
-        return Api.get(`partials/${input}`).then((response) => {
-            return response.data;
-        }).then(this.write.bind(this));
+        return Api.get(`commands/${input}`)
+            .then(this.write.bind(this));
     }
+
+    focusIfForwardSlash(event) {
+        if (event.key == '/') this.focus(event);
+    }
+
+    focus(event) {
+        event.preventDefault();
+        this.inputTarget.focus();
+    }
+
+    clear(event) {
+        if (event) e.preventDefault();
+
+        this.outputTarget.innerHTML = '';
+        this.inputTarget.value = '';
+    }
+
+    // Private
 
     write(output) {
         this.outputTarget.insertAdjacentHTML('beforeend', output);
         this.inputTarget.value = '';
-        window.scrollTo(0,document.body.scrollHeight);
+        this.lastOutput.scrollIntoView();
     }
 
-    clear(e) {
-        if (e) e.preventDefault();
-
-        this.outputTarget.innerHTML = '';
-        this.inputTarget.value = '';
-        window.scrollTo(0,document.body.scrollHeight);
-    }
-
-    focus(e) {
-        if (e.key == '/') {
-            e.preventDefault();
-            this.inputTarget.focus();
-        }
+    get lastOutput() {
+        return this.outputTarget.lastElementChild;
     }
 }

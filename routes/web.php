@@ -7,18 +7,22 @@ Route::get('/', function () {
     return view('terminal', ['input' => 'intro']);
 });
 
-Route::post('execute', function () {
-    return redirect(request('input'));
-});
-
 Route::get('{input}', function ($input) {
     return view('terminal', compact('input'));
 });
 
-Route::get('partials/{input}', function ($input) {
-    return view($input);
+// handles terminal form submit
+Route::post('execute', function () {
+    return redirect(request('input'));
 });
 
+// Ajax calls made here get output
+// of the command partial
+Route::get('commands/{input}', function ($input) {
+    return view("commands.$input");
+});
+
+// handles contact form submit
 Route::post('contact', function (Request $request) {
     $validator = Validator::make($request->only(['name', 'email', 'message']), [
         'name' => 'required',
@@ -27,7 +31,7 @@ Route::post('contact', function (Request $request) {
     ]);
 
     if ($validator->fails()) {
-        return redirect('partials/contact')
+        return redirect('commands/contact')
             ->withErrors($validator)
             ->withInput();
     }
