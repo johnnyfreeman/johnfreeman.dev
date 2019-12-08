@@ -64,15 +64,15 @@
             {{-- <p class="mt-8 italic text-red-400 text-xs">Type <a class="bg-gray-900 text-teal-400 p-1" href="{{ url('help') }}" data-action="click->terminal#execute" data-terminal-input="help">help</a> and hit <span class="border border-indigo-600 uppercase tracking-wide p-1 rounded">Enter</span> for more information<span class="text-red-400">.</span></p> --}}
         </main>
 
-        <form action="execute" class="mt-8 py-4 flex items-center {{-- sticky bottom-0 --}} -mx-5 md:-mx-10 px-5 md:px-10" method="POST" data-action="submit->terminal#execute">
+        <form action="execute" class="mt-8 py-4 flex items-center {{-- sticky bottom-0 --}} -mx-5 md:-mx-10 px-5 md:px-10" method="POST" data-action="submit->terminal#execute" defaultbutton="submit">
             @csrf
             <span class="font-bold text-yellow-400 light:text-yellow-600">$</span>
 
             <input autocomplete="off" class="bg-transparent w-full px-2" data-action="keydown@document->terminal#focusIfForwardSlash" data-target="terminal.input" name="input" type="text" placeholder="Type `help` for more information">
 
-            <button class="cursor-pointer uppercase tracking-wide border border-indigo-800 rounded text-indigo-200 text-xs px-3 py-1 mr-2 hover:text-white light:border-gray-200 light:text-gray-500 light:hover:text-gray-700" data-action="click->terminal#focus" title="Press `/` to focus">/</button>
+            <a class="cursor-pointer uppercase tracking-wide border border-indigo-800 rounded text-indigo-200 text-xs px-3 py-1 mr-2 hover:text-white light:border-gray-200 light:text-gray-500 light:hover:text-gray-700" data-action="click->terminal#focus" href="javascript:void(0)" title="Press `/` to focus">/</a>
 
-            <button type="submit" class="uppercase tracking-wide bg-indigo-800 border border-indigo-800 rounded text-white text-xs px-3 py-1 hover:bg-blue-500 light:bg-gray-200 light:text-gray-600 light:border-gray-200 light:hover:bg-gray-300">Execute</button>
+            <button class="uppercase tracking-wide bg-indigo-800 border border-indigo-800 rounded text-white text-xs px-3 py-1 hover:bg-blue-500 light:bg-gray-200 light:text-gray-600 light:border-gray-200 light:hover:bg-gray-300" id="submit" type="submit">Execute</button>
         </form>
 
         <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>

@@ -19,7 +19,7 @@ Route::post('execute', function () {
 // Ajax calls made here get output
 // of the command partial
 Route::get('commands/{input}', function ($input) {
-    return view("commands.$input");
+    return view("output.$input");
 });
 
 // handles contact form submit
@@ -31,12 +31,14 @@ Route::post('contact', function (Request $request) {
     ]);
 
     if ($validator->fails()) {
-        return redirect('commands/contact')
+        return redirect($request->ajax() ? 'commands/contact' : 'contact')
             ->withErrors($validator)
             ->withInput();
     }
 
     Mail::to('prsjohnny@gmail.com')->send(new MessageCreated($request->name, $request->email, $request->message));
 
-    return view('contact-success', $request->only(['name', 'email', 'message']));
+    return view('output.success', [
+        'message' => 'Message sent.'
+    ]);
 });
