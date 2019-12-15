@@ -4848,6 +4848,8 @@ function (_Controller) {
   }, {
     key: "api",
     get: function get() {
+      var api = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create();
+
       function endProgressAndReject(error) {
         nprogress__WEBPACK_IMPORTED_MODULE_2___default.a.done();
         this.terminal.write('vibrating');
@@ -4857,11 +4859,11 @@ function (_Controller) {
       }
 
       ;
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.interceptors.request.use(function (config) {
+      api.interceptors.request.use(function (config) {
         nprogress__WEBPACK_IMPORTED_MODULE_2___default.a.start();
         return config;
       }, endProgressAndReject);
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.interceptors.response.use(function (response) {
+      api.interceptors.response.use(function (response) {
         if (response.status >= 400) {
           navigator.vibrate([100]);
           this.terminal.write('vibrating');
@@ -4871,10 +4873,10 @@ function (_Controller) {
         return response.data;
       }, endProgressAndReject); // axios.defaults.baseURL = 'https://johnfreeman.dev/';
 
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['Accept'] = 'text/html, */*';
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-      axios__WEBPACK_IMPORTED_MODULE_1___default.a.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
-      return axios__WEBPACK_IMPORTED_MODULE_1___default.a;
+      api.defaults.headers.common['Accept'] = 'text/html, */*';
+      api.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+      api.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
+      return api;
     }
   }]);
 

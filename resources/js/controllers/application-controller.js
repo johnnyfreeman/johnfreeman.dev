@@ -12,6 +12,8 @@ export default class extends Controller {
     }
 
     get api() {
+        let api = axios.create();
+
         function endProgressAndReject(error) {
             NProgress.done();
             this.terminal.write('vibrating');
@@ -20,12 +22,12 @@ export default class extends Controller {
             return Promise.reject(error);
         };
 
-        axios.interceptors.request.use(function (config) {
+        api.interceptors.request.use(function (config) {
             NProgress.start();
             return config;
         }, endProgressAndReject);
 
-        axios.interceptors.response.use(function (response) {
+        api.interceptors.response.use(function (response) {
             if (response.status >= 400) {
                 navigator.vibrate([100]);
                 this.terminal.write('vibrating');
@@ -36,10 +38,10 @@ export default class extends Controller {
         }, endProgressAndReject);
 
         // axios.defaults.baseURL = 'https://johnfreeman.dev/';
-        axios.defaults.headers.common['Accept'] = 'text/html, */*';
-        axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-        axios.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
+        api.defaults.headers.common['Accept'] = 'text/html, */*';
+        api.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+        api.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
 
-        return axios;
+        return api;
     }
 }
