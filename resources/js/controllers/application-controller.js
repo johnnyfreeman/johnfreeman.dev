@@ -26,6 +26,7 @@ export default class extends Controller {
         }, endProgressAndReject);
 
         axios.interceptors.response.use(function (response) {
+            console.log(response);
             NProgress.done();
             return response.data;
         }, endProgressAndReject);
