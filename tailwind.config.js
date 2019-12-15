@@ -9,6 +9,8 @@ module.exports = {
         'mono': ['"Source Code Pro"'],
     },
   },
-  variants: {},
+  variants: {
+    display: ['responsive', 'group-hover'],
+  },
   plugins: []
 }
