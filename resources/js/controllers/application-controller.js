@@ -26,7 +26,11 @@ export default class extends Controller {
         }, endProgressAndReject);
 
         axios.interceptors.response.use(function (response) {
-            console.log(response);
+            if (response.status >= 400) {
+                navigator.vibrate([100]);
+                this.terminal.write('vibrating');
+            }
+
             NProgress.done();
             return response.data;
         }, endProgressAndReject);

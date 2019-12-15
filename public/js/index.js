@@ -4862,7 +4862,11 @@ function (_Controller) {
         return config;
       }, endProgressAndReject);
       axios__WEBPACK_IMPORTED_MODULE_1___default.a.interceptors.response.use(function (response) {
-        console.log(response);
+        if (response.status >= 400) {
+          navigator.vibrate([100]);
+          this.terminal.write('vibrating');
+        }
+
         nprogress__WEBPACK_IMPORTED_MODULE_2___default.a.done();
         return response.data;
       }, endProgressAndReject); // axios.defaults.baseURL = 'https://johnfreeman.dev/';
