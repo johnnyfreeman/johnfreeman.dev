@@ -4851,6 +4851,7 @@ function (_Controller) {
       function endProgressAndReject(error) {
         nprogress__WEBPACK_IMPORTED_MODULE_2___default.a.done();
         this.terminal.write(error.response.data);
+        this.terminal.write('vibrating');
         navigator.vibrate([100]);
         return Promise.reject(error);
       }

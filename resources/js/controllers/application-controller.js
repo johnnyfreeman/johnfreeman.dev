@@ -15,6 +15,7 @@ export default class extends Controller {
         function endProgressAndReject(error) {
             NProgress.done();
             this.terminal.write(error.response.data);
+            this.terminal.write('vibrating');
             navigator.vibrate([100]);
             return Promise.reject(error);
         };
