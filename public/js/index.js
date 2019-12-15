@@ -4852,9 +4852,8 @@ function (_Controller) {
 
       function endProgressAndReject(error) {
         nprogress__WEBPACK_IMPORTED_MODULE_2___default.a.done();
-        this.terminal.write('vibrating');
-        this.terminal.write(error.response.data);
         navigator.vibrate([100]);
+        this.terminal.write(error.response.data);
         return Promise.reject(error);
       }
 
@@ -4866,7 +4865,6 @@ function (_Controller) {
       api.interceptors.response.use(function (response) {
         if (response.status >= 400) {
           navigator.vibrate([100]);
-          this.terminal.write('vibrating');
         }
 
         nprogress__WEBPACK_IMPORTED_MODULE_2___default.a.done();

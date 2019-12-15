@@ -16,9 +16,8 @@ export default class extends Controller {
 
         function endProgressAndReject(error) {
             NProgress.done();
-            this.terminal.write('vibrating');
-            this.terminal.write(error.response.data);
             navigator.vibrate([100]);
+            this.terminal.write(error.response.data);
             return Promise.reject(error);
         };
 
@@ -30,7 +29,6 @@ export default class extends Controller {
         api.interceptors.response.use(function (response) {
             if (response.status >= 400) {
                 navigator.vibrate([100]);
-                this.terminal.write('vibrating');
             }
 
             NProgress.done();
