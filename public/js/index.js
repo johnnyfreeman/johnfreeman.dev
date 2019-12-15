@@ -5026,6 +5026,7 @@ function (_ApplicationControlle) {
       if (event.key == '/') this.focus(event);
       if (event.key == 'ArrowUp') this.previousInput(event);
       if (event.key == 'ArrowDown') this.nextInput(event);
+      if (event.key == 'Enter') this.execute(event);
     }
   }, {
     key: "focus",
@@ -5045,27 +5046,13 @@ function (_ApplicationControlle) {
     key: "previousInput",
     value: function previousInput(event) {
       event.preventDefault();
-
-      if (!this.inputTargets[this.selectedInput]) {
-        this.selectedInput = this.inputTargets.length - 1;
-      } else {
-        this.selectedInput -= 1;
-      }
-
-      this.inputFieldTarget.value = this.selectedInputText;
+      this.inputFieldTarget.value = this.previousInputText;
     }
   }, {
     key: "nextInput",
     value: function nextInput(event) {
       event.preventDefault();
-
-      if (!this.inputTargets[this.selectedInput]) {
-        this.selectedInput = 0;
-      } else {
-        this.selectedInput += 1;
-      }
-
-      this.inputFieldTarget.value = this.selectedInputText;
+      this.inputFieldTarget.value = this.nextInputText;
     }
   }, {
     key: "write",
@@ -5080,8 +5067,29 @@ function (_ApplicationControlle) {
       return this.outputTargets[this.outputTargets.length - 1];
     }
   }, {
-    key: "selectedInputText",
+    key: "previousInputText",
     get: function get() {
+      var intendedIndex = this.selectedInput - 1;
+
+      if (this.selectedInput == undefined || !this.inputTargets.hasOwnProperty(intendedIndex)) {
+        this.selectedInput = this.inputTargets.length - 1;
+      } else {
+        this.selectedInput = intendedIndex;
+      }
+
+      return this.inputTargets[this.selectedInput].innerText;
+    }
+  }, {
+    key: "nextInputText",
+    get: function get() {
+      var intendedIndex = this.selectedInput + 1;
+
+      if (this.selectedInput == undefined || !this.inputTargets.hasOwnProperty(intendedIndex)) {
+        this.selectedInput = 0;
+      } else {
+        this.selectedInput = intendedIndex;
+      }
+
       return this.inputTargets[this.selectedInput].innerText;
     }
   }]);
