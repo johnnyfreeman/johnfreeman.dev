@@ -25,7 +25,7 @@ export default class extends Controller {
         api.interceptors.request.use(function (config) {
             NProgress.start();
             return config;
-        }, endProgressAndReject);
+        }, endProgressAndReject.bind(this));
 
         api.interceptors.response.use(function (response) {
             if (response.status >= 400) {
@@ -35,7 +35,7 @@ export default class extends Controller {
 
             NProgress.done();
             return response.data;
-        }, endProgressAndReject);
+        }, endProgressAndReject.bind(this));
 
         // axios.defaults.baseURL = 'https://johnfreeman.dev/';
         api.defaults.headers.common['Accept'] = 'text/html, */*';

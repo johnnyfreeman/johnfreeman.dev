@@ -49,7 +49,7 @@ class Handler extends ExceptionHandler
         if ($request->ajax()) {
             $statusCode = $this->isHttpException($exception) ? $exception->getStatusCode() : 500;
 
-            return response()->view("output.errors.{$statusCode}");
+            return response()->view("output.errors.{$statusCode}", [], $statusCode);
         }
 
         return parent::render($request, $exception);
