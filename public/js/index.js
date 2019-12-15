@@ -5044,6 +5044,8 @@ function (_ApplicationControlle) {
   }, {
     key: "previousInput",
     value: function previousInput(event) {
+      event.preventDefault();
+
       if (!this.inputTargets[this.selectedInput]) {
         this.selectedInput = this.inputTargets.length - 1;
       } else {
@@ -5055,6 +5057,8 @@ function (_ApplicationControlle) {
   }, {
     key: "nextInput",
     value: function nextInput(event) {
+      event.preventDefault();
+
       if (!this.inputTargets[this.selectedInput]) {
         this.selectedInput = 0;
       } else {

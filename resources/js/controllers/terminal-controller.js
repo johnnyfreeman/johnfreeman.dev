@@ -41,6 +41,8 @@ export default class extends ApplicationController {
     // Private
 
     previousInput(event) {
+        event.preventDefault();
+
         if (!this.inputTargets[this.selectedInput]) {
             this.selectedInput = this.inputTargets.length - 1;
         } else {
@@ -51,6 +53,8 @@ export default class extends ApplicationController {
     }
 
     nextInput(event) {
+        event.preventDefault();
+
         if (!this.inputTargets[this.selectedInput]) {
             this.selectedInput = 0;
         } else {
