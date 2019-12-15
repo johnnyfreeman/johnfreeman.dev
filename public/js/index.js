@@ -5008,8 +5008,21 @@ function (_ApplicationControlle) {
   }
 
   _createClass(_default, [{
+    key: "connect",
+    value: function connect() {
+      this.updateOnlineStatus = this.updateOnlineStatus.bind(this);
+      window.addEventListener('online', this.updateOnlineStatus);
+      window.addEventListener('offline', this.updateOnlineStatus);
+    }
+  }, {
+    key: "disconnect",
+    value: function disconnect() {
+      window.removeEventListener('online', this.updateOnlineStatus);
+      window.removeEventListener('offline', this.updateOnlineStatus);
+    } // Actions
+
+  }, {
     key: "execute",
-    // Actions
     value: function execute(event) {
       event.preventDefault();
       var input = event.type == 'click' ? event.currentTarget.dataset.terminalInput : this.inputFieldTarget.value;
@@ -5042,6 +5055,11 @@ function (_ApplicationControlle) {
       this.inputFieldTarget.value = '';
     } // Private
 
+  }, {
+    key: "updateOnlineStatus",
+    value: function updateOnlineStatus(event) {
+      this.write(navigator.onLine ? "<div class=\"mt-8 bg-green-400 text-white p-3 rounded-lg\" data-target=\"terminal.output\">You are back online</div>" : "<div class=\"mt-8 bg-red-400 text-white p-3 rounded-lg\" data-target=\"terminal.output\">You are now offline</div>");
+    }
   }, {
     key: "previousInput",
     value: function previousInput(event) {

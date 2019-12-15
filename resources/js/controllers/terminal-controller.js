@@ -3,6 +3,17 @@ import ApplicationController from './application-controller';
 export default class extends ApplicationController {
     static targets = [ 'inputField', 'input', 'outputContainer', 'output' ];
 
+    connect() {
+        this.updateOnlineStatus = this.updateOnlineStatus.bind(this);
+        window.addEventListener('online',  this.updateOnlineStatus);
+        window.addEventListener('offline', this.updateOnlineStatus);
+    }
+
+    disconnect() {
+        window.removeEventListener('online',  this.updateOnlineStatus);
+        window.removeEventListener('offline', this.updateOnlineStatus);
+    }
+
     // Actions
 
     execute(event) {
@@ -40,6 +51,13 @@ export default class extends ApplicationController {
     }
 
     // Private
+
+    updateOnlineStatus(event) {
+        this.write(navigator.onLine
+            ? `<div class="mt-8 bg-green-400 text-white p-3 rounded-lg" data-target="terminal.output">You are back online</div>`
+            : `<div class="mt-8 bg-red-400 text-white p-3 rounded-lg" data-target="terminal.output">You are now offline</div>`
+        );
+    }
 
     previousInput(event) {
         event.preventDefault();
