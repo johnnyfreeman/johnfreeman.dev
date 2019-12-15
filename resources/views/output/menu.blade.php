@@ -1,4 +1,4 @@
-<div>
+<div data-target="terminal.output">
     @include('common.input', ['input' => 'menu'])
 
     <ul class="flex flex-wrap font-sans">

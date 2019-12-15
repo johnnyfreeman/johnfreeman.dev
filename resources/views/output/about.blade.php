@@ -1,4 +1,4 @@
-<div>
+<div data-target="terminal.output">
     @include('common.input', ['input' => 'about'])
 
     <div class="flex w-full max-w-sm bg-white text-gray-600 rounded-lg shadow p-6 font-sans">

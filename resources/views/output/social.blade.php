@@ -1,4 +1,4 @@
-<div>
+<div data-target="terminal.output">
     @include('common.input', ['input' => 'social'])
 
     <p class="">You can find me here<span class="text-red-400">.</span></p>

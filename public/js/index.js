@@ -5012,7 +5012,7 @@ function (_ApplicationControlle) {
     // Actions
     value: function execute(event) {
       event.preventDefault();
-      var input = event.type == 'click' ? event.currentTarget.dataset.terminalInput : this.inputTarget.value;
+      var input = event.type == 'click' ? event.currentTarget.dataset.terminalInput : this.inputFieldTarget.value;
 
       if (this[input]) {
         return this[input](event);
@@ -5021,42 +5021,71 @@ function (_ApplicationControlle) {
       return this.api.get("commands/".concat(input)).then(this.write.bind(this));
     }
   }, {
-    key: "focusIfForwardSlash",
-    value: function focusIfForwardSlash(event) {
+    key: "listenToKeys",
+    value: function listenToKeys(event) {
       if (event.key == '/') this.focus(event);
+      if (event.key == 'ArrowUp') this.previousInput(event);
+      if (event.key == 'ArrowDown') this.nextInput(event);
     }
   }, {
     key: "focus",
     value: function focus(event) {
       event.preventDefault();
-      this.inputTarget.focus();
+      this.inputFieldTarget.focus();
     }
   }, {
     key: "clear",
     value: function clear(event) {
       if (event) event.preventDefault();
-      this.outputTarget.innerHTML = '';
-      this.inputTarget.value = '';
+      this.outputContainerTarget.innerHTML = '';
+      this.inputFieldTarget.value = '';
     } // Private
 
   }, {
+    key: "previousInput",
+    value: function previousInput(event) {
+      if (!this.inputTargets[this.selectedInput]) {
+        this.selectedInput = this.inputTargets.length - 1;
+      } else {
+        this.selectedInput -= 1;
+      }
+
+      this.inputFieldTarget.value = this.selectedInputText;
+    }
+  }, {
+    key: "nextInput",
+    value: function nextInput(event) {
+      if (!this.inputTargets[this.selectedInput]) {
+        this.selectedInput = 0;
+      } else {
+        this.selectedInput += 1;
+      }
+
+      this.inputFieldTarget.value = this.selectedInputText;
+    }
+  }, {
     key: "write",
     value: function write(output) {
-      this.outputTarget.insertAdjacentHTML('beforeend', output);
-      this.inputTarget.value = '';
+      this.outputContainerTarget.insertAdjacentHTML('beforeend', output);
+      this.inputFieldTarget.value = '';
       this.lastOutput.scrollIntoView();
     }
   }, {
     key: "lastOutput",
     get: function get() {
-      return this.outputTarget.lastElementChild;
+      return this.outputTargets[this.outputTargets.length - 1];
+    }
+  }, {
+    key: "selectedInputText",
+    get: function get() {
+      return this.inputTargets[this.selectedInput].innerText;
     }
   }]);
 
   return _default;
 }(_application_controller__WEBPACK_IMPORTED_MODULE_0__["default"]);
 
-_defineProperty(_default, "targets", ['input', 'output']);
+_defineProperty(_default, "targets", ['inputField', 'input', 'outputContainer', 'output']);
 
 
 
