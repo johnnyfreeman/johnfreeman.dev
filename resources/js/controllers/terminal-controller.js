@@ -1,12 +1,7 @@
-import { Controller } from 'stimulus';
-import Api from '../api';
+import ApplicationController from './application-controller';
 
-export default class extends Controller {
+export default class extends ApplicationController {
     static targets = [ 'input', 'output' ];
-
-    connect() {
-        window.terminal = this;
-    }
 
     // Actions
 
@@ -21,7 +16,7 @@ export default class extends Controller {
             return this[input](event);
         }
 
-        return Api.get(`commands/${input}`)
+        return this.api.get(`commands/${input}`)
             .then(this.write.bind(this));
     }
 

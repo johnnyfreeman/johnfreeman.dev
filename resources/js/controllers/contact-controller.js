@@ -1,7 +1,6 @@
-import { Controller } from 'stimulus';
-import Api from '../api';
+import ApplicationController from './application-controller';
 
-export default class extends Controller {
+export default class extends ApplicationController {
     static targets = [ 'form', 'submit' ];
 
     connect() {
@@ -13,8 +12,8 @@ export default class extends Controller {
     submit(e) {
         e.preventDefault();
         this.submitTarget.innerHTML = 'sending';
-        return Api.post(`contact`, new FormData(this.formTarget))
-            .then(output => window.terminal.write(output))
+        return this.api.post(`contact`, new FormData(this.formTarget))
+            .then(output => this.terminal.write(output))
             .finally(this.replaceSubmitHTML.bind(this));
     }
 

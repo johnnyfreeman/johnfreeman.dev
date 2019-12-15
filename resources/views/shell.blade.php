@@ -75,7 +75,7 @@
             <button class="uppercase tracking-wide bg-indigo-800 border border-indigo-800 rounded text-white text-xs px-3 py-1 hover:bg-blue-500 light:bg-gray-200 light:text-gray-600 light:border-gray-200 light:hover:bg-gray-300" id="submit" type="submit">Execute</button>
         </form>
 
-        <script type="text/javascript" src="{{ mix('js/app.js') }}"></script>
+        <script type="text/javascript" src="{{ mix('js/index.js') }}"></script>
         @stack('scripts')
     </body>
 </html>
