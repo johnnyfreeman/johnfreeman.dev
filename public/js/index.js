@@ -5124,6 +5124,7 @@ function (_ApplicationControlle) {
   }, {
     key: "listenToKeys",
     value: function listenToKeys(event) {
+      console.log(event);
       if (event.key == '/') this.focus(event);
       if (event.key == 'ArrowUp') this.previousInput(event);
       if (event.key == 'ArrowDown') this.nextInput(event);
@@ -5183,7 +5184,7 @@ function (_ApplicationControlle) {
         this.selectedInput = intendedIndex;
       }
 
-      return this.inputTargets[this.selectedInput].innerText;
+      return this.inputTargets[this.selectedInput].value;
     }
   }, {
     key: "nextInputText",
@@ -5196,7 +5197,7 @@ function (_ApplicationControlle) {
         this.selectedInput = intendedIndex;
       }
 
-      return this.inputTargets[this.selectedInput].innerText;
+      return this.inputTargets[this.selectedInput].value;
     }
   }]);
 

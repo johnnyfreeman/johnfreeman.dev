@@ -32,6 +32,7 @@ export default class extends ApplicationController {
     }
 
     listenToKeys(event) {
+        console.log(event);
         if (event.key == '/') this.focus(event);
         if (event.key == 'ArrowUp') this.previousInput(event);
         if (event.key == 'ArrowDown') this.nextInput(event);
@@ -88,7 +89,7 @@ export default class extends ApplicationController {
             this.selectedInput = intendedIndex;
         }
 
-        return this.inputTargets[this.selectedInput].innerText;
+        return this.inputTargets[this.selectedInput].value;
     }
 
     get nextInputText() {
@@ -100,6 +101,6 @@ export default class extends ApplicationController {
             this.selectedInput = intendedIndex;
         }
 
-        return this.inputTargets[this.selectedInput].innerText;
+        return this.inputTargets[this.selectedInput].value;
     }
 }
