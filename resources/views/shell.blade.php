@@ -13,8 +13,7 @@
         {{-- <link rel="shortcut icon" href="{{ asset(config('app.logo.light.icon')) }}" /> --}}
 
         <!-- Styles -->
-        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/source-code-pro/source-code-pro.css') }}">
-        {{-- <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet"> --}}
+        <link rel="stylesheet" type="text/css" href="{{ config('app.env') == 'production' ? 'https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap' : asset('vendor/source-code-pro/source-code-pro.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ mix('css/main.css') }}">
     </head>
     <body class="min-h-screen font-mono bg-indigo-900 light:bg-gray-100 text-white light:text-gray-700 text-base text-white px-5 md:px-10 pt-5 md:pt-10 leading-loose" data-controller="terminal">
