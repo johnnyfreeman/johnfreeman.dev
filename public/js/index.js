@@ -5202,10 +5202,12 @@ function (_ApplicationControlle) {
   }, {
     key: "listenToKeys",
     value: function listenToKeys(event) {
-      if (event.key == '/') this.focus(event);
-      if (event.key == 'ArrowUp') this.previousInput(event);
-      if (event.key == 'ArrowDown') this.nextInput(event);
-      if (event.key == 'Enter') this.execute(event);
+      var terminalHasFocus = document.activeElement === this.element;
+      var inputFieldHasFocus = document.activeElement === this.inputFieldTarget;
+      if (event.key == '/' && terminalHasFocus) this.focus(event);
+      if (event.key == 'ArrowUp' && (terminalHasFocus || inputFieldHasFocus)) this.previousInput(event);
+      if (event.key == 'ArrowDown' && (terminalHasFocus || inputFieldHasFocus)) this.nextInput(event);
+      if (event.key == 'Enter' && (terminalHasFocus || inputFieldHasFocus)) this.execute(event);
     }
   }, {
     key: "focus",

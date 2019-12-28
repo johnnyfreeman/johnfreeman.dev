@@ -26,10 +26,12 @@ export default class extends ApplicationController {
     }
 
     listenToKeys(event) {
-        if (event.key == '/') this.focus(event);
-        if (event.key == 'ArrowUp') this.previousInput(event);
-        if (event.key == 'ArrowDown') this.nextInput(event);
-        if (event.key == 'Enter') this.execute(event)
+        const terminalHasFocus = document.activeElement === this.element;
+        const inputFieldHasFocus = document.activeElement === this.inputFieldTarget;
+        if (event.key == '/' && terminalHasFocus) this.focus(event);
+        if (event.key == 'ArrowUp' && (terminalHasFocus || inputFieldHasFocus)) this.previousInput(event);
+        if (event.key == 'ArrowDown' && (terminalHasFocus || inputFieldHasFocus)) this.nextInput(event);
+        if (event.key == 'Enter' && (terminalHasFocus || inputFieldHasFocus)) this.execute(event)
     }
 
     focus(event) {
