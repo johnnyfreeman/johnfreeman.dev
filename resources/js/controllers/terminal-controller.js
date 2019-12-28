@@ -17,7 +17,10 @@ export default class extends ApplicationController {
         }
 
         return this.axios.get(`commands/${input}`)
-            .then(this.write.bind(this));
+            .then((output) => {
+                this[input] = () => this.write(output);
+                this.write(output);
+            });
     }
 
     listenToKeys(event) {

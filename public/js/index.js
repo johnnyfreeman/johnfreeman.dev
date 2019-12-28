@@ -5181,6 +5181,8 @@ function (_ApplicationControlle) {
     key: "execute",
     // Actions
     value: function execute(event) {
+      var _this = this;
+
       event.preventDefault();
       var input = event.type == 'click' ? event.currentTarget.dataset.terminalInput : this.inputFieldTarget.value;
 
@@ -5188,7 +5190,13 @@ function (_ApplicationControlle) {
         return this[input](event);
       }
 
-      return this.axios.get("commands/".concat(input)).then(this.write.bind(this));
+      return this.axios.get("commands/".concat(input)).then(function (output) {
+        _this[input] = function () {
+          return _this.write(output);
+        };
+
+        _this.write(output);
+      });
     }
   }, {
     key: "listenToKeys",
