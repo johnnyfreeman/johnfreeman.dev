@@ -27,7 +27,7 @@ export default class extends ApplicationController {
             return this[input](event);
         }
 
-        return this.api.get(`commands/${input}`)
+        return this.axios.get(`commands/${input}`)
             .then(this.write.bind(this));
     }
 

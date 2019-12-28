@@ -4847,9 +4847,9 @@ function (_Controller) {
       return this.application.getControllerForElementAndIdentifier(document.body, 'terminal');
     }
   }, {
-    key: "api",
+    key: "axios",
     get: function get() {
-      var api = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create();
+      var newInstance = axios__WEBPACK_IMPORTED_MODULE_1___default.a.create();
 
       function endProgressAndReject(error) {
         nprogress__WEBPACK_IMPORTED_MODULE_2___default.a.done();
@@ -4859,11 +4859,11 @@ function (_Controller) {
       }
 
       ;
-      api.interceptors.request.use(function (config) {
+      newInstance.interceptors.request.use(function (config) {
         nprogress__WEBPACK_IMPORTED_MODULE_2___default.a.start();
         return config;
       }, endProgressAndReject.bind(this));
-      api.interceptors.response.use(function (response) {
+      newInstance.interceptors.response.use(function (response) {
         if (response.status >= 400) {
           navigator.vibrate([100]);
         }
@@ -4872,10 +4872,10 @@ function (_Controller) {
         return response.data;
       }, endProgressAndReject.bind(this)); // axios.defaults.baseURL = 'https://johnfreeman.dev/';
 
-      api.defaults.headers.common['Accept'] = 'text/html, */*';
-      api.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-      api.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
-      return api;
+      newInstance.defaults.headers.common['Accept'] = 'text/html, */*';
+      newInstance.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+      newInstance.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
+      return newInstance;
     }
   }]);
 
@@ -5030,7 +5030,7 @@ function (_ApplicationControlle) {
 
       e.preventDefault();
       this.submitTarget.innerHTML = 'sending';
-      return this.api.post("contact", new FormData(this.formTarget)).then(function (output) {
+      return this.axios.post("contact", new FormData(this.formTarget)).then(function (output) {
         return _this.terminal.write(output);
       })["finally"](this.replaceSubmitHTML.bind(this));
     } // Private
@@ -5119,7 +5119,7 @@ function (_ApplicationControlle) {
         return this[input](event);
       }
 
-      return this.api.get("commands/".concat(input)).then(this.write.bind(this));
+      return this.axios.get("commands/".concat(input)).then(this.write.bind(this));
     }
   }, {
     key: "listenToKeys",

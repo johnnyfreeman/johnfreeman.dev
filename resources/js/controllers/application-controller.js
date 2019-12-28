@@ -11,8 +11,8 @@ export default class extends Controller {
             .getControllerForElementAndIdentifier(document.body, 'terminal');
     }
 
-    get api() {
-        let api = axios.create();
+    get axios() {
+        let newInstance = axios.create();
 
         function endProgressAndReject(error) {
             NProgress.done();
@@ -21,12 +21,12 @@ export default class extends Controller {
             return Promise.reject(error);
         };
 
-        api.interceptors.request.use(function (config) {
+        newInstance.interceptors.request.use(function (config) {
             NProgress.start();
             return config;
         }, endProgressAndReject.bind(this));
 
-        api.interceptors.response.use(function (response) {
+        newInstance.interceptors.response.use(function (response) {
             if (response.status >= 400) {
                 navigator.vibrate([100]);
             }
@@ -36,10 +36,10 @@ export default class extends Controller {
         }, endProgressAndReject.bind(this));
 
         // axios.defaults.baseURL = 'https://johnfreeman.dev/';
-        api.defaults.headers.common['Accept'] = 'text/html, */*';
-        api.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-        api.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
+        newInstance.defaults.headers.common['Accept'] = 'text/html, */*';
+        newInstance.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+        newInstance.defaults.headers.common['X-CSRF-TOKEN'] = document.head.querySelector('meta[name="csrf-token"]').content;
 
-        return api;
+        return newInstance;
     }
 }

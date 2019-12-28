@@ -16,8 +16,3 @@ mix
     .postCss('resources/css/main.css', 'public/css', [
         require('tailwindcss'),
     ]);
-
-mix.copyDirectory(
-    'node_modules/source-code-pro',
-    'public/vendor/source-code-pro'
-);

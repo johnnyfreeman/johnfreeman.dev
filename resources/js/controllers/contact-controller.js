@@ -12,7 +12,7 @@ export default class extends ApplicationController {
     submit(e) {
         e.preventDefault();
         this.submitTarget.innerHTML = 'sending';
-        return this.api.post(`contact`, new FormData(this.formTarget))
+        return this.axios.post(`contact`, new FormData(this.formTarget))
             .then(output => this.terminal.write(output))
             .finally(this.replaceSubmitHTML.bind(this));
     }

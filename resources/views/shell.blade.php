@@ -13,8 +13,8 @@
         {{-- <link rel="shortcut icon" href="{{ asset(config('app.logo.light.icon')) }}" /> --}}
 
         <!-- Styles -->
-        {{-- <link rel="stylesheet" type="text/css" href="{{ asset('vendor/source-code-pro/source-code-pro.css') }}"> --}}
-        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="{{ asset('vendor/source-code-pro/source-code-pro.css') }}">
+        {{-- <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap" rel="stylesheet"> --}}
         <link href="https://unpkg.com/nprogress@0.2.0/nprogress.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="{{ mix('css/main.css') }}">
     </head>
