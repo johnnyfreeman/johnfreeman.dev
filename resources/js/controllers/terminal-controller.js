@@ -12,6 +12,8 @@ export default class extends ApplicationController {
             ? event.currentTarget.dataset.terminalInput
             : this.inputFieldTarget.value;
 
+        if (input.length === 0) return;
+
         if (this[input]) {
             return this[input](event);
         }
@@ -27,7 +29,7 @@ export default class extends ApplicationController {
         if (event.key == '/') this.focus(event);
         if (event.key == 'ArrowUp') this.previousInput(event);
         if (event.key == 'ArrowDown') this.nextInput(event);
-        if (event.key == 'Enter') this.execute(event);
+        if (event.key == 'Enter') this.execute(event)
     }
 
     focus(event) {

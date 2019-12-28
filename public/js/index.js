@@ -5185,6 +5185,7 @@ function (_ApplicationControlle) {
 
       event.preventDefault();
       var input = event.type == 'click' ? event.currentTarget.dataset.terminalInput : this.inputFieldTarget.value;
+      if (input.length === 0) return;
 
       if (this[input]) {
         return this[input](event);
