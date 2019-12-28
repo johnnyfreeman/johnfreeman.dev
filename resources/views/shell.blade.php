@@ -16,7 +16,7 @@
         <link rel="stylesheet" type="text/css" href="{{ config('app.env') == 'production' ? 'https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap' : asset('vendor/source-code-pro/source-code-pro.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ mix('css/main.css') }}">
     </head>
-    <body class="min-h-screen font-mono bg-indigo-900 light:bg-gray-100 text-white light:text-gray-700 text-base text-white px-5 md:px-10 pt-5 md:pt-10 leading-loose" data-controller="terminal">
+    <body class="min-h-screen font-mono bg-indigo-900 light:bg-gray-100 text-white light:text-gray-700 text-base text-white px-5 md:px-10 pt-5 md:pt-10 leading-loose pb-12" data-controller="terminal">
 
         <header class="flex justify-between bg-indigo-900 -mx-5 md:-mx-10 -mt-5 md:-mt-10 md:px-5">
             <a class="text-teal-400 py-5 px-5" href="{{ url('/') }}" data-action="click->terminal#execute" data-terminal-input="intro">
@@ -72,6 +72,11 @@
 
             <button class="uppercase tracking-wide bg-indigo-800 border border-indigo-800 rounded text-white text-xs px-3 py-1 hover:bg-blue-500 light:bg-gray-200 light:text-gray-600 light:border-gray-200 light:hover:bg-gray-300" id="submit" type="submit">Execute</button>
         </form>
+
+        <footer class="bg-gray-900 uppercase text-xs text-gray-600 w-full py-2 flex items-center fixed bottom-0 -mx-5 md:-mx-10 px-5 md:px-10" data-controller="status">
+            <span class="text-green-400 hidden" data-target="status.online">Online</span>
+            <span class="text-red-400 hidden" data-target="status.offline">Offline</span>
+        </footer>
 
         <script type="text/javascript" src="{{ mix('js/index.js') }}"></script>
         @stack('scripts')
