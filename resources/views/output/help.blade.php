@@ -11,8 +11,12 @@
             <td class="pl-4">Libraries and APIs used in building this</td>
         </tr>
         <tr>
-            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('clear') }}" data-action="click->terminal#execute" data-terminal-input="clear">clear</a></th>
+            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="javascript:void(0)" data-action="click->terminal#execute" data-terminal-input="clear">clear</a></th>
             <td class="pl-4">Clear all output</td>
+        </tr>
+        <tr>
+            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('features') }}" data-action="click->terminal#execute" data-terminal-input="features">features</a></th>
+            <td class="pl-4">List of features</td>
         </tr>
         <tr>
             <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('help') }}" data-action="click->terminal#execute" data-terminal-input="help">help</a></th>
