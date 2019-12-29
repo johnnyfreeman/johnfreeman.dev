@@ -56,7 +56,7 @@
 
     <table class="mt-2">
         <tr>
-            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('social') }}" data-action="click->terminal#execute" data-terminal-input="social">--fresh</a></th>
+            <th class="text-left pt-1"><span class="bg-gray-900 text-white p-1 light:bg-gray-200">--fresh</span></th>
             <td class="pl-4">Ignore cached output and get fresh output</td>
         </tr>
     </table>
