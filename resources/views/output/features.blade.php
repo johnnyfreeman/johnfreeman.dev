@@ -12,5 +12,6 @@
         <li>The contact form returns appends submission response to the output container for success message or validation errors.</li>
         <li>Styling changes based on the user's system preference of light or dark color theme.</li>
         <li>There is a slight vibration (on supported devices) for server errors.</li>
+        <li>When hovering over a previous command output, there is a ui button that allows you to replay or execute the command again.</li>
     </ul>
 </div>
