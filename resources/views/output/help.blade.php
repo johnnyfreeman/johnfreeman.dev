@@ -1,4 +1,4 @@
-<div data-target="terminal.output">
+<div data-controller="output" data-target="terminal.output">
     @include('common.input', ['input' => 'help'])
 
     <p class="w-full max-w-3xl">My website is built like a command<span class="text-red-400">-</span>line application<span class="text-red-400">.</span> Here are a list of commands you can execute<span class="text-red-400">.</span> For your convenience<span class="text-red-400">,</span> you can also click around too<span class="text-red-400">.</span> :)</p>

@@ -14,15 +14,14 @@ export default class extends ApplicationController {
 
         if (input.length === 0) return;
 
+        this.selectedInput = undefined;
+
         if (this[input]) {
             return this[input](event);
         }
 
         return this.axios.get(`commands/${input}`)
-            .then((output) => {
-                this[input] = () => this.write(output);
-                this.write(output);
-            });
+            .then(this.write.bind(this));
     }
 
     listenToKeys(event) {

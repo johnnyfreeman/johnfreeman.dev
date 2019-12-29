@@ -1,4 +1,4 @@
-<div data-target="terminal.output">
+<div data-controller="output" data-target="terminal.output">
     @include('common.input', ['input' => 'intro'])
 
     <p>Hey<span class="text-red-400">,</span> I<span class="text-red-400">'</span>m John<span class="text-red-400">.</span><br>I<span class="text-red-400">'</span>m a details<span class="text-red-400">-</span>oriented<span class="text-red-400">,</span> full<span class="text-red-400">-</span>stack developer<span class="text-red-400">.</span></p>

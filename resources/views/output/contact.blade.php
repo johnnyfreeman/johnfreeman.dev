@@ -1,4 +1,4 @@
-<div data-controller="contact" data-target="terminal.output">
+<div data-controller="contact output" data-target="terminal.output">
     @include('common.input', ['input' => 'contact'])
 
     <p class="">You can say hey to me on <a class="bg-gray-900 light:bg-gray-200 text-teal-400 light:text-teal-600 p-1" href="{{ url('social') }}" data-action="click->terminal#execute" data-terminal-input="social">social</a><span class="text-red-400">,</span> or shoot me an email<span class="text-red-400">.</span></p>
