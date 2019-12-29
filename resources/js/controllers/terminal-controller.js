@@ -1,4 +1,5 @@
 import ApplicationController from './application-controller';
+import parseArgs from 'minimist';
 
 export default class extends ApplicationController {
     static targets = [ 'inputField', 'input', 'outputContainer', 'output' ];
@@ -16,11 +17,13 @@ export default class extends ApplicationController {
 
         this.selectedInput = undefined;
 
-        if (this[input]) {
-            return this[input](event);
+        let argv = parseArgs(input.split(' '), { default: { fresh: false }});
+
+        if (this[argv._[0]] && !argv.fresh) {
+            return this[argv._[0]](event);
         }
 
-        return this.axios.get(`commands/${input}`)
+        return this.axios.get(`commands/${argv._[0]}`)
             .then(this.write.bind(this));
     }
 
