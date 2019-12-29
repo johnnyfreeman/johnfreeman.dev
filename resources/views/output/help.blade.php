@@ -3,19 +3,19 @@
 
     <p class="w-full max-w-3xl">My website is built like a command<span class="text-red-400">-</span>line application<span class="text-red-400">.</span> Here are a list of commands you can execute<span class="text-red-400">.</span> For your convenience<span class="text-red-400">,</span> you can also click around too<span class="text-red-400">.</span></p>
 
-    <h2 class="mt-8 text-yellow-400">Commands</h2>
+    <h2 class="mt-8 text-yellow-400 light:text-yellow-600">Commands</h2>
 
     <table class="mt-2">
         <tr>
-            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1" href="{{ url('about') }}" data-action="click->terminal#execute" data-terminal-input="about">about</a></th>
+            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('about') }}" data-action="click->terminal#execute" data-terminal-input="about">about</a></th>
             <td class="pl-4">A little about myself</td>
         </tr>
         <tr>
-            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1" href="{{ url('blog') }}" data-action="click->terminal#execute" data-terminal-input="blog">blog</a></th>
+            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('blog') }}" data-action="click->terminal#execute" data-terminal-input="blog">blog</a></th>
             <td class="pl-4">Articles I've written</td>
         </tr>
         <tr>
-            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1" href="{{ url('built-with') }}" data-action="click->terminal#execute" data-terminal-input="built-with">built-with</a></th>
+            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('built-with') }}" data-action="click->terminal#execute" data-terminal-input="built-with">built-with</a></th>
             <td class="pl-4">Libraries and APIs used in building this</td>
         </tr>
         <tr>
@@ -52,7 +52,7 @@
         </tr>
     </table>
 
-    <h2 class="mt-8 text-yellow-400">Options</h2>
+    <h2 class="mt-8 text-yellow-400 light:text-yellow-600">Options</h2>
 
     <table class="mt-2">
         <tr>
@@ -61,7 +61,7 @@
         </tr>
     </table>
 
-    <h2 class="mt-8 text-yellow-400">Usage</h2>
+    <h2 class="mt-8 text-yellow-400 light:text-yellow-600">Usage</h2>
 
-    <blockquote class="mt-2 text-indigo-400">command [options]</blockquote>
+    <blockquote class="mt-2 text-indigo-400 light:text-indigo-600">command [options]</blockquote>
 </div>

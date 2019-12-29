@@ -15,5 +15,6 @@
         <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine">navigator.onLine</a> api displaying online/offline status in the footer</li>
         <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Interact_with_the_clipboard">document.execCommand('copy')</a> for copying text to your clipboard</li>
         <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://github.com/substack/minimist">Minimist</a> to parse command line input into an object</li>
+        <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">prefers-color-scheme</a> to override styling when user has requested the system use a light or dark color scheme</li>
     </ul>
 </div>
