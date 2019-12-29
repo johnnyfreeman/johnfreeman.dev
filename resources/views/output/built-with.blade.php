@@ -1,5 +1,18 @@
 <div data-controller="output" data-target="terminal.output">
     @include('common.input', ['input' => 'built-with'])
 
-    <p class="w-full max-w-3xl">This isn't your traditional personal website with a few pages and a contact form.</p>
+    <p class="mt-2 w-full max-w-3xl">The basic idea for this site is pretty simple. There is an output container, and an input form. When the input form is submitted, an ajax call is made to the server. The server returns an html partial, which is then appended to the output container.</p>
+
+    <p class="mt-8 w-full max-w-3xl">The specific libraries and apis used could easily be swapped out with something else that serves the same purpose, or even without a library at all in most cases. This is just what I chose to go with.</p>
+
+    <h2 class="mt-8 text-yellow-400">Uses</h2>
+
+    <ul class="mt-2 list-inside list-disc">
+        <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://laravel.com">Laravel</a> for serving html pages/partials and to handle contact form submission</li>
+        <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://stimulusjs.org">Stimulus</a> for organizing front-end logic</li>
+        <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://github.com/axios/axios">Axios</a> for sending input to server via ajax and returning the response</li>
+        <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine">navigator.onLine</a> api displaying online/offline status in the footer</li>
+        <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Interact_with_the_clipboard">document.execCommand('copy')</a> for copying text to your clipboard</li>
+        <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://github.com/substack/minimist">Minimist</a> to parse command line input into an object</li>
+    </ul>
 </div>

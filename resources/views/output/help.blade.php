@@ -6,10 +6,10 @@
     <h2 class="mt-8 text-yellow-400">Commands</h2>
 
     <table class="mt-2">
-        {{-- <tr>
+        <tr>
             <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1" href="{{ url('built-with') }}" data-action="click->terminal#execute" data-terminal-input="built-with">built-with</a></th>
-            <td class="pl-4">Technologies used building this</td>
-        </tr> --}}
+            <td class="pl-4">Libraries and APIs used in building this</td>
+        </tr>
         <tr>
             <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('clear') }}" data-action="click->terminal#execute" data-terminal-input="clear">clear</a></th>
             <td class="pl-4">Clear all output</td>
