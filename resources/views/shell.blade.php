@@ -70,7 +70,7 @@
 
             <a class="cursor-pointer uppercase tracking-wide border border-indigo-800 rounded text-indigo-200 text-xs px-3 py-1 mr-2 hover:text-white light:border-gray-200 light:text-gray-500 light:hover:text-gray-700" data-action="click->terminal#focus" href="javascript:void(0)" title="Press `/` to focus">/</a>
 
-            <button class="uppercase tracking-wide bg-indigo-800 border border-indigo-800 rounded text-white text-xs px-3 py-1 hover:bg-blue-500 light:bg-gray-200 light:text-gray-600 light:border-gray-200 light:hover:bg-gray-300" id="submit" type="submit">Execute</button>
+            <button class="uppercase tracking-wide bg-indigo-800 border border-indigo-800 rounded text-white text-xs px-3 py-1 hover:bg-blue-500 hover:border-blue-500 light:bg-gray-200 light:text-gray-600 light:border-gray-200 light:hover:bg-gray-300 light:hover:border-gray-300" id="submit" type="submit">Execute</button>
         </form>
 
         <footer class="flex items-center justify-between bg-gray-900 uppercase text-xs text-gray-700 py-2 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" data-controller="status">
