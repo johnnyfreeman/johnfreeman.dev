@@ -9,7 +9,7 @@ Route::get('/', function () {
 });
 
 Route::get('{input}', function ($input) {
-    if (!View::exists($input)) {
+    if (!View::exists("output.$input")) {
         abort('404');
     }
 
