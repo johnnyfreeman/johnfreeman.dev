@@ -11,5 +11,6 @@
         <li>Links to commands will be executed the same as if you were to run them manually. For example, the hamburger icon in the header runs the <code class="bg-indigo-800 p-1 rounded text-sm light:bg-indigo-100">menu</code> command.</li>
         <li>The contact form returns appends submission response to the output container for success message or validation errors.</li>
         <li>Styling changes based on the user's system preference of light or dark color theme.</li>
+        <li>There is a slight vibration (on supported devices) for server errors.</li>
     </ul>
 </div>
