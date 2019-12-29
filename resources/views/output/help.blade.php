@@ -56,7 +56,7 @@
 
     <table class="mt-2">
         <tr>
-            <th class="text-left pt-1"><span class="bg-gray-900 text-white p-1 light:bg-gray-200">--fresh</span></th>
+            <th class="text-left pt-1"><span class="bg-gray-900 p-1 light:bg-gray-200">--fresh</span></th>
             <td class="pl-4">Ignore cached output and get fresh output</td>
         </tr>
     </table>
