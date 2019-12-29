@@ -9,6 +9,7 @@
 
     <ul class="mt-2 list-inside list-disc">
         <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://laravel.com">Laravel</a> for serving html pages/partials and to handle contact form submission</li>
+        <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://tailwindcss.com/">Tailwind</a> for css styling</li>
         <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://stimulusjs.org">Stimulus</a> for organizing front-end logic</li>
         <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://github.com/axios/axios">Axios</a> for sending input to server via ajax and returning the response</li>
         <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine">navigator.onLine</a> api displaying online/offline status in the footer</li>
