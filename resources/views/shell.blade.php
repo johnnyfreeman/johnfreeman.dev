@@ -64,7 +64,7 @@
 
         <form action="execute" class="mt-8 py-4 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" method="POST" data-action="submit->terminal#execute" defaultbutton="submit">
             @csrf
-            <span class="font-bold text-yellow-400 light:text-yellow-600">$</span>
+            <span class="font-bold text-orange-400 light:text-orange-600">$</span>
 
             <input autocomplete="off" class="bg-transparent w-full px-2" data-action="keydown@document->terminal#listenToKeys" data-target="terminal.inputField" name="input" type="text" placeholder="Type `help` for more information">
 
