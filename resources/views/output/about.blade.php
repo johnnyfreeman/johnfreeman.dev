@@ -1,13 +1,13 @@
 <div data-controller="output" data-target="terminal.output">
     @include('common.input', ['input' => 'about'])
 
-    <div class="flex w-full max-w-sm bg-white text-gray-600 rounded-lg shadow p-6 font-sans">
+    <div class="flex w-full max-w-xl bg-white text-gray-600 rounded-lg shadow p-6 font-sans">
         <div class="flex-shrink-0">
             <img class="rounded-full w-24 h-24" src="{{ asset('img/me.jpg') }}" alt="Picture of me">
         </div>
         <div class="ml-6">
             <div class="text-indigo-600 font-bold">John Freeman</div>
-            <p class="text-gray-700">I build things.</p>
+            <p class="text-gray-700">I build things and enjoy solving problems.</p>
 
             <ul class="flex flex-wrap font-sans text-xs">
                 <li class="inline mt-2 mr-2"><a class="inline-block uppercase tracking-wide bg-blue-400 light:bg-blue-600 rounded text-white hover:bg-blue-500 light:hover:bg-blue-700 px-3 py-1" href="{{ url('contact') }}" data-action="click->terminal#execute" data-terminal-input="contact">Get in touch</a></li>
@@ -21,5 +21,5 @@
 
     <p class="mt-8 w-full max-w-3xl">Today<span class="text-red-400">,</span> I am part of a small remote software company in the healthcare space<span class="text-red-400">.</span> There I envision<span class="text-red-400">,</span> present<span class="text-red-400">,</span> plan<span class="text-red-400">,</span> design<span class="text-red-400">,</span> and then build about half of the pieces of our product<span class="text-red-400">.</span> We build/sell a <span class="text-red-400">"</span>patient experience platform<span class="text-red-400">",</span> which is really just marketing<span class="text-red-400">-</span>speak for surveys<span class="text-red-400">.</span> There<span class="text-red-400">'</span>s more to it than that of course with EMR integration<span class="text-red-400">,</span> heathcare compliance<span class="text-red-400">,</span> incident management<span class="text-red-400">,</span> etc<span class="text-red-400">.</span> But you get the idea<span class="text-red-400">.</span></p>
 
-    <p class="mt-8 w-full max-w-3xl">In my off<span class="text-red-400">-</span>hours<span class="text-red-400">,</span> I travel full<span class="text-red-400">-</span>time with my family of 5 in our RV<span class="text-red-400">.</span> We<span class="text-red-400">'</span>ve spent the last year and a half exploring and learning about our beautiful nation<span class="text-red-400">.</span> If you<span class="text-red-400">'</span>d like to keep up with our journey<span class="text-red-400">,</span> check out our <a class="text-blue-400 hover:text-blue-500" href="https://www.instagram.com/freemansboldlygo" target="_blank">Instagram</a><span class="text-red-400">.</span></p>
+    <p class="mt-8 w-full max-w-3xl">In my off<span class="text-red-400">-</span>hours<span class="text-red-400">,</span> <a class="text-blue-400 hover:text-blue-500" href="https://www.instagram.com/freemansboldlygo" target="_blank">I travel full<span class="text-red-400">-</span>time with my family of 5 in our RV</a><span class="text-red-400">.</span> We<span class="text-red-400">'</span>ve spent the last year and a half exploring and learning about our beautiful nation<span class="text-red-400">.</span></p>
 </div>
