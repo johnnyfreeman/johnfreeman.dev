@@ -627,6 +627,16 @@ video {
   }
 }
 
+::-moz-selection {
+  background-color: #fefcbf;
+  color: #000
+}
+
+::selection {
+  background-color: #fefcbf;
+  color: #000
+}
+
 /* Make clicks pass-through */
 
 #nprogress {

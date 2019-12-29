@@ -1,6 +1,13 @@
 @tailwind base;
 @tailwind components;
 
+::-moz-selection {
+    @apply bg-yellow-200 text-black
+}
+::selection {
+    @apply bg-yellow-200 text-black
+}
+
 /* Make clicks pass-through */
 #nprogress {
   pointer-events: none;
