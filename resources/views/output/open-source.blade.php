@@ -17,7 +17,7 @@
                 <span class="inline-block rounded-full bg-teal-400 light:bg-teal-600 h-3 w-3 mr-2"></span> <a class="hover:underline" href="https://github.com/tailwindcss/tailwindcss">tailwind</a>
             </li>
             <li class="inline-flex items-center mr-4">
-                <span class="inline-block rounded-full bg-purple-400 light:bg-purple-600 h-3 w-3 mr-2"></span> <a class="hover:underline" href="https://github.com/stimulusjs/stimulus">stimulus</a>
+                <span class="inline-block rounded-full bg-yellow-400 light:bg-yellow-600 h-3 w-3 mr-2"></span> <a class="hover:underline" href="https://github.com/stimulusjs/stimulus">stimulus</a>
             </li>
             <li class="inline-flex items-center mr-4">
                 <span class="inline-block rounded-full bg-blue-400 light:bg-blue-600 h-3 w-3 mr-2"></span> <a class="hover:underline" href="https://github.com/axios/axios">axios</a>
@@ -33,7 +33,7 @@
         <p class="text-gray-700">A custom relation for when stock relations aren't enough</p>
         <ul class="w-full list-none mt-3 flex flex-wrap items-center">
             <li class="inline-flex items-center mr-4">
-                <span class="inline-block rounded-full bg-red-400 light:bg-red-600 h-3 w-3 mr-2"></span> <a class="hover:underline" href="https://github.com/laravel/laravel">laravel</a>
+                <span class="inline-block rounded-full bg-purple-400 light:bg-purple-600 h-3 w-3 mr-2"></span> <a class="hover:underline" href="http://php.net">php</a>
             </li>
         </ul>
     </div>
@@ -46,7 +46,7 @@
         <p class="text-gray-700">A config() for your laravel models</p>
         <ul class="w-full list-none mt-3 flex flex-wrap items-center">
             <li class="inline-flex items-center mr-4">
-                <span class="inline-block rounded-full bg-red-400 light:bg-red-600 h-3 w-3 mr-2"></span> <a class="hover:underline" href="https://github.com/laravel/laravel">laravel</a>
+                <span class="inline-block rounded-full bg-purple-400 light:bg-purple-600 h-3 w-3 mr-2"></span> <a class="hover:underline" href="http://php.net">php</a>
             </li>
         </ul>
     </div>
