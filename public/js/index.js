@@ -5503,6 +5503,7 @@ function (_ApplicationControlle) {
     value: function execute(event) {
       event.preventDefault();
       var input = event.type == 'click' ? event.currentTarget.dataset.terminalInput : this.inputFieldTarget.value;
+      input = input.trim().toLowerCase();
       if (input.length === 0) return;
       this.selectedInput = undefined;
       var argv = minimist__WEBPACK_IMPORTED_MODULE_1___default()(input.split(' '), {
