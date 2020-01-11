@@ -23,7 +23,7 @@ export default class extends ApplicationController {
             return this[argv._[0]](event);
         }
 
-        return this.axios.get(`commands/${argv._[0]}`)
+        return this.axios.get(`${argv._[0]}`)
             .then(this.write.bind(this));
     }
 

@@ -5515,7 +5515,7 @@ function (_ApplicationControlle) {
         return this[argv._[0]](event);
       }
 
-      return this.axios.get("commands/".concat(argv._[0])).then(this.write.bind(this));
+      return this.axios.get("".concat(argv._[0])).then(this.write.bind(this));
     }
   }, {
     key: "listenToKeys",
