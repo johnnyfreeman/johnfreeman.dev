@@ -5502,8 +5502,7 @@ function (_ApplicationControlle) {
     // Actions
     value: function execute(event) {
       event.preventDefault();
-      var input = event.type == 'click' ? event.currentTarget.dataset.terminalInput : this.inputFieldTarget.value;
-      input = input.trim().toLowerCase();
+      var input = this.getInput(event);
       if (input.length === 0) return;
       this.selectedInput = undefined;
       var argv = minimist__WEBPACK_IMPORTED_MODULE_1___default()(input.split(' '), {
@@ -5560,6 +5559,12 @@ function (_ApplicationControlle) {
       this.outputContainerTarget.insertAdjacentHTML('beforeend', output);
       this.inputFieldTarget.value = '';
       this.lastOutput.scrollIntoView();
+    }
+  }, {
+    key: "getInput",
+    value: function getInput(event) {
+      var input = event.type == 'click' ? event.currentTarget.dataset.terminalInput : this.inputFieldTarget.value;
+      return input.trim().toLowerCase();
     }
   }, {
     key: "lastOutput",

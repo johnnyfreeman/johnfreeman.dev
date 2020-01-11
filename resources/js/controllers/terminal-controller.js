@@ -9,11 +9,7 @@ export default class extends ApplicationController {
     execute(event) {
         event.preventDefault();
 
-        let input = event.type == 'click'
-            ? event.currentTarget.dataset.terminalInput
-            : this.inputFieldTarget.value;
-
-        input = input.trim().toLowerCase();
+        const input = this.getInput(event);
 
         if (input.length === 0) return;
 
@@ -94,5 +90,13 @@ export default class extends ApplicationController {
         }
 
         return this.inputTargets[this.selectedInput].value;
+    }
+
+    getInput(event) {
+        let input = event.type == 'click'
+            ? event.currentTarget.dataset.terminalInput
+            : this.inputFieldTarget.value;
+
+        return input.trim().toLowerCase();
     }
 }
