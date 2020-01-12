@@ -15,4 +15,13 @@ abstract class TestCase extends BaseTestCase
             array_merge(['HTTP_X-Requested-With' => 'XMLHttpRequest'], $headers)
         );
     }
+
+    public function ajaxPost($uri, array $data = [], array $headers = [])
+    {
+        return $this->post(
+            $uri,
+            $data,
+            array_merge(['HTTP_X-Requested-With' => 'XMLHttpRequest'], $headers)
+        );
+    }
 }
