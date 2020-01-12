@@ -25,8 +25,11 @@ class SendMessageController
         Mail::to(config('mail.contact.address'))
             ->send(new MessageCreated($request->name, $request->email, $request->message));
 
-        return view('output.success', [
-            'message' => 'Message sent.'
+        return view($request->ajax()
+            ? 'output.success'
+            : 'terminal', [
+            'input' => 'success',
+            'message' => 'Message sent.',
         ]);
     }
 }
