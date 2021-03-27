@@ -5,6 +5,7 @@
 
     <form action="" class="mt-3 w-full max-w-2xl font-sans bg-white rounded-lg shadow p-6" data-action="submit->contact#submit" data-target="contact.form" method="POST">
         @csrf
+        @honeypot
 
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">

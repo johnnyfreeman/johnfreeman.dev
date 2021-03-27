@@ -11,6 +11,7 @@ class ContactTest extends TestCase
 {
     public function testSendsEmail()
     {
+        // config()->set('honeypot.enabled', false);
         Mail::fake();
 
         $response = $this->post('contact', [
@@ -19,7 +20,9 @@ class ContactTest extends TestCase
             'message' => 'testing',
         ]);
 
-        $response->assertViewIs('output.success');
+        $response->assertViewIs('terminal');
+        $response->assertViewHas('input', 'success');
+        $response->assertViewHas('message', 'Message sent.');
         $response->assertOk();
 
         Mail::assertSent(MessageCreated::class, function ($mail) {

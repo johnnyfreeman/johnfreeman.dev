@@ -3,13 +3,10 @@
 namespace App\Mail;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 
 class MessageCreated extends Mailable
 {
-    use Queueable;
-
     public $name;
     public $email;
     public $body;
