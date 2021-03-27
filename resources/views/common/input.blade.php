@@ -1,6 +1,6 @@
 <div class="group mt-8 text-indigo-400 light:text-indigo-600 h-10 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" data-controller="clipboard">
     @csrf
-    <span class="font-bold text-orange-400 light:text-orange-600">$</span>
+    <span class="font-bold text-orange-300 light:text-orange-600">$</span>
 
     <input autocomplete="off" class="bg-transparent w-full px-2" data-target="output.input terminal.input clipboard.copyable" readonly name="input" type="text" value="{{ $input }}">
 

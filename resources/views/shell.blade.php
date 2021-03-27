@@ -16,10 +16,10 @@
         <link rel="stylesheet" type="text/css" href="{{ config('app.env') == 'production' ? 'https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap' : asset('vendor/source-code-pro/source-code-pro.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ mix('css/main.css') }}">
     </head>
-    <body class="min-h-screen font-mono bg-indigo-900 light:bg-gray-100 text-white light:text-gray-700 text-base text-white px-5 md:px-10 pt-5 md:pt-10 leading-loose flex flex-col" data-controller="terminal">
+    <body class="min-h-screen font-mono bg-gray-800 light:bg-white text-white light:text-gray-700 text-base text-white px-5 md:px-10 pt-5 md:pt-10 leading-loose flex flex-col" data-controller="terminal">
 
-        <header class="flex justify-between bg-indigo-900 -mx-5 md:-mx-10 -mt-5 md:-mt-10 md:px-5">
-            <a class="text-teal-400 py-5 px-5" href="{{ url('/') }}" data-action="click->terminal#execute" data-terminal-input="intro">
+        <header class="flex justify-between bg-gray-800 light:bg-white -mx-5 md:-mx-10 -mt-5 md:-mt-10 md:px-5">
+            <a class="text-teal-400 light:text-gray-700 py-5 px-5" href="{{ url('/') }}" data-action="click->terminal#execute" data-terminal-input="intro">
                 <svg class="fill-current" width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.93478 0H7.36957V1.34483H5.93478V0Z"/>
                     <path d="M8.73913 0H10.1739V1.34483H8.73913V0Z"/>
@@ -35,7 +35,7 @@
                 </svg>
             </a>
 
-            <a class="text-teal-400 py-5 px-5" href="{{ url('menu') }}" data-action="click->terminal#execute" data-terminal-input="menu">
+            <a class="text-teal-400 light:text-gray-700 py-5 px-5" href="{{ url('menu') }}" data-action="click->terminal#execute" data-terminal-input="menu">
                 <svg class="fill-current" width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 0H4.43478V1.34483H3V0Z"/>
                     <path d="M5.86957 0H7.30435V1.34483H5.86957V0Z"/>
@@ -59,23 +59,23 @@
         <main class="flex-1" data-target="terminal.outputContainer">
             @yield('output')
 
-            {{-- <p class="mt-8 italic text-red-400 text-xs">Type <a class="bg-gray-900 text-teal-400 p-1" href="{{ url('help') }}" data-action="click->terminal#execute" data-terminal-input="help">help</a> and hit <span class="border border-indigo-600 uppercase tracking-wide p-1 rounded">Enter</span> for more information<span class="text-red-400">.</span></p> --}}
+            <p class="mt-8 italic text-gray-400 text-xs">For more information, hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">/</kbd>, type <a class="bg-gray-900 text-teal-400 light:bg-gray-100 light:text-teal-600 p-1" href="{{ url('help') }}" data-action="click->terminal#execute" data-terminal-input="help">help</a>, then hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">Enter</kbd><span class="text-red-400">.</span></p>
         </main>
 
-        <form action="execute" class="mt-8 py-4 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" method="POST" data-action="submit->terminal#execute" defaultbutton="submit">
+        <form action="execute" class="mt-8 py-4 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" method="POST" data-action="submit->terminal#execute" defaultbutton="execute">
             @csrf
             <span class="font-bold text-orange-400 light:text-orange-600">$</span>
 
-            <input autocomplete="off" class="bg-transparent w-full px-2" data-action="keydown@document->terminal#listenToKeys" data-target="terminal.inputField" name="input" type="text" placeholder="Type `help` for more information">
+            <input autocomplete="off" class="bg-transparent w-full px-2 focus:outline-none" data-action="keydown@document->terminal#listenToKeys" data-target="terminal.inputField" name="input" type="text" placeholder="Type `help` for more information">
 
             <a class="cursor-pointer uppercase tracking-wide border border-indigo-800 rounded text-indigo-200 text-xs px-3 py-1 mr-2 hover:text-white light:border-gray-200 light:text-gray-500 light:hover:text-gray-700" data-action="click->terminal#focus" href="javascript:void(0)" title="Press `/` to focus">/</a>
 
-            <button class="uppercase tracking-wide bg-indigo-800 border border-indigo-800 rounded text-white text-xs px-3 py-1 hover:bg-blue-500 hover:border-blue-500 light:bg-gray-200 light:text-gray-600 light:border-gray-200 light:hover:bg-gray-300 light:hover:border-gray-300" id="submit" type="submit">Execute</button>
+            <button class="uppercase tracking-wide bg-indigo-800 border border-indigo-800 rounded text-white text-xs px-3 py-1 hover:bg-blue-500 hover:border-blue-500 light:bg-gray-200 light:text-gray-600 light:border-gray-200 light:hover:bg-gray-300 light:hover:border-gray-300" id="execute" type="submit">Execute</button>
         </form>
 
-        <footer class="flex items-center justify-between bg-gray-900 uppercase text-xs text-gray-700 py-2 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" data-controller="status">
-            <span class="text-green-400 hidden" data-target="status.online">Online</span>
-            <span class="text-red-400 hidden" data-target="status.offline">Offline</span>
+        <footer class="flex items-center justify-between bg-gray-900 light:bg-gray-100 uppercase text-xs text-gray-700 light:text-gray-500 py-2 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" data-controller="status">
+            <span class="text-green-400 light:text-green-600 hidden" data-target="status.online">Online</span>
+            <span class="text-red-400 light:text-red-600 hidden" data-target="status.offline">Offline</span>
             <span class="">&copy; Copyright {{ date('Y') }}</span>
         </footer>
 
