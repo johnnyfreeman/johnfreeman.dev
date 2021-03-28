@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\MessageCreated;
+use App\Mail\ContactMessage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -23,7 +23,7 @@ class SendMessageController
         }
 
         Mail::to(config('mail.contact.address'))
-            ->send(new MessageCreated($request->name, $request->email, $request->message));
+            ->send(new ContactMessage($request->name, $request->email, $request->message));
 
         return view($request->ajax()
             ? 'output.success'

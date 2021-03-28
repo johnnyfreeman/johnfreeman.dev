@@ -2,7 +2,7 @@
 
 namespace Tests\Feature;
 
-use App\Mail\MessageCreated;
+use App\Mail\ContactMessage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Mail;
 use Tests\TestCase;
@@ -25,7 +25,7 @@ class ContactTest extends TestCase
         $response->assertViewHas('message', 'Message sent.');
         $response->assertOk();
 
-        Mail::assertSent(MessageCreated::class, function ($mail) {
+        Mail::assertSent(ContactMessage::class, function ($mail) {
             return $mail->name == 'Testy Testerson'
                 && $mail->email == 'fake@email.com';
         });

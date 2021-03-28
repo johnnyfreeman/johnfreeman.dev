@@ -5,7 +5,7 @@ namespace App\Mail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 
-class MessageCreated extends Mailable
+class ContactMessage extends Mailable
 {
     public $name;
     public $email;
