@@ -12,7 +12,7 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
                     Your Name
                 </label>
-                <input class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 light:focus:border-blue-600" name="name" type="text" placeholder="Jane Doe" value="{{ old('name') }}">
+                <input class="appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-100 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 light:focus:border-blue-600" data-controller="autofocus" name="name" type="text" placeholder="Jane Doe" value="{{ old('name') }}">
 
                 @error('name')
                 <p class="mt-3 text-red-500 text-xs italic">{{ $message }}</p>
