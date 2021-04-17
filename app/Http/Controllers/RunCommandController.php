@@ -7,15 +7,16 @@ use Illuminate\Support\Facades\View;
 
 class RunCommandController
 {
-    public function __invoke(Request $request, $input) {
+    public function __invoke(Request $request, $input)
+    {
         if (!View::exists("output.$input")) {
             abort('404');
         }
 
         return view($request->ajax()
             ? "output.$input"
-            : "terminal", [
-            'input' => $input
-        ]);
+            : "terminal", array_merge([
+                'input' => $input
+            ], $request->all()));
     }
 }

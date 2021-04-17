@@ -8,7 +8,8 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>John Freeman</title>
+        @inject('my', 'App\Myself')
+        <title>{{ $my->name }}</title>
 
         {{-- <link rel="shortcut icon" href="{{ asset(config('app.logo.light.icon')) }}" /> --}}
 
@@ -62,11 +63,12 @@
             <p class="mt-8 italic text-gray-400 text-xs">For more information, hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">/</kbd>, type <a class="bg-gray-900 text-teal-400 light:bg-gray-100 light:text-teal-600 p-1" href="{{ url('help') }}" data-action="click->terminal#execute" data-terminal-input="help">help</a>, then hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">Enter</kbd><span class="text-red-400">.</span></p>
         </main>
 
-        <form action="execute" class="mt-8 py-4 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" method="POST" data-action="submit->terminal#execute" defaultbutton="execute">
+        <form action="execute" class="mt-8 h-12 flex items-center -mx-5 md:-mx-10 px-5 md:px-10 focus-within:bg-gray-900 transition-colors" method="POST" data-action="submit->terminal#execute" defaultbutton="execute">
             @csrf
-            <span class="font-bold text-orange-400 light:text-orange-600">$</span>
+            
+            @include('common.prompt')
 
-            <input autocomplete="off" class="bg-transparent w-full px-2 focus:outline-none" data-action="keydown@document->terminal#listenToKeys" data-target="terminal.inputField" name="input" type="text" placeholder="Type `help` for more information">
+            <input autocomplete="off" class="bg-transparent w-full px-2 focus:outline-none placeholder-gray-700 focus:placeholder-gray-600" data-action="keydown@document->terminal#listenToKeys" data-target="terminal.inputField" name="input" type="text" placeholder="Type `help` for more information">
 
             <a class="cursor-pointer uppercase tracking-wide border border-indigo-800 rounded text-indigo-200 text-xs px-3 py-1 mr-2 hover:text-white light:border-gray-200 light:text-gray-500 light:hover:text-gray-700" data-action="click->terminal#focus" href="javascript:void(0)" title="Press `/` to focus">/</a>
 
@@ -80,6 +82,5 @@
         </footer>
 
         <script type="text/javascript" src="{{ mix('js/index.js') }}"></script>
-        @stack('scripts')
     </body>
 </html>

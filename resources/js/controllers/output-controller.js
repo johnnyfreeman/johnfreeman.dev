@@ -1,13 +1,11 @@
-import ApplicationController from './application-controller';
+import ApplicationController from './application-controller'
 
 export default class extends ApplicationController {
-    static targets = [ 'input' ];
+    static targets = [ 'cache' ]
 
     connect() {
-        this.terminal[this.input] = () => this.terminal.write(this.element.outerHTML)
-    }
-
-    get input() {
-        return this.inputTarget.value;
+        if (this.hasCacheTarget) {
+            this.terminal[this.cacheTarget.value] = () => this.terminal.write(this.element.outerHTML)
+        }
     }
 }

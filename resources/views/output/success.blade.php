@@ -1,3 +1,10 @@
-<div class="mt-8 bg-green-400 text-white p-3 rounded-lg" data-controller="output" data-target="terminal.output">
-    <span class="font-bold">200</span> {{ $message }}
+<div data-target="terminal.output">
+    @include('common.input', [
+        'input' => $input,
+        'cache' => false,
+    ])
+
+    <div class="bg-green-400 text-white p-3 rounded-lg">
+        <span class="font-bold">200</span> {{ $message }}
+    </div>
 </div>
