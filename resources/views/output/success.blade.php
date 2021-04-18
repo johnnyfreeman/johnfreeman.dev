@@ -1,4 +1,4 @@
-<div data-target="terminal.output">
+<div data-terminal-target="output">
     @include('common.input', [
         'input' => $input,
         'cache' => false,

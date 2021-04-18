@@ -1,9 +1,9 @@
-<div data-controller="form output" data-target="terminal.output">
+<div data-controller="form output" data-terminal-target="output">
     @include('common.input', ['input' => 'contact'])
 
     <p class="">You can say hey to me on <a class="bg-gray-900 light:bg-gray-100 text-teal-400 light:text-teal-600 p-1" href="{{ url('social') }}" data-action="click->terminal#execute" data-terminal-input="social">social</a><span class="text-red-400">,</span> or shoot me an email<span class="text-red-400">.</span></p>
 
-    <form action="" class="mt-3 w-full max-w-2xl font-sans bg-gray-300 focus-within:bg-white rounded-lg shadow p-6" data-action="submit->form#submit" data-target="form.form" method="POST">
+    <form action="" class="mt-3 w-full max-w-2xl font-sans bg-gray-300 focus-within:bg-white rounded-lg shadow p-6" data-action="submit->form#submit" data-form-target="form" method="POST">
         @csrf
         @honeypot
 
@@ -44,7 +44,7 @@
         </div>
         <div class="flex flex-wrap -mx-3">
             <div class="w-full px-3">
-                <button type="submit" class="uppercase tracking-wide bg-blue-500 light:bg-blue-600 rounded text-white text-xs hover:bg-blue-500 light:hover:bg-blue-700 px-3 py-2" data-target="form.submit">Send</button>
+                <button type="submit" class="uppercase tracking-wide bg-blue-500 light:bg-blue-600 rounded text-white text-xs hover:bg-blue-500 light:hover:bg-blue-700 px-3 py-2" data-form-target="submit">Send</button>
             </div>
         </div>
     </form>

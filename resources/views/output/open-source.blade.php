@@ -1,4 +1,4 @@
-<div data-controller="output" data-target="terminal.output">
+<div data-controller="output" data-terminal-target="output">
     @include('common.input', ['input' => 'open-source'])
 
     <p class="">I enjoy giving back to the community<span class="text-red-400">.</span></p>

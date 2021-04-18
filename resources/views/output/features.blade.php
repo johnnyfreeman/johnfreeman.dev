@@ -1,4 +1,4 @@
-<div data-controller="output" data-target="terminal.output">
+<div data-controller="output" data-terminal-target="output">
     @include('common.input', ['input' => 'features'])
 
     <h2 class="mt-2 text-yellow-400">Usability</h2>
