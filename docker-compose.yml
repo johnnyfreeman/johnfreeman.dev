@@ -17,6 +17,18 @@ services:
             - '.:/var/www/html'
         networks:
             - sail
+        depends_on:
+            - redis
+    redis:
+        image: 'redis:alpine'
+        ports:
+            - '${FORWARD_REDIS_PORT:-6379}:6379'
+        volumes:
+            - 'sailredis:/data'
+        networks:
+            - sail
+        healthcheck:
+          test: ["CMD", "redis-cli", "ping"]
     mailhog:
         image: 'mailhog/mailhog:latest'
         ports:
@@ -27,3 +39,6 @@ services:
 networks:
     sail:
         driver: bridge
+volumes:
+    sailredis:
+        driver: local
