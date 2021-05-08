@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\SuController;
 use Spatie\Honeypot\ProtectAgainstSpam;
 use App\Http\Controllers\SudoController;
 use App\Http\Controllers\StartupController;
@@ -27,6 +26,7 @@ Route::get('exit', [SudoController::class, 'exit']);
 Route::post('execute', RedirectToCommandController::class);
 
 Route::post('contact', SendMessageController::class)
+    ->name('contact')
     ->middleware(ProtectAgainstSpam::class);
 
 Route::get('{input}', RunCommandController::class);

@@ -3,7 +3,7 @@
 
     <p class="">You can say hey to me on <a class="bg-gray-900 light:bg-gray-100 text-teal-400 light:text-teal-600 p-1" href="{{ url('social') }}" data-action="click->terminal#execute" data-terminal-input="social">social</a><span class="text-red-400">,</span> or shoot me an email<span class="text-red-400">.</span></p>
 
-    <form action="" class="mt-3 w-full max-w-2xl font-sans bg-gray-300 focus-within:bg-white rounded-lg shadow p-6" data-action="submit->form#submit" data-form-target="form" method="POST">
+    <form action="{{ route('contact') }}" class="mt-3 w-full max-w-2xl font-sans bg-gray-300 focus-within:bg-white rounded-lg shadow p-6" data-action="submit->form#submit" data-form-target="form" method="POST">
         @csrf
         @honeypot
 
