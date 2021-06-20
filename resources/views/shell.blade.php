@@ -16,6 +16,8 @@
         <!-- Styles -->
         <link rel="stylesheet" type="text/css" href="{{ config('app.env') == 'production' ? 'https://fonts.googleapis.com/css?family=Source+Code+Pro&display=swap' : asset('vendor/source-code-pro/source-code-pro.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ mix('css/main.css') }}">
+        
+        <script type="text/javascript" src="{{ mix('js/index.js') }}"></script>
     </head>
     <body class="min-h-screen font-mono bg-gray-800 light:bg-white text-white light:text-gray-700 text-base text-white px-5 md:px-10 pt-5 md:pt-10 leading-loose flex flex-col" data-controller="terminal">
 
@@ -80,7 +82,5 @@
             <span class="text-red-400 light:text-red-600 hidden" data-status-target="offline">Offline</span>
             <span class="">&copy; Copyright {{ date('Y') }}</span>
         </footer>
-
-        <script type="text/javascript" src="{{ mix('js/index.js') }}"></script>
     </body>
 </html>
