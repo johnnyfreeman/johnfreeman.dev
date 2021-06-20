@@ -8,37 +8,45 @@ use Illuminate\Foundation\Http\Kernel;
 
 class SudoController extends Controller
 {
+    use AuthenticatesRequests;
+
     public function prompt(Request $request)
     {
-        return view($request->ajax()
+        $view = $request->ajax()
             ? 'output.sudo'
-            : 'terminal', [
-                'input' => 'sudo'
-            ]);
+            : 'terminal';
+
+        return view($view, ['input' => 'sudo']);
     }
 
-    public function once(Request $request, Kernel $kernel)
+    public function once(Request $request)
     {
-        if (! Auth::once($request->only('password'))) {
-            return redirect()->route('login')->withErrors([
-                'password' => 'Sorry, try again.',
-            ]);
+        if ($this->hasTooManyLoginAttempts($request)) {
+            return $this->sendLockoutResponse($request);
         }
 
-        return $kernel->handle($request->intended('intro'));
+        if (Auth::once($request->only('password'))) {
+            return $this->sendLoginResponse($request);
+        }
+        
+        $this->incrementLoginAttempts($request);
+
+        return $this->sendFailedLoginResponse($request);
     }
 
     public function attempt(Request $request)
     {
-        if (! Auth::attempt($request->only('password'))) {
-            return redirect()->route('login')->withErrors([
-                'password' => 'Sorry, try again.',
-            ]);
+        if ($this->hasTooManyLoginAttempts($request)) {
+            return $this->sendLockoutResponse($request);
         }
 
-        $request->session()->regenerate();
-
-        return redirect()->intended('intro');
+        if (Auth::attempt($request->only('password'))) {
+            return $this->sendLoginResponse($request);
+        }
+        
+        $this->incrementLoginAttempts($request);
+        
+        return $this->sendFailedLoginResponse($request);
     }
 
     public function exit(Request $request)
