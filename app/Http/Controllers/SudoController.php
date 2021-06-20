@@ -33,31 +33,4 @@ class SudoController extends Controller
 
         return $this->sendFailedLoginResponse($request);
     }
-
-    public function attempt(Request $request)
-    {
-        if ($this->hasTooManyLoginAttempts($request)) {
-            return $this->sendLockoutResponse($request);
-        }
-
-        if (Auth::attempt($request->only('password'))) {
-            return $this->sendLoginResponse($request);
-        }
-        
-        $this->incrementLoginAttempts($request);
-        
-        return $this->sendFailedLoginResponse($request);
-    }
-
-    public function exit(Request $request)
-    {
-        Auth::logout();
-
-        return view($request->ajax()
-            ? 'output.success'
-            : 'terminal', [
-            'input' => 'exit',
-            'message' => 'Logged out.',
-        ]);
-    }
 }
