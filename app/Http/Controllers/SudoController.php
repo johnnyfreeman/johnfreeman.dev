@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Auth\AuthenticatesRequests;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Http\Kernel;
 
 class SudoController extends Controller
 {
