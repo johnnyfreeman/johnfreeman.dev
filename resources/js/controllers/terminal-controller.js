@@ -1,12 +1,13 @@
-import ApplicationController from './application-controller'
+import { Controller } from 'stimulus'
 import parseArgs from 'minimist'
+import { TerminalRequest } from '../http/terminal-request'
 
-export default class extends ApplicationController {
+export default class extends Controller {
     static targets = [ 'inputField', 'history', 'outputContainer', 'output' ]
 
     // Actions
 
-    execute(event) {
+    async execute(event) {
         event.preventDefault()
 
         const input = this.getInput(event)
@@ -21,8 +22,7 @@ export default class extends ApplicationController {
             return this[argv._[0]](event)
         }
 
-        return this.axios.get('/' + argv._.join('/'))
-            .then(this.write.bind(this))
+        return this.write(await new TerminalRequest(argv._.join('/')).execute())
     }
 
     listenToKeys(event) {

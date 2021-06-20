@@ -15,21 +15,29 @@ class Handler extends ExceptionHandler
 
     protected function prepareResponse($request, Throwable $e)
     {
+        $this->registerErrorViewPaths();
+        
         $statusCode = $this->isHttpException($e)
             ? $e->getStatusCode()
             : 500;
 
-        return response()->view(
-            "output.errors.{$statusCode}",
-            [
-                'exception' => $e,
-                'input' => implode(' ', $request->segments()),
-                'message' => config('app.debug') || $this->isHttpException($e)
-                    ? $e->getMessage()
-                    : 'Server Error',
-            ],
-            $statusCode
-        );
+        $view = $request->ajax()
+            ? "output.errors.{$statusCode}"
+            : "errors.{$statusCode}";
+
+        $data = [
+            'exception' => $e,
+            'input' => implode(' ', $request->segments()),
+            'message' => config('app.debug') || $this->isHttpException($e)
+                ? $e->getMessage()
+                : 'Server Error',
+        ];
+
+        if ($request->wantsTurboStream()) {
+            return turbo_stream($statusCode)->append('output', $view, $data);
+        }
+
+        return response()->view($view, $data, $statusCode);
     }
 
     protected function unauthenticated($request, AuthenticationException $e)

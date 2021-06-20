@@ -9,14 +9,23 @@ class RunCommandController
 {
     public function __invoke(Request $request, $input)
     {
-        if (!View::exists("output.$input")) {
+        $view = $request->ajax()
+            ? "output.$input"
+            : "terminal";
+
+        if (!View::exists($view)) {
             abort('404');
         }
 
-        return view($request->ajax()
-            ? "output.$input"
-            : "terminal", array_merge([
-                'input' => $input
-            ], $request->all()));
+        $data = array_merge([
+            'input' => $input
+        ], $request->all());
+
+        if ($request->wantsTurboStream()) {
+            return turbo_stream()
+                ->append('output', $view, $data);
+        }
+
+        return view($view, $data);
     }
 }

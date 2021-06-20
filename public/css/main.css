@@ -1168,14 +1168,14 @@ video {
 	background-color: rgba(255, 237, 213, var(--tw-bg-opacity));
 }
 
-.bg-green-400 {
-	--tw-bg-opacity: 1;
-	background-color: rgba(52, 211, 153, var(--tw-bg-opacity));
-}
-
 .bg-yellow-800 {
 	--tw-bg-opacity: 1;
 	background-color: rgba(146, 64, 14, var(--tw-bg-opacity));
+}
+
+.bg-green-400 {
+	--tw-bg-opacity: 1;
+	background-color: rgba(52, 211, 153, var(--tw-bg-opacity));
 }
 
 .bg-cover {

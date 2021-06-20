@@ -10,6 +10,7 @@
     "require": {
         "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "johnnyfreeman/laravel-turbo": "dev-main",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "spatie/laravel-honeypot": "^3.0"

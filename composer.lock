@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3284b6561a2b548d1cfd70c7e93375f4",
+    "content-hash": "abf928eae2033a760f39aa278c23c249",
     "packages": [
         {
             "name": "brick/math",
@@ -722,6 +722,57 @@
                 "source": "https://github.com/guzzle/psr7/tree/1.8.2"
             },
             "time": "2021-04-26T09:17:50+00:00"
+        },
+        {
+            "name": "johnnyfreeman/laravel-turbo",
+            "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/johnnyfreeman/laravel-turbo.git",
+                "reference": "f22e0536318ecf95d878e9fc56556443056aab8a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/johnnyfreeman/laravel-turbo/zipball/f22e0536318ecf95d878e9fc56556443056aab8a",
+                "reference": "f22e0536318ecf95d878e9fc56556443056aab8a",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/contracts": "^8.40",
+                "illuminate/support": "^8.40"
+            },
+            "default-branch": true,
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "JohnnyFreeman\\LaravelTurbo\\TurboServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "JohnnyFreeman\\LaravelTurbo\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Hotwire Turbo integration for Laravel.",
+            "keywords": [
+                "hotwire",
+                "laravel",
+                "turbo"
+            ],
+            "support": {
+                "issues": "https://github.com/johnnyfreeman/laravel-turbo/issues",
+                "source": "https://github.com/johnnyfreeman/laravel-turbo/tree/main"
+            },
+            "time": "2021-05-08T20:06:48+00:00"
         },
         {
             "name": "laravel/framework",
@@ -7261,7 +7312,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "johnnyfreeman/laravel-turbo": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": [],

@@ -26,12 +26,17 @@ class SendMessageController
 
         Mail::to($me->email)
             ->send(new ContactMessage($request->name, $request->email, $request->message));
-
-        return view($request->ajax()
-            ? 'output.success'
-            : 'terminal', [
+        
+        $data = [
             'input' => 'success',
             'message' => 'Message sent.',
-        ]);
+        ];
+
+        if ($request->wantsTurboStream()) {
+            return turbo_stream()
+                ->append('output', 'output.success', $data);
+        }
+
+        return view('terminal', $data);
     }
 }

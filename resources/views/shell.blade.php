@@ -57,13 +57,13 @@
             </a>
         </header>
 
-        <main class="flex-1" data-terminal-target="outputContainer">
+        <main class="flex-1" data-terminal-target="outputContainer" id="output">
             @yield('output')
 
             <p class="mt-8 italic text-gray-400 text-xs">For more information, hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">/</kbd>, type <a class="bg-gray-900 text-teal-400 light:bg-gray-100 light:text-teal-600 p-1" href="{{ url('help') }}" data-action="click->terminal#execute" data-terminal-input="help">help</a>, then hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">Enter</kbd><span class="text-red-400">.</span></p>
         </main>
 
-        <form action="execute" class="mt-8 h-12 flex items-center -mx-5 md:-mx-10 px-5 md:px-10 focus-within:bg-gray-900 transition-colors" method="POST" data-action="submit->terminal#execute" defaultbutton="execute">
+        <form data-action="submit->terminal#execute" class="mt-8 h-12 flex items-center -mx-5 md:-mx-10 px-5 md:px-10 focus-within:bg-gray-900 transition-colors" method="POST" defaultbutton="execute">
             @csrf
             
             @include('common.prompt')
