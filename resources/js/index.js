@@ -1,7 +1,7 @@
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 import * as Turbo from "@hotwired/turbo"
-import Clipboard from "@johnfreeman/stimulus-clipboard"
+import Clipboard from "@johnnyfreeman/stimulus-clipboard"
 
 Turbo.setProgressBarDelay(250)
 
