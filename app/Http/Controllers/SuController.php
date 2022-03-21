@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\TerminalResponse;
 use Illuminate\Support\Facades\Auth;
 
-class SuController extends Controller
+class SuController
 {
     public function attempt(Request $request)
     {
@@ -18,9 +19,7 @@ class SuController extends Controller
     {
         Auth::logout();
 
-        return view($request->ajax()
-            ? 'output.success'
-            : 'terminal', [
+        return (new TerminalResponse('success'))->with([
             'input' => 'exit',
             'message' => 'Logged out.',
         ]);

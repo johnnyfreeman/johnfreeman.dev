@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\TerminalResponse;
 use App\Myself;
 use App\Mail\ContactMessage;
 use Illuminate\Http\Request;
+use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 
@@ -26,17 +28,10 @@ class SendMessageController
 
         Mail::to($me->email)
             ->send(new ContactMessage($request->name, $request->email, $request->message));
-        
-        $data = [
+
+        return (new TerminalResponse('success'))->with([
             'input' => 'success',
             'message' => 'Message sent.',
-        ];
-
-        if ($request->wantsTurboStream()) {
-            return turbo_stream()
-                ->append('output', 'output.success', $data);
-        }
-
-        return view('terminal', $data);
+        ]);
     }
 }

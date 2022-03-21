@@ -2,7 +2,7 @@ const colors = require('tailwindcss/colors')
 
 module.exports = {
   mode: 'jit',
-  purge: [
+  content: [
     './resources/css/**/*.css',
     './resources/views/**/*.blade.php',
     './resources/js/**/*.js',
@@ -16,7 +16,7 @@ module.exports = {
         light: { raw: '(prefers-color-scheme: light)' },
       },
       colors: {
-        gray: colors.coolGray,
+        gray: colors.gray,
         orange: colors.orange,
         teal: colors.teal,
         indigo: colors.indigo,
@@ -26,9 +26,6 @@ module.exports = {
     fontFamily: {
         'mono': ['"Source Code Pro"'],
     },
-  },
-  variants: {
-    display: ['responsive', 'group-hover'],
   },
   plugins: []
 }

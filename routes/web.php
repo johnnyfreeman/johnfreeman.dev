@@ -18,7 +18,8 @@ Route::prefix('sudo')->group(function () {
     });
 });
 
-Route::post('execute', Controllers\RedirectToCommandController::class);
+Route::post('execute', Controllers\RedirectToCommandController::class)
+    ->name('execute');
 
 Route::post('contact', Controllers\SendMessageController::class)
     ->name('contact')

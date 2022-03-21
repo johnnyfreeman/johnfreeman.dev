@@ -13,31 +13,33 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    protected function prepareResponse($request, Throwable $e)
+    protected function renderExceptionResponse($request, Throwable $e)
+    {
+        try {
+            return $request->wantsTurboStream()
+                ? $this->convertExceptionToTurboStream($request, $e)
+                : parent::renderExceptionResponse($request, $e);
+        } catch (Throwable $e) {
+            return parent::renderExceptionResponse($request, $e);
+        }
+    }
+
+    protected function convertExceptionToTurboStream($request, Throwable $e)
     {
         $this->registerErrorViewPaths();
-        
+
         $statusCode = $this->isHttpException($e)
             ? $e->getStatusCode()
             : 500;
 
-        $view = $request->ajax()
-            ? "output.errors.{$statusCode}"
-            : "errors.{$statusCode}";
-
-        $data = [
-            'exception' => $e,
-            'input' => implode(' ', $request->segments()),
-            'message' => config('app.debug') || $this->isHttpException($e)
-                ? $e->getMessage()
-                : 'Server Error',
-        ];
-
-        if ($request->wantsTurboStream()) {
-            return turbo_stream($statusCode)->append('output', $view, $data);
-        }
-
-        return response()->view($view, $data, $statusCode);
+        return turbo_stream($statusCode)
+            ->append('output', view("output.errors.{$statusCode}", [
+                'exception' => $e,
+                'input' => implode(' ', $request->segments()),
+                'message' => config('app.debug') || $this->isHttpException($e)
+                    ? $e->getMessage()
+                    : 'Server Error',
+            ]));
     }
 
     protected function unauthenticated($request, AuthenticationException $e)

@@ -19,7 +19,7 @@
         
         <script type="text/javascript" src="{{ mix('js/index.js') }}"></script>
     </head>
-    <body class="min-h-screen font-mono bg-gray-800 light:bg-white text-white light:text-gray-700 text-base text-white px-5 md:px-10 pt-5 md:pt-10 leading-loose flex flex-col" data-controller="terminal">
+    <body class="min-h-screen font-mono bg-gray-800 light:bg-white text-white light:text-gray-700 text-base px-5 md:px-10 pt-5 md:pt-10 leading-loose flex flex-col" data-controller="terminal">
 
         <header class="flex justify-between bg-gray-800 light:bg-white -mx-5 md:-mx-10 -mt-5 md:-mt-10 md:px-5">
             <a class="text-teal-400 light:text-gray-700 py-5 px-5" href="{{ url('/') }}" data-action="click->terminal#execute" data-terminal-input="intro">
@@ -65,19 +65,19 @@
             <p class="mt-8 italic text-gray-400 text-xs">For more information, hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">/</kbd>, type <a class="bg-gray-900 text-teal-400 light:bg-gray-100 light:text-teal-600 p-1" href="{{ url('help') }}" data-action="click->terminal#execute" data-terminal-input="help">help</a>, then hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">Enter</kbd><span class="text-red-400">.</span></p>
         </main>
 
-        <form data-action="submit->terminal#execute" class="mt-8 h-12 flex items-center -mx-5 md:-mx-10 px-5 md:px-10 focus-within:bg-gray-900 transition-colors" method="POST" defaultbutton="execute">
+        <form action="{{ route('execute') }}" class="mt-8 h-12 flex items-center -mx-5 md:-mx-10 px-5 md:px-10 focus-within:bg-gray-900 transition-colors" method="POST" defaultbutton="execute">
             @csrf
             
             @include('common.prompt')
 
-            <input autocomplete="off" class="bg-transparent w-full px-2 focus:outline-none placeholder-gray-700 focus:placeholder-gray-600" data-action="keydown@document->terminal#listenToKeys" data-terminal-target="inputField" name="input" type="text" placeholder="Type `help` for more information">
+            <input autocomplete="off" class="bg-transparent w-full px-2 focus:outline-none placeholder-gray-700 focus:placeholder-gray-600" data-terminal-target="inputField" name="input" type="text" placeholder="Type `help` for more information">
 
             <a class="cursor-pointer uppercase tracking-wide border border-indigo-800 rounded text-indigo-200 text-xs px-3 py-1 mr-2 hover:text-white light:border-gray-200 light:text-gray-500 light:hover:text-gray-700" data-action="click->terminal#focus" href="javascript:void(0)" title="Press `/` to focus">/</a>
 
             <button class="uppercase tracking-wide bg-indigo-800 border border-indigo-800 rounded text-white text-xs px-3 py-1 hover:bg-blue-500 hover:border-blue-500 light:bg-gray-200 light:text-gray-600 light:border-gray-200 light:hover:bg-gray-300 light:hover:border-gray-300" id="execute" type="submit">Execute</button>
         </form>
 
-        <footer class="flex items-center justify-between bg-gray-900 light:bg-gray-100 uppercase text-xs text-gray-700 light:text-gray-500 py-2 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" data-controller="status">
+        <footer class="flex items-center justify-between bg-gray-900 light:bg-gray-100 uppercase text-xs text-gray-700 light:text-gray-500 py-2 -mx-5 md:-mx-10 px-5 md:px-10" data-controller="status">
             <span class="text-green-400 light:text-green-600 hidden" data-status-target="online">Online</span>
             <span class="text-red-400 light:text-red-600 hidden" data-status-target="offline">Offline</span>
             <span class="">&copy; Copyright {{ date('Y') }}</span>

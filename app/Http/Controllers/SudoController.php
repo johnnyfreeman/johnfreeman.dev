@@ -3,20 +3,18 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\HtmlString;
 use App\Auth\AuthenticatesRequests;
+use App\Http\TerminalResponse;
 use Illuminate\Support\Facades\Auth;
 
-class SudoController extends Controller
+class SudoController
 {
     use AuthenticatesRequests;
 
     public function prompt(Request $request)
     {
-        $view = $request->ajax()
-            ? 'output.sudo'
-            : 'terminal';
-
-        return view($view, ['input' => 'sudo']);
+        return new TerminalResponse('sudo');
     }
 
     public function once(Request $request)
