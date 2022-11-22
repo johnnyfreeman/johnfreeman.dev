@@ -46,4 +46,23 @@ class Handler extends ExceptionHandler
     {
         return redirect()->guest(route('login'));
     }
+
+    protected function convertValidationExceptionToResponse($e, $request)
+    {
+        return $request->wantsTurboStream()
+            ? $this->convertValidationExceptionToTurboStream($e, $request)
+            : parent::convertValidationExceptionToResponse($e, $request);
+    }
+
+    protected function convertValidationExceptionToTurboStream($e, $request)
+    {
+        $this->registerErrorViewPaths();
+
+        return turbo_stream()
+            ->append('output', view('output.errors.422', [
+                'errors' => $e->errors(),
+                'input' => implode(' ', $request->segments()),
+                'message' => 'Validation Error',
+            ]));
+    }
 }
