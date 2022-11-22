@@ -21,8 +21,5 @@
         "resolve-url-loader": "^4.0.0",
         "stimulus": "^2.0.0",
         "tailwindcss": "^2.1.1"
-    },
-    "dependencies": {
-        "@johnnyfreeman/stimulus-clipboard": "^1.0.5"
     }
 }
