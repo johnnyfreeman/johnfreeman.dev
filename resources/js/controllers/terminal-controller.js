@@ -31,7 +31,6 @@ export default class extends Controller {
         if (event.key == '/' && terminalHasFocus) this.focus(event)
         if (event.key == 'ArrowUp' && (terminalHasFocus || inputFieldHasFocus)) this.previousInput(event)
         if (event.key == 'ArrowDown' && (terminalHasFocus || inputFieldHasFocus)) this.nextInput(event)
-        if (event.key == 'Enter' && (terminalHasFocus || inputFieldHasFocus)) this.execute(event)
     }
 
     focus(event) {
@@ -40,9 +39,6 @@ export default class extends Controller {
     }
 
     clear(event) {
-        if (event) event.preventDefault()
-
-        this.outputContainerTarget.innerHTML = ''
         this.inputFieldTarget.value = ''
     }
 

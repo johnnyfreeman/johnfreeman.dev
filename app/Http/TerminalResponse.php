@@ -48,6 +48,7 @@ class TerminalResponse implements Responsable
         if ($request->wantsTurboStream()) {
             return turbo_stream()
                 ->append('output', $this->view)
+                ->replace('input-form', view('components.input-form'))
                 ->toResponse($request);
         }
 
