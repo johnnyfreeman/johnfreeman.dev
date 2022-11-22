@@ -1,6 +1,4 @@
-<div data-controller="output" data-terminal-target="output">
-    <x-input value="built-with" />
-
+<x-output input="built-with" cache>
     <p class="mt-2 w-full max-w-3xl">The basic idea here is simple; there is an output container, and an input form. When the input form is submitted, an ajax call is made to the server. The server returns an html partial, which is then appended to the output container. Easy peasy.</p>
 
     <p class="mt-8 w-full max-w-3xl">The specific libraries and apis used are not that important. Most of them could easily be swapped out with something else that serves the same purpose, or even without a library at all in most cases.</p>
@@ -18,4 +16,4 @@
         <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-100 light:text-teal-600" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">prefers-color-scheme</a> to override styling when user has requested the system use a light or dark color scheme</li>
         <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-100 light:text-teal-600" href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate">navigator.vibrate</a> to initiate a slight vibration when the server responds with a status code of 400 or above</li>
     </ul>
-</div>
+</x-output>

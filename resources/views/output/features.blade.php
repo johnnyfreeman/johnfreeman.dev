@@ -1,6 +1,4 @@
-<div data-controller="output" data-terminal-target="output">
-    <x-input value="features" />
-
+<x-output input="features" cache>
     <h2 class="mt-2 text-yellow-400">Usability</h2>
 
     <ul class="mt-2 list-inside list-disc">
@@ -22,4 +20,4 @@
     <ul class="mt-2 list-inside list-disc">
         <li>All output is cached so that subsequent executions don't have to make a round trip to the server. Add the <code class="bg-indigo-800 p-1 rounded text-sm light:bg-indigo-100">--fresh</code> option to a command to ignore the cache</li>
     </ul>
-</div>
+</x-output>

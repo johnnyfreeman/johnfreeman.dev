@@ -18,7 +18,7 @@
     <body class="min-h-screen font-mono bg-gray-800 light:bg-white text-white light:text-gray-700 text-base px-5 md:px-10 pt-5 md:pt-10 leading-loose flex flex-col" data-controller="terminal">
 
         <header class="flex justify-between bg-gray-800 light:bg-white -mx-5 md:-mx-10 -mt-5 md:-mt-10 md:px-5">
-            <a class="text-teal-400 light:text-gray-700 py-5 px-5" href="{{ url('/') }}" data-action="click->terminal#execute" data-terminal-input="intro">
+            <a data-turbo-stream class="text-teal-400 light:text-gray-700 py-5 px-5" href="{{ url('/') }}" data-terminal-input="intro">
                 <svg class="fill-current" width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.93478 0H7.36957V1.34483H5.93478V0Z"/>
                     <path d="M8.73913 0H10.1739V1.34483H8.73913V0Z"/>
@@ -34,7 +34,7 @@
                 </svg>
             </a>
 
-            <a class="text-teal-400 light:text-gray-700 py-5 px-5" href="{{ url('menu') }}" data-action="click->terminal#execute" data-terminal-input="menu">
+            <a data-turbo-stream class="text-teal-400 light:text-gray-700 py-5 px-5" href="{{ url('menu') }}" data-terminal-input="menu">
                 <svg class="fill-current" width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M3 0H4.43478V1.34483H3V0Z"/>
                     <path d="M5.86957 0H7.30435V1.34483H5.86957V0Z"/>
@@ -58,7 +58,7 @@
         <main class="flex-1" data-terminal-target="outputContainer" id="output">
             @yield('output')
 
-            <p class="mt-8 italic text-gray-400 text-xs">For more information, hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">/</kbd>, type <a class="bg-gray-900 text-teal-400 light:bg-gray-100 light:text-teal-600 p-1" href="{{ url('help') }}" data-action="click->terminal#execute" data-terminal-input="help">help</a>, then hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">Enter</kbd><span class="text-red-400">.</span></p>
+            <p class="mt-8 italic text-gray-400 text-xs">For more information, hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">/</kbd>, type <a data-turbo-stream class="bg-gray-900 text-teal-400 light:bg-gray-100 light:text-teal-600 p-1" href="{{ url('help') }}" data-terminal-input="help">help</a>, then hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">Enter</kbd><span class="text-red-400">.</span></p>
         </main>
 
         <form action="{{ route('execute') }}" class="mt-8 h-12 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" method="POST" defaultbutton="execute">

@@ -1,17 +1,25 @@
-<div data-controller="output" data-terminal-target="output">
-    <x-input value="social" />
-
+<x-output input="social" cache>
     <p class="">You can find me here<span class="text-red-400">.</span></p>
 
-    <ul class="font-sans mt-6">
-        <li class="inline"><a class="text-blue-400 hover:text-blue-500 light:text-blue-600 light:hover:text-blue-700" href="https://twitter.com/TherelsNoTry" target="_blank"><svg class="inline-block fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>social-media-twitter</title><path d="M23.32,6.44a.5.5,0,0,0-.2-.87l-.79-.2A.5.5,0,0,1,22,4.67l.44-.89a.5.5,0,0,0-.58-.7l-2,.56a.5.5,0,0,1-.44-.08,5,5,0,0,0-3-1,5,5,0,0,0-5,5v.36a.25.25,0,0,1-.22.25c-2.81.33-5.5-1.1-8.4-4.44a.51.51,0,0,0-.51-.15A.5.5,0,0,0,2,4a7.58,7.58,0,0,0,.46,4.92.25.25,0,0,1-.26.36L1.08,9.06a.5.5,0,0,0-.57.59,5.15,5.15,0,0,0,2.37,3.78.25.25,0,0,1,0,.45l-.53.21a.5.5,0,0,0-.26.69,4.36,4.36,0,0,0,3.2,2.48.25.25,0,0,1,0,.47A10.94,10.94,0,0,1,1,18.56a.5.5,0,0,0-.2,1,20.06,20.06,0,0,0,8.14,1.93,12.58,12.58,0,0,0,7-2A12.5,12.5,0,0,0,21.5,9.06V8.19a.5.5,0,0,1,.18-.38Z"/></svg></a></li>
+    <ul class="mt-6 w-full max-w-xl space-y-2">
+        <li><a class="block bg-white rounded p-4 text-gray-800" href="https://github.com/johnnyfreeman" target="_blank">
+            <x-icons.square-github class="inline-block fill-current w-8 h-8" />
+            <span>https://github.com/johnnyfreeman</span>
+        </a></li>
 
-        <li class="inline"><a class="text-blue-400 hover:text-blue-500 light:text-blue-600 light:hover:text-blue-700" href="https://github.com/johnnyfreeman" target="_blank"><svg class="inline-block fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.13,9.48c.52-1.06,2.21-5.1-.86-7.61A.5.5,0,0,0,21,1.75C19,1.75,16.51,4.2,15.74,5A14.61,14.61,0,0,0,8.3,5C7.51,4.19,5,1.75,3.08,1.75a.5.5,0,0,0-.32.11C.12,4,.92,7.52,1.89,9.44a9.41,9.41,0,0,0-1.31,5.8c.26,3.31,3,7,6.48,7h9.89c3.5,0,6.23-3.69,6.48-7A9.4,9.4,0,0,0,22.13,9.48ZM16,19.75H8a3.5,3.5,0,0,1-3.5-3.5c0-5.91,4.13-3.53,7.5-3.53s7.5-2.44,7.5,3.53A3.5,3.5,0,0,1,16,19.75Z"/><ellipse cx="15.52" cy="16.25" rx="1" ry="1.5"/><ellipse cx="8.52" cy="16.25" rx="1" ry="1.5"/></svg></a></li>
+        {{-- <li><a class="block bg-white rounded p-4 text-gray-800" href="https://www.instagram.com/prsjohnny" target="_blank">
+            <x-icons.square-instagram class="inline-block fill-current w-8 h-8" />
+            <span>https://www.instagram.com/prsjohnny</span>
+        </a></li> --}}
 
-        {{-- <li class="inline"><a class="text-blue-400 hover:text-blue-500 light:text-blue-600 light:hover:text-blue-700" href="https://www.instagram.com/prsjohnny" target="_blank"><svg class="inline-block fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.07,11.25a.25.25,0,0,0-.24.31,6,6,0,1,1-11.65,0,.25.25,0,0,0-.24-.31H.5a.5.5,0,0,0-.5.5V17.5A6.51,6.51,0,0,0,6.5,24h11A6.51,6.51,0,0,0,24,17.5V11.75a.5.5,0,0,0-.5-.5Z"/><path d="M23.5,9.75a.5.5,0,0,0,.5-.5V6.5A6.51,6.51,0,0,0,17.5,0H11.75a.5.5,0,0,0-.5.5v4a.75.75,0,0,1-1.5,0V.5a.5.5,0,0,0-.5-.5h-.5a.5.5,0,0,0-.5.5v4a.75.75,0,0,1-1.5,0v-4A.5.5,0,0,0,6.23,0l-.55,0a.5.5,0,0,0-.43.5v4a.75.75,0,0,1-1.5,0V1A.25.25,0,0,0,3.38.81,6.5,6.5,0,0,0,0,6.5V9.25a.5.5,0,0,0,.5.5H6.7a.5.5,0,0,0,.41-.21,6,6,0,0,1,9.79,0,.5.5,0,0,0,.41.21Zm-6-5.25a1,1,0,0,1,1-1h1a1,1,0,0,1,1,1v1a1,1,0,0,1-1,1h-1a1,1,0,0,1-1-1Z"/><circle cx="12" cy="13" r="3"/></svg></a></li> --}}
-
-        <li class="inline"><a class="text-blue-400 hover:text-blue-500 light:text-blue-600 light:hover:text-blue-700" href="https://www.linkedin.com/in/jhfreeman" target="_blank"><x-icons.linkedin class="inline-block fill-current w-8 h-8" /></a></li>
-
-        {{-- <li class="inline"><a class="text-blue-400 hover:text-blue-500 light:text-blue-600 light:hover:text-blue-700" href="https://www.twitch.tv/therelsnotry" target="_blank"><svg class="inline-block fill-current w-8 h-8" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22.75,0H4.033A1.223,1.223,0,0,0,3,.554L.25,4.365a1.739,1.739,0,0,0-.25.9V17.751A1.252,1.252,0,0,0,1.25,19H4.5a.5.5,0,0,1,.5.5V23a1,1,0,0,0,1,1l2.107,0a1,1,0,0,0,.866-.5l2.447-4.246a.5.5,0,0,1,.433-.25h6.482a1.736,1.736,0,0,0,1.237-.513l3.914-3.914A1.763,1.763,0,0,0,24,13.336V1.251A1.251,1.251,0,0,0,22.75,0ZM21,12.586a1,1,0,0,1-.293.707l-2.414,2.415a1,1,0,0,1-.707.293H10.76a.5.5,0,0,0-.409.213L8.9,18.29a.493.493,0,0,1-.9-.283V16.5a.5.5,0,0,0-.5-.5h-2a.5.5,0,0,1-.5-.5V3.5A.5.5,0,0,1,5.5,3h15a.5.5,0,0,1,.5.5Z"/><path d="M11,6.251a.75.75,0,0,0-.75.75v4a.75.75,0,0,0,1.5,0V7A.75.75,0,0,0,11,6.251Z"/><path d="M16,6.251a.75.75,0,0,0-.75.75v4a.75.75,0,0,0,1.5,0V7A.75.75,0,0,0,16,6.251Z"/></svg></a></li> --}}
+        <li><a class="block bg-white rounded p-4 text-gray-800" href="https://www.linkedin.com/in/jhfreeman" target="_blank">
+            <x-icons.linkedin class="inline-block fill-current w-8 h-8" />
+            <span>https://www.linkedin.com/in/jhfreeman</span>
+        </a></li>
+        
+        <li><a class="block bg-white rounded p-4 text-gray-800" href="https://twitter.com/TherelsNoTry" target="_blank">
+            <x-icons.square-twitter class="inline-block fill-current w-8 h-8" />
+            <span>https://twitter.com/TherelsNoTry</span>
+        </a></li>
     </ul>
-</div>
+</x-output>

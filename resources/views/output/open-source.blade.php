@@ -1,6 +1,4 @@
-<div data-controller="output" data-terminal-target="output">
-    <x-input value="open-source" />
-
+<x-output input="open-source" cache>
     <p class="">When I can<span class="text-red-400">,</span> I enjoy sharing and collaborating with the community<span class="text-red-400">.</span></p>
 
     <div class="mt-6 w-full max-w-xl bg-white text-gray-600 rounded-lg shadow p-6 font-sans">
@@ -116,4 +114,4 @@
             </li>
         </ul>
     </div>
-</div>
+</x-output>

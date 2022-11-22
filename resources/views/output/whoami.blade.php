@@ -1,6 +1,4 @@
-<div data-controller="output" data-terminal-target="output">
-    <x-input value="whoami" :cache="false" />
-
+<x-output input="whoami">
     <p class="">
         @auth
             {{ auth()->user()->email }}
@@ -8,4 +6,4 @@
             guest@johnfreeman.dev
         @endauth
     </p>
-</div>
+</x-output>
