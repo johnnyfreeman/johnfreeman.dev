@@ -7,7 +7,7 @@
         <div class="flex items-center space-x-3">
             <x-icons.rss class="inline-block fill-current w-4 h-4" />
             <a class="text-indigo-600 hover:text-indigo-700 hover:underline font-bold" href="https://john-freeman.ghost.io/">Scraping Paginated APIs with Queues</a>
-            <span class="bg-gray-100 text-gray-800 p-1 rounded text-xs">Nov 2022</span>
+            <span class="bg-gray-100 text-gray-800 p-1 rounded text-xs">Nov, 2022</span>
         </div>
         <p class="text-gray-700">Inspired by <a class="text-indigo-600 hover:text-indigo-700 hover:underline" href="https://bannister.me/blog/using-generators-for-pagination">Using Generators for Pagination</a>, this is an alternative look at how you could handle consuming paginated records from an API using Laravel's queues.</p>
         <ul class="w-full list-none mt-3 flex flex-wrap items-center space-x-4">
