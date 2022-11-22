@@ -4,7 +4,7 @@ use App\Http\Controllers;
 use Illuminate\Support\Facades\Route;
 use Spatie\Honeypot\ProtectAgainstSpam;
 
-Route::get('/', Controllers\StartupController::class);
+Route::get('/', Controllers\NoCommandController::class);
 
 Route::prefix('sudo')->group(function () {
     Route::middleware(['guest'])->group(function () {

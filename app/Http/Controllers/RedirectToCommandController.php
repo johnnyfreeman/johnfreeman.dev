@@ -3,18 +3,22 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Foundation\Validation\ValidatesRequests;
+use Symfony\Component\Console\Input\InputOption;
+use Symfony\Component\Console\Input\StringInput;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputDefinition;
 
 class RedirectToCommandController
 {
-    use ValidatesRequests;
-
     public function __invoke(Request $request)
     {
-        $validated = $this->validate($request, [
-            'input' => ['required'],
-        ]);
+        $input = new StringInput($request->string('input'));
 
-        return convertInputToRedirect($validated['input']);
+        $input->bind(new InputDefinition([
+            new InputArgument('segments', InputArgument::IS_ARRAY),
+            new InputOption('fresh', 'f'),
+        ]));
+
+        return redirect(implode('/', $input->getArguments()['segments']));
     }
 }
