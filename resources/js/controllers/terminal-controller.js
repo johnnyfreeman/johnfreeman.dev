@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus'
+import { Controller } from '@hotwired/stimulus'
 import parseArgs from 'minimist'
 import { TerminalRequest } from '../http/terminal-request'
 

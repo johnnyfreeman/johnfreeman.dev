@@ -2,10 +2,10 @@
 @tailwind components;
 
 ::-moz-selection {
-    @apply bg-yellow-200 text-black
+    @apply bg-yellow-200 text-black;
 }
 ::selection {
-    @apply bg-yellow-200 text-black
+    @apply bg-yellow-200 text-black;
 }
 
 /* Make clicks pass-through */
