@@ -1,5 +1,5 @@
 <div data-controller="output" data-terminal-target="output">
-    @include('common.input', ['input' => 'open-source'])
+    <x-input value="open-source" />
 
     <p class="">When I can<span class="text-red-400">,</span> I enjoy sharing and collaborating with the community<span class="text-red-400">.</span></p>
 

@@ -1,7 +1,7 @@
 @inject('my', 'App\Myself')
 
 <div data-controller="output" data-terminal-target="output">
-    @include('common.input', ['input' => 'about'])
+    <x-input value="about" />
 
     <div class="flex w-full max-w-xl bg-white text-gray-600 rounded-lg shadow p-6 font-sans">
         <div class="flex-shrink-0">

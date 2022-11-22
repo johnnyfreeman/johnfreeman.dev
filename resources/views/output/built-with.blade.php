@@ -1,5 +1,5 @@
 <div data-controller="output" data-terminal-target="output">
-    @include('common.input', ['input' => 'built-with'])
+    <x-input value="built-with" />
 
     <p class="mt-2 w-full max-w-3xl">The basic idea here is simple; there is an output container, and an input form. When the input form is submitted, an ajax call is made to the server. The server returns an html partial, which is then appended to the output container. Easy peasy.</p>
 

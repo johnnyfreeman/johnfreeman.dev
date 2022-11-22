@@ -68,7 +68,7 @@
         <form action="{{ route('execute') }}" class="mt-8 h-12 flex items-center -mx-5 md:-mx-10 px-5 md:px-10 focus-within:bg-gray-900 transition-colors" method="POST" defaultbutton="execute">
             @csrf
             
-            @include('common.prompt')
+            <x-prompt />
 
             <input autocomplete="off" class="bg-transparent w-full px-2 focus:outline-none placeholder-gray-700 focus:placeholder-gray-600" data-terminal-target="inputField" name="input" type="text" placeholder="Type `help` for more information">
 

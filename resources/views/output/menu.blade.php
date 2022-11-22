@@ -1,5 +1,5 @@
 <div data-controller="output" data-terminal-target="output">
-    @include('common.input', ['input' => 'menu'])
+    <x-input value="menu" />
 
     <ul class="flex flex-wrap font-sans">
         <li class="inline mt-2 mr-2"><a class="inline-block uppercase tracking-wide bg-blue-500 light:bg-blue-600 rounded text-white hover:bg-blue-600 light:hover:bg-blue-700 px-3 py-1" href="{{ url('about') }}" data-action="click->terminal#execute" data-terminal-input="about">about</a></li>

@@ -1,5 +1,5 @@
 <div data-controller="output" data-terminal-target="output">
-    @include('common.input', ['input' => 'help'])
+    <x-input value="help" />
 
     <p class="w-full max-w-3xl">My website is built like a command<span class="text-red-400">-</span>line application<span class="text-red-400">.</span> Here are a list of commands you can execute<span class="text-red-400">.</span> For your convenience<span class="text-red-400">,</span> you can also click around too<span class="text-red-400">.</span></p>
 
@@ -49,6 +49,18 @@
         <tr>
             <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('social') }}" data-action="click->terminal#execute" data-terminal-input="social">social</a></th>
             <td class="pl-4">Social links</td>
+        </tr>
+        <tr>
+            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('whoami') }}" data-action="click->terminal#execute" data-terminal-input="whoami">whoami</a></th>
+            <td class="pl-4">Who Am I?</td>
+        </tr>
+        <tr>
+            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('su') }}" data-action="click->terminal#execute" data-terminal-input="su">su</a></th>
+            <td class="pl-4">Log in</td>
+        </tr>
+        <tr>
+            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('exit') }}" data-action="click->terminal#execute" data-terminal-input="exit">exit</a></th>
+            <td class="pl-4">Log out</td>
         </tr>
     </table>
 

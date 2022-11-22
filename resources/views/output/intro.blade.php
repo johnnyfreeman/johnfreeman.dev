@@ -1,7 +1,7 @@
 @inject('my', 'App\Myself')
 
 <div data-controller="output" data-terminal-target="output">
-    @include('common.input', ['input' => 'intro'])
+    <x-input value="intro" />
 
     @auth
     <p>Welcome back<span class="text-red-400">,</span> {{ $my->nickname }}<span class="text-red-400">!</span><br>made anything awesome lately<span class="text-red-400">?</span></p>

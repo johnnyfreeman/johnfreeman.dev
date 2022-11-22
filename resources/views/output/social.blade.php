@@ -1,5 +1,5 @@
 <div data-controller="output" data-terminal-target="output">
-    @include('common.input', ['input' => 'social'])
+    <x-input value="social" />
 
     <p class="">You can find me here<span class="text-red-400">.</span></p>
 

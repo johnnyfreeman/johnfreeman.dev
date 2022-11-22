@@ -1,8 +1,5 @@
 <div data-controller="output" data-terminal-target="output">
-    @include('common.input', [
-        'input' => 'whoami',
-        'cache' => false,
-    ])
+    <x-input value="whoami" :cache="false" />
 
     <p class="">
         @auth

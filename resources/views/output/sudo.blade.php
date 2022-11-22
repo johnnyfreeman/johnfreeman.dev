@@ -3,7 +3,7 @@
     $input = str_replace('/', ' ', parse_url($url, PHP_URL_PATH));
 @endphp
 <div data-controller="form output" data-terminal-target="output">
-    @include('common.input', compact('input'))
+    <x-input :value="$input" />
 
     <form action="{{ route('login') }}" class="w-full max-w-xs font-sans bg-white rounded-lg shadow p-6" data-action="submit->form#submit" data-form-target="form" method="POST">
         @csrf
