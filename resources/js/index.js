@@ -5,5 +5,5 @@ import * as Turbo from "@hotwired/turbo"
 Turbo.setProgressBarDelay(250)
 
 const application = Application.start()
-const controllers = import.meta.globEager("./**/*_controller.js")
+const controllers = import.meta.globEager("./controllers/*-controller.js")
 registerControllers(application, controllers)
