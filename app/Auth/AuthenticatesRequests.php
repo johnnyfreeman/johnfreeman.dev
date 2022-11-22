@@ -17,7 +17,9 @@ trait AuthenticatesRequests
 
         $this->clearLoginAttempts($request);
 
-        return app(Kernel::class)->handle($request->intended('intro'));
+        return app(Kernel::class)->handle(
+            $request->intended('intro')
+        );
     }
 
     protected function sendLockoutResponse(Request $request)
