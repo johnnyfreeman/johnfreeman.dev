@@ -30,4 +30,10 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'ghost' => [
+        'content_api_key' => env('GHOST_CONTENT_API_KEY'),
+        'admin_api_key' => env('GHOST_ADMIN_API_KEY'),
+        'api_url' => env('GHOST_API_URL'),
+    ],
+
 ];

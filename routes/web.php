@@ -25,6 +25,9 @@ Route::post('contact', Controllers\SendMessageController::class)
     ->name('contact')
     ->middleware(ProtectAgainstSpam::class);
 
+Route::get('blog', Controllers\BlogController::class)
+    ->name('blog');
+
 Route::get('su', [Controllers\SuController::class, 'attempt'])
     ->middleware(['auth']);
 Route::get('exit', [Controllers\SuController::class, 'exit']);
