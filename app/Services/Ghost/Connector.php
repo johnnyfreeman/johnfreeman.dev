@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services;
+namespace App\Services\Ghost;
 
 use App\Services\Ghost\Posts;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Traits\ForwardsCalls;
 
-class Ghost
+class Connector
 {
     use ForwardsCalls;
 

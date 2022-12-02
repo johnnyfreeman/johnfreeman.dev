@@ -2,19 +2,19 @@
 
 namespace App\Services\Ghost;
 
-use App\Services\Ghost;
+use App\Services\Ghost\Connector;
 use Illuminate\Support\Collection;
 
 class Posts
 {
     public function __construct(
-        public Ghost $ghost,
+        public Connector $connector,
     ) {
     }
 
     public function with(array $include): static
     {
-        $this->ghost->withOptions([
+        $this->connector->withOptions([
             'query' => [
                 'include' => implode(',', $include),
             ],
@@ -25,7 +25,7 @@ class Posts
 
     public function select(array $fields): static
     {
-        $this->ghost->withOptions([
+        $this->connector->withOptions([
             'query' => [
                 'fields' => implode(',', $fields),
             ],
@@ -41,7 +41,7 @@ class Posts
         }
 
         return new Collection(
-            $this->ghost->get('content/posts')->json('posts')
+            $this->connector->get('content/posts')->json('posts')
         );
     }
 }

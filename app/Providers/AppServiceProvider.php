@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Post;
+use App\Services\Ghost\Posts;
+use App\Services\Ghost\Connector;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
 
@@ -27,6 +30,13 @@ class AppServiceProvider extends ServiceProvider
             // $intended->content = $request->content;
             // $intended->request = $intended->getInputSource();
             return $intended;
+        });
+        
+
+        $this->app->bind(Post::class, function ($app) {
+            return new Posts(
+                $app->make(Connector::class)
+            );
         });
     }
 

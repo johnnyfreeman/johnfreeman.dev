@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\Ghost;
-use Illuminate\Http\Request;
 use App\Http\TerminalResponse;
+use Illuminate\Http\Request;
+use App\Post;
 
 class BlogController
 {
-    public function __invoke(Request $request, Ghost $ghost)
+    public function __invoke(Request $request)
     {
-        $posts = $ghost->posts()
-            ->with(['tags'])
+        $posts = Post::with(['tags'])
             ->get([
                 'title',
                 'excerpt',
