@@ -27,4 +27,6 @@
         </ul>
     </div>
     @endforeach
+
+    <p class="mt-6">Read more over at <a href="https://www.eloquentarchitecture.com" target="_blank" class="text-gray-200 hover:text-white underline">Eloquent Architecture</a><span class="text-red-400">.</span></p>
 </x-output>
