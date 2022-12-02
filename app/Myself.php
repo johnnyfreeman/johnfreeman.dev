@@ -8,7 +8,9 @@ use Carbon\Carbon;
 final class Myself extends Root
 {
     public $name = 'John Freeman';
+
     public $nickname = 'John';
+    
     public $email = 'john@johnfreeman.dev';
 
     public function birth(): Carbon
