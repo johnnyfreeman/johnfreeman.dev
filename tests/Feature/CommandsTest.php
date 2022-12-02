@@ -113,14 +113,14 @@ class CommandsTest extends TestCase
 
     public function testOpenSource()
     {
-        $this->get('open-source')
+        $this->get('projects')
             ->assertViewIs('terminal')
-            ->assertViewHas('input', 'open-source')
+            ->assertViewHas('input', 'projects')
             ->assertStatus(200);
 
-        $this->ajaxGet('open-source')
-            ->assertViewIs('output.open-source')
-            ->assertViewHas('input', 'open-source')
+        $this->ajaxGet('projects')
+            ->assertViewIs('output.projects')
+            ->assertViewHas('input', 'projects')
             ->assertStatus(200);
     }
 

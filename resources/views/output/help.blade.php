@@ -41,8 +41,8 @@
             <td class="pl-4">Website menu</td>
         </tr>
         <tr>
-            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('open-source') }}" data-turbo-stream data-terminal-input="open-source">open-source</a></th>
-            <td class="pl-4">My open-source projects</td>
+            <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('projects') }}" data-turbo-stream data-terminal-input="projects">projects</a></th>
+            <td class="pl-4">Recent projects</td>
         </tr>
         <tr>
             <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('social') }}" data-turbo-stream data-terminal-input="social">social</a></th>
