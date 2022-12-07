@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\TerminalResponse;
+use App\Models\Post;
 use Illuminate\Http\Request;
-use App\Post;
+use App\Http\TerminalResponse;
+use Illuminate\Support\Facades\Validator;
 
 class BlogController
 {
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
-        $posts = Post::with(['tags'])
-            ->get([
+        $posts = Post::paginate(5, [
                 'title',
                 'excerpt',
                 'url',
@@ -20,5 +20,31 @@ class BlogController
 
         return (new TerminalResponse('blog'))
             ->with(compact('posts'));
+    }
+
+    public function create(Request $request)
+    {
+        return (new TerminalResponse('blog.create'));
+    }
+
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->only(['title', 'excerpt', 'url', 'published_at']), [
+            'title' => 'required',
+            'excerpt' => 'required',
+            'url' => 'required',
+            'published_at' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('blog.create')
+                ->withErrors($validator)
+                ->withInput();
+        }
+        
+        Post::create($validator->validated());
+
+        return redirect()->route('blog')
+            ->with('success', 'Post created');
     }
 }

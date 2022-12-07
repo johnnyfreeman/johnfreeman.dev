@@ -31,13 +31,6 @@ class AppServiceProvider extends ServiceProvider
             // $intended->request = $intended->getInputSource();
             return $intended;
         });
-        
-
-        $this->app->bind(Post::class, function ($app) {
-            return new Posts(
-                $app->make(Connector::class)
-            );
-        });
     }
 
     /**

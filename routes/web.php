@@ -14,6 +14,7 @@ Route::prefix('sudo')->group(function () {
 
     Route::middleware(['auth'])->group(function () {
         Route::get('su', [Controllers\SuController::class, 'attempt']);
+
         Route::get('{input}', Controllers\RunCommandController::class);
     });
 });
@@ -25,8 +26,15 @@ Route::post('contact', Controllers\SendMessageController::class)
     ->name('contact')
     ->middleware(ProtectAgainstSpam::class);
 
-Route::get('blog', Controllers\BlogController::class)
-    ->name('blog');
+Route::prefix('blog')->group(function () {
+    Route::get('/', [Controllers\BlogController::class, 'index'])
+        ->name('blog');
+    Route::get('create', [Controllers\BlogController::class, 'create'])
+        ->name('blog.create');
+    Route::post('saving', [Controllers\BlogController::class, 'store'])
+        ->middleware('auth')
+        ->name('blog.store');
+});
 
 Route::get('su', [Controllers\SuController::class, 'attempt'])
     ->middleware(['auth']);
