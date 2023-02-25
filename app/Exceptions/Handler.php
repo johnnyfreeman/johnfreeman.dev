@@ -13,6 +13,15 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
+    public function report(\Throwable $exception)
+    {
+        if (app()->bound('honeybadger') && $this->shouldReport($exception)) {
+            app('honeybadger')->notify($exception, app('request'));
+        }
+
+        parent::report($exception);
+    }
+
     protected function renderExceptionResponse($request, Throwable $e)
     {
         try {

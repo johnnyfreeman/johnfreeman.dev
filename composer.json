@@ -8,14 +8,15 @@
     ],
     "license": "MIT",
     "require": {
+        "fideloper/proxy": "^4.0",
         "guzzlehttp/guzzle": "^7.2",
+        "honeybadger-io/honeybadger-laravel": "^3.15",
         "johnnyfreeman/laravel-turbo": "^0.1.0",
         "laravel/framework": "^9.4",
         "laravel/tinker": "^2.7",
-        "symfony/console": "^6.0",
-        "fideloper/proxy": "^4.0",
         "spatie/laravel-honeypot": "^4.3.1",
-        "spatie/laravel-ignition": "^1.6"
+        "spatie/laravel-ignition": "^1.6",
+        "symfony/console": "^6.0"
     },
     "require-dev": {
         "spatie/laravel-ignition": "^1.0",

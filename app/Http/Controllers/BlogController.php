@@ -47,4 +47,12 @@ class BlogController
         return redirect()->route('blog')
             ->with('success', 'Post created');
     }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect()->route('blog')
+            ->with('success', 'Post deleted');
+    }
 }
