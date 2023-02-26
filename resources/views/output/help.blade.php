@@ -16,10 +16,10 @@
             <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('built-with') }}" data-turbo-stream data-terminal-input="built-with">built-with</a></th>
             <td class="pl-4">Libraries and APIs used in building this</td>
         </tr>
-        <tr>
+        {{-- <tr>
             <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="javascript:void(0)" data-turbo-stream data-terminal-input="clear">clear</a></th>
             <td class="pl-4">Clear all output</td>
-        </tr>
+        </tr> --}}
         <tr>
             <th class="text-left pt-1"><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-200 light:text-teal-600" href="{{ url('contact') }}" data-turbo-stream data-terminal-input="contact">contact</a></th>
             <td class="pl-4">Get in touch with me</td>
