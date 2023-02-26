@@ -11,7 +11,7 @@ class BlogController
 {
     public function index(Request $request)
     {
-        $posts = Post::paginate(5, [
+        $posts = Post::latest('published_at')->paginate(5, [
                 'title',
                 'excerpt',
                 'url',
