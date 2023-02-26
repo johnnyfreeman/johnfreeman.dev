@@ -228,5 +228,5 @@ return [
 
     ],
     
-    'password' => env('PASSWORD'),
+    'password' => env('SUDO_PASSWORD'),
 ];
