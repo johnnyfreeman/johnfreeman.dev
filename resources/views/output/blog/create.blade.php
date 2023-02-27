@@ -77,7 +77,7 @@
             <div class="w-full px-3 flex justify-between space-x-4 items-center">
                 <a data-turbo-stream class="inline-block tracking-wide text-blue-600 text-xs" href="{{ url('blank') }}">Nevermind</a>
                 
-                <button type="submit" class="font-semibold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-indigo-500 shadow border border-purple-500 light:bg-blue-600 text-white text-xs hover:bg-blue-500 light:hover:bg-blue-700 px-4 py-3" data-form-target="submit">Link Article</button>
+                <x-form.button type="submit">Link Article</x-form.button>
             </div>
         </div>
     </form>

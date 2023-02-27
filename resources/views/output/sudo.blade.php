@@ -22,14 +22,14 @@
             </div>
 
             <div class="w-full">
-                <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+                <x-form.label>
                     Sudo Password
-                </label>
+                </x-form.label>
 
-                <input class="appearance-none block w-full bg-gray-100 shadow-inner text-gray-700 border border-gray-200 py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-blue-500 light:focus:border-blue-600" data-controller="autofocus" name="password" type="password" placeholder="*********">
+                <x-form.input data-controller="autofocus" name="password" type="password" placeholder="*********" />
                 
                 @error('password')
-                    <p class="mt-3 text-red-500 text-xs italic">{{ $message }}</p>
+                    <x-form.error>{{ $message }}</x-form.error>
                 @enderror
             </div>
 
@@ -37,7 +37,7 @@
                 <div class="w-full px-3 flex justify-between space-x-4 items-center">
                     <a data-turbo-stream class="inline-block tracking-wide text-blue-600 text-xs" href="{{ url('blank') }}">Nevermind</a>
                     
-                    <button type="submit" class="font-semibold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-indigo-500 shadow border border-purple-500 light:bg-blue-600 text-white text-xs hover:bg-blue-500 light:hover:bg-blue-700 px-4 py-3" data-form-target="submit">Continue</button>
+                    <x-form.button type="submit">Continue</x-form.button>
                 </div>
             </div>
         </div>
