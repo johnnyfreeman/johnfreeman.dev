@@ -22,6 +22,8 @@ Route::prefix('sudo')->group(function () {
 Route::post('execute', Controllers\RedirectToCommandController::class)
     ->name('execute');
 
+Route::get('clear', Controllers\ClearController::class);
+
 Route::post('contact', Controllers\SendMessageController::class)
     ->name('contact')
     ->middleware(ProtectAgainstSpam::class);
