@@ -13,7 +13,7 @@
                 </p>
 
                 <ul class="flex flex-wrap font-sans text-xs">
-                    <li class="inline-block mt-6 mr-2"><a data-turbo-stream class="font-semibold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-indigo-500 shadow border border-purple-500 light:bg-blue-600 text-white text-xs hover:bg-blue-500 light:hover:bg-blue-700 px-4 py-2" href="{{ url('contact') }}" data-terminal-input="contact">Get in touch</a></li>
+                    <li class="inline-block mt-6 mr-2"><a data-turbo-stream class="font-semibold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-indigo-500 shadow border border-purple-500 light:bg-blue-600 text-white text-xs hover:bg-blue-500 light:hover:bg-blue-700 px-4 py-3" href="{{ url('contact') }}" data-terminal-input="contact">Get in touch</a></li>
                 </ul>
             </div>
         </div>

@@ -1,5 +1,5 @@
 <x-output input="blog create" cache>
-    <form action="{{ route('blog.store') }}" class="mt-3 w-full max-w-2xl font-sans bg-gray-300 focus-within:bg-white shadow p-6" method="POST">
+    <form action="{{ route('blog.store') }}" class="mt-3 w-full max-w-2xl font-sans bg-gray-100 focus-within:bg-white shadow p-6" method="POST">
         @csrf
         @honeypot
 
@@ -16,7 +16,6 @@
             </div>
         </div>
 
-
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-3/4 px-3 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -30,6 +29,7 @@
                 @enderror
             </div>
         </div>
+
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -44,6 +44,7 @@
                 @enderror
             </div>
         </div>
+
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full px-3 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -57,6 +58,7 @@
                 @enderror
             </div>
         </div>
+        
         <div class="flex flex-wrap -mx-3 mb-6">
             <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
@@ -70,10 +72,15 @@
                 @enderror
             </div>
         </div>
+
         <div class="flex flex-wrap -mx-3">
-            <div class="w-full px-3">
-                <button type="submit" class="font-semibold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-indigo-500 shadow border border-purple-500 light:bg-blue-600 text-white text-xs hover:bg-blue-500 light:hover:bg-blue-700 px-4 py-2" data-form-target="submit">Create</button>
+            <div class="w-full px-3 flex justify-between space-x-4 items-center">
+                <a data-turbo-stream class="inline-block tracking-wide text-blue-600 text-xs" href="{{ url('blank') }}">Nevermind</a>
+                
+                <button type="submit" class="font-semibold uppercase tracking-wide bg-gradient-to-r from-purple-500 to-indigo-500 shadow border border-purple-500 light:bg-blue-600 text-white text-xs hover:bg-blue-500 light:hover:bg-blue-700 px-4 py-3" data-form-target="submit">Link Article</button>
             </div>
         </div>
     </form>
 </x-output>
+
+<div id="input-form"></div>
