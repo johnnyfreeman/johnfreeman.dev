@@ -75,3 +75,5 @@
 
     <blockquote class="mt-2 text-indigo-400 light:text-indigo-600">command [options]</blockquote>
 </x-output>
+
+<x-input-form />

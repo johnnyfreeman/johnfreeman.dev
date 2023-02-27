@@ -17,3 +17,5 @@
         <li><a class="bg-gray-900 text-teal-400 p-1 light:bg-gray-100 light:text-teal-600" href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate">navigator.vibrate</a> to initiate a slight vibration when the server responds with a status code of 400 or above</li>
     </ul>
 </x-output>
+
+<x-input-form />

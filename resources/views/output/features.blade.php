@@ -21,3 +21,5 @@
         <li>All output is cached so that subsequent executions don't have to make a round trip to the server. Add the <code class="bg-indigo-800 p-1 rounded text-sm light:bg-indigo-100">--fresh</code> option to a command to ignore the cache</li>
     </ul>
 </x-output>
+
+<x-input-form />

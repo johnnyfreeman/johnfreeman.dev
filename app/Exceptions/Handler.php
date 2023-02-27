@@ -13,15 +13,6 @@ class Handler extends ExceptionHandler
         'password_confirmation',
     ];
 
-    public function report(\Throwable $exception)
-    {
-        if (app()->bound('honeybadger') && $this->shouldReport($exception)) {
-            app('honeybadger')->notify($exception, app('request'));
-        }
-
-        parent::report($exception);
-    }
-
     protected function renderExceptionResponse($request, Throwable $e)
     {
         try {
@@ -56,12 +47,14 @@ class Handler extends ExceptionHandler
         return redirect()->guest(route('login'));
     }
 
-    protected function convertValidationExceptionToResponse($e, $request)
-    {
-        return $request->wantsTurboStream()
-            ? $this->convertValidationExceptionToTurboStream($e, $request)
-            : parent::convertValidationExceptionToResponse($e, $request);
-    }
+    // this will return a 422 error instead of a redirecting
+    // to the previous page with errors in the session
+    // protected function convertValidationExceptionToResponse($e, $request)
+    // {
+    //     return $request->wantsTurboStream()
+    //         ? $this->convertValidationExceptionToTurboStream($e, $request)
+    //         : parent::convertValidationExceptionToResponse($e, $request);
+    // }
 
     protected function convertValidationExceptionToTurboStream($e, $request)
     {

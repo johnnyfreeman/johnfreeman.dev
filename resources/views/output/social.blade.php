@@ -23,3 +23,5 @@
         </a></li>
     </ul>
 </x-output>
+
+<x-input-form />

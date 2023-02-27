@@ -1,29 +1,9 @@
 import { Controller } from '@hotwired/stimulus'
-import parseArgs from 'minimist'
-import { TerminalRequest } from '../http/terminal-request'
 
 export default class extends Controller {
     static targets = [ 'inputField', 'history', 'outputContainer', 'output' ]
 
     // Actions
-
-    async execute(event) {
-        event.preventDefault()
-
-        const input = this.getInput(event)
-
-        if (input.length === 0) return
-
-        this.selectedInput = undefined
-
-        let argv = parseArgs(input.split(' '), { default: { fresh: false }})
-
-        if (this[argv._[0]] && !argv.fresh) {
-            return this[argv._[0]](event)
-        }
-
-        return this.write(await new TerminalRequest(argv._.join('/')).execute())
-    }
 
     listenToKeys(event) {
         const terminalHasFocus = document.activeElement === this.element
@@ -54,10 +34,8 @@ export default class extends Controller {
         this.inputFieldTarget.value = this.nextInputText
     }
 
-    write(output) {
-        this.outputContainerTarget.insertAdjacentHTML('beforeend', output)
-        this.inputFieldTarget.value = ''
-        this.lastOutput.scrollIntoView()
+    scrollToLastOutput() {
+        this.lastOutput?.scrollIntoView()
     }
 
     get lastOutput() {

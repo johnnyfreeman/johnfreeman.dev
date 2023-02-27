@@ -30,6 +30,7 @@ Route::prefix('blog')->group(function () {
     Route::get('/', [Controllers\BlogController::class, 'index'])
         ->name('blog');
     Route::get('create', [Controllers\BlogController::class, 'create'])
+        ->middleware('auth')
         ->name('blog.create');
     Route::post('saving', [Controllers\BlogController::class, 'store'])
         ->middleware('auth')

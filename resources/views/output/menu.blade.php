@@ -6,3 +6,5 @@
         <li class="inline mt-2 mr-2"><a class="inline-block uppercase tracking-wide bg-blue-500 light:bg-blue-600 rounded text-white hover:bg-blue-600 light:hover:bg-blue-700 px-3 py-1" href="{{ url('contact') }}" data-turbo-stream data-terminal-input="contact">contact</a></li>
     </ul>
 </x-output>
+
+<x-input-form />

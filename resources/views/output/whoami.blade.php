@@ -7,3 +7,5 @@
         @endauth
     </p>
 </x-output>
+
+<x-input-form />

@@ -1,7 +1,6 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  mode: 'jit',
   content: [
     './resources/css/**/*.css',
     './resources/views/**/*.blade.php',
@@ -15,16 +14,20 @@ module.exports = {
       screens: {
         light: { raw: '(prefers-color-scheme: light)' },
       },
-      colors: {
-        gray: colors.gray,
-        orange: colors.orange,
-        teal: colors.teal,
-        indigo: colors.indigo,
-        blue: colors.blue,
-      },
+    },
+    boxShadow: {
+      sm: '1px 1px 0px rgb(0 0 0 / 0.03)',
+      DEFAULT: '2px 2px 0px rgb(0 0 0 / 0.03)',
+      // DEFAULT: '0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1)',
+      md: '4px 4px 0px rgb(0 0 0 / 0.03)',
+      lg: '6px 6px 0px rgb(0 0 0 / 0.03)',
+      xl: '8px 8px 0px rgb(0 0 0 / 0.03)',
+      '2xl': '10px 10px 0px rgb(0 0 0 / 0.03)',
+      inner: 'inset 2px 2px 0px rgb(0 0 0 / 0.03)',
+      none: 'none',
     },
     fontFamily: {
-        'mono': ['"Source Code Pro"'],
+      'mono': ['"Source Code Pro"'],
     },
   },
   plugins: []

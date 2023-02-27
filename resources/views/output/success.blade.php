@@ -3,3 +3,5 @@
         <span class="font-bold">200</span> {{ $message }}
     </div>
 </x-output>
+
+<x-input-form />

@@ -17,7 +17,7 @@
     </head>
     <body class="min-h-screen font-mono bg-gray-800 light:bg-white text-white light:text-gray-700 text-base px-5 md:px-10 pt-5 md:pt-10 leading-loose flex flex-col" data-controller="terminal">
 
-        <header class="flex justify-between bg-gray-800 light:bg-white -mx-5 md:-mx-10 -mt-5 md:-mt-10 md:px-5">
+        <header class="sticky top-0 flex justify-between bg-gray-800 light:bg-white -mx-5 md:-mx-10 -mt-5 md:-mt-10 md:px-5">
             <a data-turbo-stream class="text-teal-400 light:text-gray-700 py-5 px-5" href="{{ url('/') }}" data-terminal-input="intro">
                 <svg class="fill-current" width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M5.93478 0H7.36957V1.34483H5.93478V0Z"/>
@@ -58,12 +58,10 @@
         <main class="flex-1" data-terminal-target="outputContainer" id="output">
             @yield('output')
 
-            <p class="mt-8 italic text-gray-400 text-xs leading-loose">For more information, hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">/</kbd>, type <a data-turbo-stream class="bg-gray-900 text-teal-400 light:bg-gray-100 light:text-teal-600 p-1" href="{{ url('help') }}" data-terminal-input="help">help</a>, then hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">Enter</kbd><span class="text-red-400">.</span></p>
+            <p class="mt-8 py-1 px-2 bg-gray-900 rounded italic text-gray-400 text-xs leading-loose">For more information, hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">/</kbd>, type <a data-turbo-stream class="bg-gray-900 text-teal-400 light:bg-gray-100 light:text-teal-600 p-1" href="{{ url('help') }}" data-terminal-input="help">help</a>, then hit <kbd class="border border-indigo-600 light:border-indigo-300 uppercase tracking-wide p-1 rounded">Enter</kbd><span class="text-red-400">.</span></p>
         </main>
 
-        <x-input-form />
-
-        <footer class="flex items-center justify-between bg-gray-900 light:bg-gray-100 uppercase text-xs text-gray-700 light:text-gray-500 py-2 -mx-5 md:-mx-10 px-5 md:px-10" data-controller="status">
+        <footer class="sticky bottom-0 flex items-center justify-between bg-gray-900 light:bg-gray-100 uppercase text-xs text-gray-700 light:text-gray-500 py-2 -mx-5 md:-mx-10 px-5 md:px-10" data-controller="status">
             <span class="text-green-400 light:text-green-600 hidden" data-status-target="online">Online</span>
             <span class="text-red-400 light:text-red-600 hidden" data-status-target="offline">Offline</span>
             <span class="">&copy; Copyright {{ date('Y') }}</span>

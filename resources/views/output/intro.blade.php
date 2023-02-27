@@ -14,3 +14,5 @@
         </p>
     @endauth
 </x-output>
+
+<x-input-form />
