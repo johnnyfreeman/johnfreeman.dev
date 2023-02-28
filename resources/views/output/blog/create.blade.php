@@ -1,5 +1,5 @@
 <x-output input="blog create" cache>
-    <form action="{{ route('blog.store') }}" class="mt-3 w-full max-w-2xl font-sans bg-gray-100 focus-within:bg-white shadow p-6" method="POST">
+    <form action="{{ route('blog.store') }}" class="mt-3 w-full max-w-2xl bg-gray-100 focus-within:bg-white shadow p-6" method="POST">
         @csrf
         @honeypot
 

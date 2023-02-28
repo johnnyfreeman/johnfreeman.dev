@@ -1,7 +1,7 @@
 <x-output input="projects" cache>
     <p class="">When I can<span class="text-red-400">,</span> I enjoy sharing and collaborating with the community<span class="text-red-400">.</span></p>
 
-    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6 font-sans">
+    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6">
         <div class="flex items-center space-x-3">
             <x-icons.rss class="inline-block fill-current w-4 h-4" />
             <a class="text-indigo-600 hover:text-indigo-700 hover:underline font-bold" href="https://www.eloquentarchitecture.com" target="_blank">Eloquent Architecture</a>
@@ -18,7 +18,7 @@
         </ul>
     </div>
 
-    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6 font-sans">
+    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6">
         <div class="flex items-center space-x-3">
             <x-icons.github class="inline-block fill-current w-4 h-4" />
             <a class="text-indigo-600 hover:text-indigo-700 hover:underline font-bold" href="https://github.com/johnnyfreeman/johnfreeman.dev" target="_blank">johnfreeman.dev</a>
@@ -41,7 +41,7 @@
         </ul>
     </div>
 
-    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6 font-sans">
+    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6">
         <div class="flex items-center space-x-3">
             <x-icons.github class="inline-block fill-current w-4 h-4" />
             <a class="text-indigo-600 hover:text-indigo-700 hover:underline font-bold" href="https://github.com/johnnyfreeman/laravel-model-config" target="_blank">laravel-model-config</a>
@@ -55,7 +55,7 @@
         </ul>
     </div>
 
-    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6 font-sans">
+    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6">
         <div class="flex items-center space-x-3">
             <x-icons.github class="inline-block fill-current w-4 h-4" />
             <a class="text-indigo-600 hover:text-indigo-700 hover:underline font-bold" href="https://github.com/johnnyfreeman/laravel-custom-relation" target="_blank">laravel-custom-relation</a>
@@ -70,7 +70,7 @@
         </ul>
     </div>
 
-    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6 font-sans">
+    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6">
         <div class="flex items-center space-x-3">
             <x-icons.github class="inline-block fill-current w-4 h-4" />
             <a class="text-indigo-600 hover:text-indigo-700 hover:underline font-bold" href="https://github.com/johnnyfreeman/winston" target="_blank">winston</a>
@@ -88,7 +88,7 @@
         </ul>
     </div>
 
-    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6 font-sans">
+    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6">
         <div class="flex items-center space-x-3">
             <x-icons.github class="inline-block fill-current w-4 h-4" />
             <a class="text-indigo-600 hover:text-indigo-700 hover:underline font-bold" href="https://github.com/johnnyfreeman/reform" target="_blank">reform</a>
@@ -103,7 +103,7 @@
         </ul>
     </div>
 
-    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6 font-sans">
+    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6">
         <div class="flex items-center space-x-3">
             <x-icons.github class="inline-block fill-current w-4 h-4" />
             <a class="text-indigo-600 hover:text-indigo-700 hover:underline font-bold" href="https://github.com/johnnyfreeman/revolver" target="_blank">revolver</a>

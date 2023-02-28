@@ -2,7 +2,7 @@
     <p class="">Here are a few of my latest articles<span class="text-red-400">.</span></p>
 
     @foreach($posts as $post)
-    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6 font-sans space-y-3">
+    <div class="mt-6 w-full max-w-xl bg-white text-gray-600 shadow p-6 space-y-3">
         <div class="flex items-center justify-between">
             <a href="{{ $post->url }}?ref=johnfreeman.dev" target="_blank" class="group flex items-center space-x-2">
                 <x-icons.rss class="inline-block fill-current w-4 h-4" />

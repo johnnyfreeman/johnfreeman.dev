@@ -3,7 +3,7 @@
     $input = str_replace('/', ' ', parse_url($url, PHP_URL_PATH));
 @endphp
 <x-output :input="$input">
-    <form action="{{ route('login') }}" class="w-full max-w-xl font-sans bg-white shadow p-6" method="POST">
+    <form action="{{ route('login') }}" class="w-full max-w-xl bg-gray-100 focus-within:bg-white shadow p-6" method="POST">
         @csrf
         @honeypot
 

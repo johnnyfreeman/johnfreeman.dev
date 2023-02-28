@@ -1,7 +1,7 @@
 @inject('my', 'App\Myself')
 
 <x-output input="about" cache>
-    <div class="flex w-full max-w-xl bg-white text-gray-600 shadow p-6 font-sans">
+    <div class="flex w-full max-w-xl bg-white text-gray-600 shadow p-6">
         <div class="flex space-x-4">
             <img class="shrink-0 rounded-full w-12 h-12" src="{{ asset('img/me.jpg') }}" alt="Picture of me">
 
@@ -12,7 +12,7 @@
                     I build things and enjoy solving problems.
                 </p>
 
-                <ul class="flex flex-wrap font-sans text-xs">
+                <ul class="flex flex-wrap text-xs">
                     <li class="inline-block mt-6 mr-2">
                         <x-form.button data-turbo-stream href="{{ url('contact') }}">Get in touch</x-form.button>
                     </li>
