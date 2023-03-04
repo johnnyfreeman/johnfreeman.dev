@@ -10,15 +10,19 @@ class Post extends Model
     use HasFactory;
 
     protected $fillable = [
+        'site',
         'title',
         'excerpt',
+        'image',
         'url',
-        'published_at'
+        'tags',
+        'published_at',
     ];
 
     public $timestamps = false;
 
     protected $casts = [
-        'published_at' => 'datetime'
+        'published_at' => 'datetime',
+        'tags' => 'array',
     ];
 }

@@ -31,12 +31,21 @@ Route::post('contact', Controllers\SendMessageController::class)
 Route::prefix('blog')->group(function () {
     Route::get('/', [Controllers\BlogController::class, 'index'])
         ->name('blog');
-    Route::get('create', [Controllers\BlogController::class, 'create'])
+    Route::get('link', [Controllers\BlogController::class, 'link'])
         ->middleware('auth')
-        ->name('blog.create');
+        ->name('blog.link');
     Route::post('saving', [Controllers\BlogController::class, 'store'])
         ->middleware('auth')
         ->name('blog.store');
+
+    Route::prefix('{post}')->middleware('auth')->group(function () {
+        Route::get('/', [Controllers\BlogController::class, 'edit'])
+            ->name('blog.edit');
+        Route::post('update', [Controllers\BlogController::class, 'update'])
+            ->name('blog.update');
+        Route::delete('unlink', [Controllers\BlogController::class, 'unlink'])
+            ->name('blog.unlink');
+    });
 });
 
 Route::get('su', [Controllers\SuController::class, 'attempt'])
