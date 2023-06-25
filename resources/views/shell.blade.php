@@ -18,38 +18,40 @@
     <body class="min-h-screen font-mono bg-gray-800 light:bg-white text-white light:text-gray-700 text-base px-5 md:px-10 pt-5 md:pt-10 leading-loose flex flex-col" data-controller="terminal">
         <header class="sticky top-0 flex justify-between z-10 bg-gray-800 light:bg-white -mx-5 md:-mx-10 -mt-5 md:-mt-10 md:px-5">
             <a data-turbo-stream class="text-teal-400 light:text-gray-700 py-5 px-5" href="{{ url('/') }}" data-terminal-input="intro">
-                <svg class="fill-current" width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M5.93478 0H7.36957V1.34483H5.93478V0Z"/>
-                    <path d="M8.73913 0H10.1739V1.34483H8.73913V0Z"/>
-                    <path d="M11.6087 0H13.0435V1.34483H11.6087V0Z"/>
-                    <path d="M5.93478 5.68966H7.36957V7.03448H5.93478V5.68966Z"/>
-                    <path d="M8.73913 5.68966H10.1739V7.03448H8.73913V5.68966Z"/>
-                    <path d="M11.6087 5.68966H13.0435V7.03448H11.6087V5.68966Z"/>
-                    <path d="M3 11.3793H4.43478V12.7241H3V11.3793Z"/>
-                    <path d="M5.93478 11.3793H7.36957V12.7241H5.93478V11.3793Z"/>
-                    <path d="M5.93478 3H7.36957V4.34483H5.93478V3Z"/>
-                    <path d="M5.93478 8.68966H7.36957V10.0345H5.93478V8.68966Z"/>
-                    <path d="M0 11.3793H1.43478V12.7241H0V11.3793Z"/>
+                <svg class="fill-current" width="18" height="18" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="4" y="0" width="1" height="1" />
+                    <rect x="6" y="0" width="1" height="1" />
+                    <rect x="8" y="0" width="1" height="1" />
+                    <rect x="4" y="2" width="1" height="1" />
+                    <rect x="4" y="4" width="1" height="1" />
+                    <rect x="6" y="4" width="1" height="1" />
+                    <rect x="8" y="4" width="1" height="1" />
+                    <rect x="4" y="6" width="1" height="1" />
+                    <rect x="4" y="8" width="1" height="1" />
+                    <rect x="2" y="8" width="1" height="1" />
+                    <rect x="0" y="8" width="1" height="1" />
                 </svg>
             </a>
 
             <a data-turbo-stream class="text-teal-400 light:text-gray-700 py-5 px-5" href="{{ url('menu') }}" data-terminal-input="menu">
-                <svg class="fill-current" width="14" height="13" viewBox="0 0 14 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M3 0H4.43478V1.34483H3V0Z"/>
-                    <path d="M5.86957 0H7.30435V1.34483H5.86957V0Z"/>
-                    <path d="M8.73913 0H10.1739V1.34483H8.73913V0Z"/>
-                    <path d="M11.6087 0H13.0435V1.34483H11.6087V0Z"/>
-                    <path d="M3 5.68966H4.43478V7.03448H3V5.68966Z"/>
-                    <path d="M5.86957 5.68966H7.30435V7.03448H5.86957V5.68966Z"/>
-                    <path d="M8.73913 5.68966H10.1739V7.03448H8.73913V5.68966Z"/>
-                    <path d="M11.6087 5.68966H13.0435V7.03448H11.6087V5.68966Z"/>
-                    <path d="M3 11.3793H4.43478V12.7241H3V11.3793Z"/>
-                    <path d="M5.86957 11.3793H7.30435V12.7241H5.86957V11.3793Z"/>
-                    <path d="M8.73913 11.3793H10.1739V12.7241H8.73913V11.3793Z"/>
-                    <path d="M11.6087 11.3793H13.0435V12.7241H11.6087V11.3793Z"/>
-                    <path d="M0 0H1.43478V1.34483H0V0Z"/>
-                    <path d="M0 5.68966H1.43478V7.03448H0V5.68966Z"/>
-                    <path d="M0 11.3793H1.43478V12.7241H0V11.3793Z"/>
+                <svg class="fill-current" width="18" height="18" viewBox="0 0 9 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0" y="0" width="1" height="1" />
+                    <rect x="2" y="0" width="1" height="1" />
+                    <rect x="4" y="0" width="1" height="1" />
+                    <rect x="6" y="0" width="1" height="1" />
+                    <rect x="8" y="0" width="1" height="1" />
+
+                    <rect x="0" y="4" width="1" height="1" />
+                    <rect x="2" y="4" width="1" height="1" />
+                    <rect x="4" y="4" width="1" height="1" />
+                    <rect x="6" y="4" width="1" height="1" />
+                    <rect x="8" y="4" width="1" height="1" />
+
+                    <rect x="0" y="8" width="1" height="1" />
+                    <rect x="2" y="8" width="1" height="1" />
+                    <rect x="4" y="8" width="1" height="1" />
+                    <rect x="6" y="8" width="1" height="1" />
+                    <rect x="8" y="8" width="1" height="1" />
                 </svg>
             </a>
         </header>
