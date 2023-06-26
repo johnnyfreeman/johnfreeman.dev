@@ -1,7 +1,7 @@
-<div class="flex items-center">
+<div class="flex items-center space-x-2">
     @auth
-        <div class="hidden md:block mr-2 text-gray-500">{{ auth()->user()->email }}</div> <div class="font-bold text-orange-300 light:text-orange-600">#</div>
+        <div class="hidden md:block text-vonCount">{{ auth()->user()->email }}</div> <div class="font-bold text-blade-300 light:text-blade-600">#</div>
     @else
-        <div class="hidden md:block mr-2 text-gray-500">guest@johnfreeman.dev</div> <div class="font-bold text-orange-300 light:text-orange-600">$</div>
+        <div class="hidden md:block text-vonCount">guest@johnfreeman.dev</div> <div class="font-bold text-blade-300 light:text-blade-600">$</div>
     @endauth
 </div>

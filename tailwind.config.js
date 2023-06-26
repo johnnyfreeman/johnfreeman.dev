@@ -30,5 +30,7 @@ module.exports = {
       'mono': ['"Source Code Pro"'],
     },
   },
-  plugins: []
+  plugins: [
+    require('tailwind-dracula')(),
+  ]
 }
