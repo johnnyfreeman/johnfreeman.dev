@@ -20,9 +20,8 @@
 {% endmacro %}
 
 {% macro input_form(csrf) %}
-<form hx-post='{{ app.route("execute") }}' hx-target="this" hx-swap="outerHTML show:top" hx-select=".response"
-	hx-push-url="true" data-action="turbo:submit-end->terminal#scrollToLastOutput" id="input-form" action='{{ app.route("execute")
-	}}' class="mt-8 h-12 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" method="POST" defaultbutton="execute">
+<form hx-post="{{ app.route(RouteName::Execute) }}" hx-target="this" hx-swap="outerHTML show:top" hx-select=".response"
+	hx-push-url="true" data-action="turbo:submit-end->terminal#scrollToLastOutput" id="input-form" action="{{ app.route(RouteName::Execute) }}" class="mt-8 h-12 flex items-center -mx-5 md:-mx-10 px-5 md:px-10" method="POST" defaultbutton="execute">
 	{% call csrf(csrf) %}
 
 	{% call prompt() %}

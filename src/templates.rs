@@ -1,4 +1,4 @@
-use crate::routes::App;
+use crate::routes::{App, RouteName};
 use askama::Template;
 use axum::{
     http::StatusCode,

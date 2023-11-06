@@ -1,30 +1,12 @@
+use std::str::FromStr;
+
 use crate::{auth::user::User, controllers};
 use axum::{
     response::{IntoResponse, Redirect, Response},
     routing::{get, post, MethodRouter},
 };
-use std::collections::BTreeMap;
-
-pub fn routes() -> RouteMap {
-    RouteMap::from([
-        ("about", Route("/about", get(controllers::about))),
-        ("blog", Route("/blog", get(controllers::help))),
-        ("built-with", Route("/built-with", get(controllers::help))),
-        ("contact", Route("/contact", get(controllers::help))),
-        ("clear", Route("/clear", get(controllers::clear))),
-        ("execute", Route("/execute", post(controllers::execute))),
-        ("exit", Route("/exit", get(controllers::help))),
-        ("features", Route("/features", get(controllers::help))),
-        ("help", Route("/help", get(controllers::help))),
-        ("home", Route("/", get(controllers::intro))),
-        ("intro", Route("/intro", get(controllers::intro))),
-        ("menu", Route("/menu", get(controllers::help))),
-        ("projects", Route("/projects", get(controllers::help))),
-        ("social", Route("/social", get(controllers::help))),
-        ("su", Route("/su", get(controllers::help))),
-        ("whoami", Route("/whoami", get(controllers::help))),
-    ])
-}
+use strum_macros::EnumIter;
+use strum_macros::EnumString;
 
 #[derive(Clone)]
 pub struct Route(pub &'static str, pub MethodRouter);
@@ -41,12 +23,60 @@ impl IntoResponse for Route {
     }
 }
 
-pub type RouteMap = BTreeMap<&'static str, Route>;
+impl From<RouteName> for Route {
+    fn from(value: RouteName) -> Self {
+        match value {
+            RouteName::About => Route("/about", get(controllers::about)),
+            RouteName::BuiltWith => Route("/built-with", get(controllers::help)),
+            RouteName::Blog => Route("/blog", get(controllers::help)),
+            RouteName::Clear => Route("/clear", get(controllers::clear)),
+            RouteName::Contact => Route("/contact", get(controllers::help)),
+            RouteName::Execute => Route("/execute", post(controllers::execute)),
+            RouteName::Exit => Route("/exit", get(controllers::help)),
+            RouteName::Features => Route("/features", get(controllers::help)),
+            RouteName::Help => Route("/help", get(controllers::help)),
+            RouteName::Home => Route("/", get(controllers::intro)),
+            RouteName::Intro => Route("/intro", get(controllers::intro)),
+            RouteName::Menu => Route("/menu", get(controllers::help)),
+            RouteName::Projects => Route("/projects", get(controllers::help)),
+            RouteName::Social => Route("/social", get(controllers::help)),
+            RouteName::Su => Route("/su", get(controllers::help)),
+            RouteName::WhoAmI => Route("/whoami", get(controllers::help)),
+        }
+    }
+}
+
+impl From<&str> for Route {
+    fn from(value: &str) -> Self {
+        Route::from(RouteName::from_str(value).expect("Should be a valid RouteName"))
+    }
+}
+
+#[derive(Debug, EnumIter, EnumString, PartialEq)]
+#[strum(serialize_all = "kebab-case")]
+pub enum RouteName {
+    About,
+    Blog,
+    BuiltWith,
+    Clear,
+    Contact,
+    Execute,
+    Exit,
+    Features,
+    Help,
+    Home,
+    Intro,
+    Menu,
+    Projects,
+    Social,
+    Su,
+    #[strum(serialize = "whoami")]
+    WhoAmI,
+}
 
 pub struct App {
     pub route: Option<Route>,
     pub user: Option<User>,
-    pub routes: RouteMap,
     pub csrf: &'static str,
 }
 
@@ -54,7 +84,6 @@ impl App {
     pub fn new() -> Self {
         Self {
             route: None,
-            routes: routes(),
             user: None,
             csrf: "34r82oirfj",
         }
@@ -64,12 +93,13 @@ impl App {
         self.route.as_ref().expect("Current route should be set")
     }
 
-    pub fn route(&self, key: &str) -> &Route {
-        self.routes.get(key).expect("Route should exist")
+    pub fn route(&self, route_name: RouteName) -> Route {
+        Route::from(route_name)
     }
 
-    pub fn set_route(mut self, key: &str) -> Self {
-        self.route = Some(self.routes.get(key).expect("Route should exist")).cloned();
+    pub fn set_route(mut self, route: &str) -> Self {
+        self.route =
+            Some(self.route(RouteName::from_str(route).expect("Should be a valid RouteName")));
 
         self
     }

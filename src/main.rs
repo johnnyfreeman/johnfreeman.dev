@@ -3,9 +3,10 @@ mod controllers;
 mod routes;
 mod templates;
 
-use crate::routes::{routes, Route};
+use crate::routes::{Route, RouteName};
 use axum::Router;
 use std::{net::SocketAddr, path::PathBuf};
+use strum::IntoEnumIterator;
 use tower_http::services::ServeDir;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
@@ -24,7 +25,8 @@ async fn main() {
             .append_index_html_on_directories(true),
     );
 
-    for (_, Route(path, method_router)) in routes() {
+    for route_name in RouteName::iter() {
+        let Route(path, method_router) = Route::from(route_name);
         router = router.route(path, method_router);
     }
 

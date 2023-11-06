@@ -1,5 +1,5 @@
 use crate::{
-    routes::App,
+    routes::{App, Route, RouteName},
     templates::{self, John},
 };
 use axum::{
@@ -56,30 +56,29 @@ enum Command {
 }
 
 pub async fn execute(extract::Form(form): extract::Form<ExecuteInput>) -> Response {
-    let app = App::new();
     let mut input = form.input.split_whitespace();
 
     match input.next() {
-        None => app.route("about").clone().into_response(),
+        None => Route::from(RouteName::Clear).into_response(),
         Some(command) => match Command::from_str(command) {
             Ok(command) => match command {
-                Command::About => app.route("about").clone().into_response(),
-                Command::Blog => app.route("blog").clone().into_response(),
-                Command::BuiltWith => app.route("built-with").clone().into_response(),
-                Command::Clear => app.route("clear").clone().into_response(),
-                Command::Contact => app.route("contact").clone().into_response(),
-                Command::Features => app.route("features").clone().into_response(),
-                Command::Help => app.route("help").clone().into_response(),
-                Command::Intro => app.route("intro").clone().into_response(),
-                Command::Menu => app.route("menu").clone().into_response(),
-                Command::Projects => app.route("projects").clone().into_response(),
-                Command::Social => app.route("social").clone().into_response(),
-                Command::WhoAmI => app.route("whoami").clone().into_response(),
-                Command::Su => app.route("su").clone().into_response(),
-                Command::Exit => app.route("exit").clone().into_response(),
+                Command::About => Route::from(RouteName::About).into_response(),
+                Command::Blog => Route::from(RouteName::Blog).into_response(),
+                Command::BuiltWith => Route::from(RouteName::BuiltWith).into_response(),
+                Command::Clear => Route::from(RouteName::Clear).into_response(),
+                Command::Contact => Route::from(RouteName::Contact).into_response(),
+                Command::Features => Route::from(RouteName::Features).into_response(),
+                Command::Help => Route::from(RouteName::Help).into_response(),
+                Command::Intro => Route::from(RouteName::Intro).into_response(),
+                Command::Menu => Route::from(RouteName::Menu).into_response(),
+                Command::Projects => Route::from(RouteName::Projects).into_response(),
+                Command::Social => Route::from(RouteName::Social).into_response(),
+                Command::WhoAmI => Route::from(RouteName::WhoAmI).into_response(),
+                Command::Su => Route::from(RouteName::Su).into_response(),
+                Command::Exit => Route::from(RouteName::Exit).into_response(),
             },
-            // TODO: render error
-            Err(_error) => app.route("help").clone().into_response(),
+            // TODO: return error response
+            Err(_error) => Route::from(RouteName::Help).into_response(),
         },
     }
 }
