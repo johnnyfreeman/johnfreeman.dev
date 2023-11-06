@@ -1,5 +1,3 @@
-use std::str::FromStr;
-
 use crate::{auth::user::User, controllers};
 use axum::{
     response::{IntoResponse, Redirect, Response},
