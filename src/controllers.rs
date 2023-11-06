@@ -11,22 +11,22 @@ use std::str::FromStr;
 use strum_macros::EnumString;
 
 pub async fn about() -> impl IntoResponse {
-    let app = App::new().set_route("about");
+    let app = App::new().set_route(RouteName::About);
     templates::HtmlTemplate(templates::AboutTemplate { app, john: John {} })
 }
 
 pub async fn intro() -> impl IntoResponse {
-    let app = App::new().set_route("intro");
+    let app = App::new().set_route(RouteName::Intro);
     templates::HtmlTemplate(templates::IntroTemplate { app })
 }
 
 pub async fn clear() -> impl IntoResponse {
-    let app = App::new().set_route("clear");
+    let app = App::new().set_route(RouteName::Clear);
     templates::HtmlTemplate(templates::ClearTemplate { app })
 }
 
 pub async fn help() -> impl IntoResponse {
-    let app = App::new().set_route("help");
+    let app = App::new().set_route(RouteName::Help);
     templates::HtmlTemplate(templates::HelpTemplate { app })
 }
 

@@ -8,6 +8,28 @@ use axum::{
 use strum_macros::EnumIter;
 use strum_macros::EnumString;
 
+#[derive(Debug, EnumIter, EnumString, PartialEq)]
+#[strum(serialize_all = "kebab-case")]
+pub enum RouteName {
+    About,
+    Blog,
+    BuiltWith,
+    Clear,
+    Contact,
+    Execute,
+    Exit,
+    Features,
+    Help,
+    Home,
+    Intro,
+    Menu,
+    Projects,
+    Social,
+    Su,
+    #[strum(serialize = "whoami")]
+    WhoAmI,
+}
+
 #[derive(Clone)]
 pub struct Route(pub &'static str, pub MethodRouter);
 
@@ -46,34 +68,6 @@ impl From<RouteName> for Route {
     }
 }
 
-impl From<&str> for Route {
-    fn from(value: &str) -> Self {
-        Route::from(RouteName::from_str(value).expect("Should be a valid RouteName"))
-    }
-}
-
-#[derive(Debug, EnumIter, EnumString, PartialEq)]
-#[strum(serialize_all = "kebab-case")]
-pub enum RouteName {
-    About,
-    Blog,
-    BuiltWith,
-    Clear,
-    Contact,
-    Execute,
-    Exit,
-    Features,
-    Help,
-    Home,
-    Intro,
-    Menu,
-    Projects,
-    Social,
-    Su,
-    #[strum(serialize = "whoami")]
-    WhoAmI,
-}
-
 pub struct App {
     pub route: Option<Route>,
     pub user: Option<User>,
@@ -97,9 +91,8 @@ impl App {
         Route::from(route_name)
     }
 
-    pub fn set_route(mut self, route: &str) -> Self {
-        self.route =
-            Some(self.route(RouteName::from_str(route).expect("Should be a valid RouteName")));
+    pub fn set_route(mut self, route_name: RouteName) -> Self {
+        self.route = Some(self.route(route_name));
 
         self
     }
