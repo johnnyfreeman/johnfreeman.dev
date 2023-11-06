@@ -22,7 +22,13 @@ pub async fn intro() -> impl IntoResponse {
 
 pub async fn clear() -> impl IntoResponse {
     let app = App::new().set_route(RouteName::Clear);
-    templates::HtmlTemplate(templates::ClearTemplate { app })
+    (
+        [
+            ("HX-Retarget", "#output"),
+            ("HX-Reswap", "innerHTML show:top"),
+        ],
+        templates::HtmlTemplate(templates::ClearTemplate { app }),
+    )
 }
 
 pub async fn help() -> impl IntoResponse {
@@ -59,6 +65,8 @@ pub async fn execute(extract::Form(form): extract::Form<ExecuteInput>) -> Respon
     let mut input = form.input.split_whitespace();
 
     match input.next() {
+        // TODO: instead of redirecting to clear when there is no input, we
+        // should redirect to a dedicated "empty" route or "new_line" route
         None => Route::from(RouteName::Clear).into_response(),
         Some(command) => match Command::from_str(command) {
             Ok(command) => match command {
