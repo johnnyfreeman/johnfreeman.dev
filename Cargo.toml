@@ -1,0 +1,20 @@
+[package]
+name = "johnfreeman-dev"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+askama = "0.12.0"
+axum = "0.6.20"
+chrono = "0.4.31"
+chrono-humanize = "0.2.3"
+serde = { version = "1.0.188", features = ["derive"] }
+serde_json = "1.0.105"
+strum = "0.25.0"
+strum_macros = "0.25.3"
+tokio = { version = "1.32.0", features = ["full"] }
+tower-http = { version = "0.4.4", features = ["fs"] }
+tracing = "0.1.37"
+tracing-subscriber = { version = "0.3.17", features = ["env-filter"] }

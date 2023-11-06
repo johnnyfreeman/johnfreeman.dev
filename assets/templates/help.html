@@ -1,0 +1,106 @@
+{% extends "_layout.html" %}
+
+{%- import "_macros.html" as scope -%}
+
+{% block output %}
+{% call scope::input("help", false) %}
+
+<p class="w-full max-w-3xl">My website is built like a command<span class="text-marcelin">-</span>line application<span
+    class="text-marcelin">.</span> Here are a list of commands you can execute<span class="text-marcelin">.</span> For
+  your convenience<span class="text-marcelin">,</span> you can also click around too<span class="text-marcelin">.</span>
+</p>
+
+<h2 class="mt-8 text-lincoln-400 light:text-lincoln-600">Commands</h2>
+
+<table class="mt-2">
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("about") }}' hx-get="about"
+        hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">about</a></th>
+    <td class="pl-4">A little about myself</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("blog") }}' hx-get="blog"
+        hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">blog</a>
+    </th>
+    <td class="pl-4">Articles I've written</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("built-with") }}'
+        hx-get="built-with" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response"
+        hx-push-url="true">built-with</a></th>
+    <td class="pl-4">Libraries and APIs used in building this</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("clear") }}' hx-get="clear"
+        hx-target="#output" hx-select=".response" hx-push-url="/">clear</a></th>
+    <td class="pl-4">Clear all output</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("contact") }}' hx-get="contact"
+        hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">contact</a></th>
+    <td class="pl-4">Get in touch with me</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("features") }}' hx-get="features"
+        hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">features</a></th>
+    <td class="pl-4">List of features</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("help") }}"
+        data-turbo-stream data-terminal-input="help">help</a></th>
+    <td class="pl-4">You' re looking at it</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("intro") }}' hx-get="intro"
+        hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">intro</a></th>
+    <td class="pl-4">Let me introduce myself</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("menu") }}' hx-get="menu"
+        hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">menu</a>
+    </th>
+    <td class="pl-4">Website menu</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("projects") }}' hx-get="projects"
+        hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">projects</a></th>
+    <td class="pl-4">Recent projects</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("social") }}' hx-get="social"
+        hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">social</a></th>
+    <td class="pl-4">Social links</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("whoami") }}' hx-get="whoami"
+        hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">whoami</a></th>
+    <td class="pl-4">Who Am I?</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("su") }}' hx-get="su"
+        hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">su</a></th>
+    <td class="pl-4">Log in</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href='{{ app.route("exit") }}' hx-get="exit"
+        hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">exit</a>
+    </th>
+    <td class="pl-4">Log out</td>
+  </tr>
+</table>
+
+<h2 class="mt-8 text-lincoln-400 light:text-lincoln-600">Options</h2>
+
+<table class="mt-2">
+  <tr>
+    <th class="text-left pt-1"><span class="bg-nosferatu-900 p-1 light:bg-nosferatu-200">--fresh</span></th>
+    <td class="pl-4">Ignore cached output and get fresh output</td>
+  </tr>
+</table>
+
+<h2 class="mt-8 text-lincoln-400 light:text-lincoln-600">Usage</h2>
+
+<blockquote class="mt-2 text-indigo-400 light:text-indigo-600">command [options]</blockquote>
+
+{% call scope::input_form(app.csrf) %}
+{% endblock %}
