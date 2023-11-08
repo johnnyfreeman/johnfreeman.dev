@@ -1,4 +1,7 @@
-use crate::routes::{App, RouteName};
+use crate::{
+    models::Post,
+    routes::{App, RouteName},
+};
 use askama::Template;
 use axum::{
     http::StatusCode,
@@ -76,4 +79,12 @@ pub struct HelpTemplate {
 #[template(path = "clear.html")]
 pub struct ClearTemplate {
     pub app: App,
+}
+
+#[derive(Template)]
+#[template(path = "blog.html")]
+pub struct BlogTemplate {
+    pub app: App,
+    pub featured_post: Post,
+    pub posts: Vec<Post>,
 }

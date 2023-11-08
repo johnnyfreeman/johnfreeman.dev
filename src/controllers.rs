@@ -1,12 +1,14 @@
 use crate::{
-    routes::{App, Route, RouteName},
+    models::Post,
+    routes::{App, RouteName},
     templates::{self, John},
 };
 use axum::{
-    extract,
+    extract::{self, State},
     response::{IntoResponse, Response},
 };
 use serde::Deserialize;
+use sqlx::PgPool;
 use std::str::FromStr;
 use strum_macros::EnumString;
 
@@ -18,6 +20,27 @@ pub async fn about() -> impl IntoResponse {
 pub async fn intro() -> impl IntoResponse {
     let app = App::new().set_route(RouteName::Intro);
     templates::HtmlTemplate(templates::IntroTemplate { app })
+}
+
+pub async fn blog(State(pool): State<PgPool>) -> impl IntoResponse {
+    let sql = "SELECT * FROM posts ORDER BY published_at DESC LIMIT 4 OFFSET 1".to_string();
+    let posts = sqlx::query_as::<_, Post>(&sql)
+        .fetch_all(&pool)
+        .await
+        .unwrap();
+
+    let sql = "SELECT * FROM posts ORDER BY published_at DESC LIMIT 1 OFFSET 0".to_string();
+    let featured_post = sqlx::query_as::<_, Post>(&sql)
+        .fetch_one(&pool)
+        .await
+        .unwrap();
+
+    let app = App::new().set_route(RouteName::Blog);
+    templates::HtmlTemplate(templates::BlogTemplate {
+        app,
+        featured_post,
+        posts,
+    })
 }
 
 pub async fn clear() -> impl IntoResponse {
@@ -67,26 +90,26 @@ pub async fn execute(extract::Form(form): extract::Form<ExecuteInput>) -> Respon
     match input.next() {
         // TODO: instead of redirecting to clear when there is no input, we
         // should redirect to a dedicated "empty" route or "new_line" route
-        None => Route::from(RouteName::Clear).into_response(),
+        None => RouteName::Clear.into_response(),
         Some(command) => match Command::from_str(command) {
             Ok(command) => match command {
-                Command::About => Route::from(RouteName::About).into_response(),
-                Command::Blog => Route::from(RouteName::Blog).into_response(),
-                Command::BuiltWith => Route::from(RouteName::BuiltWith).into_response(),
-                Command::Clear => Route::from(RouteName::Clear).into_response(),
-                Command::Contact => Route::from(RouteName::Contact).into_response(),
-                Command::Features => Route::from(RouteName::Features).into_response(),
-                Command::Help => Route::from(RouteName::Help).into_response(),
-                Command::Intro => Route::from(RouteName::Intro).into_response(),
-                Command::Menu => Route::from(RouteName::Menu).into_response(),
-                Command::Projects => Route::from(RouteName::Projects).into_response(),
-                Command::Social => Route::from(RouteName::Social).into_response(),
-                Command::WhoAmI => Route::from(RouteName::WhoAmI).into_response(),
-                Command::Su => Route::from(RouteName::Su).into_response(),
-                Command::Exit => Route::from(RouteName::Exit).into_response(),
+                Command::About => RouteName::About.into_response(),
+                Command::Blog => RouteName::Blog.into_response(),
+                Command::BuiltWith => RouteName::BuiltWith.into_response(),
+                Command::Clear => RouteName::Clear.into_response(),
+                Command::Contact => RouteName::Contact.into_response(),
+                Command::Features => RouteName::Features.into_response(),
+                Command::Help => RouteName::Help.into_response(),
+                Command::Intro => RouteName::Intro.into_response(),
+                Command::Menu => RouteName::Menu.into_response(),
+                Command::Projects => RouteName::Projects.into_response(),
+                Command::Social => RouteName::Social.into_response(),
+                Command::WhoAmI => RouteName::WhoAmI.into_response(),
+                Command::Su => RouteName::Su.into_response(),
+                Command::Exit => RouteName::Exit.into_response(),
             },
             // TODO: return error response
-            Err(_error) => Route::from(RouteName::Help).into_response(),
+            Err(_error) => RouteName::Help.into_response(),
         },
     }
 }

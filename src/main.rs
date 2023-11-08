@@ -1,17 +1,23 @@
 mod auth;
 mod controllers;
+mod models;
 mod routes;
 mod templates;
 
-use crate::routes::{Route, RouteName};
-use axum::Router;
+use axum::{
+    routing::{get, post},
+    Router,
+};
+use sqlx::postgres::PgPoolOptions;
+use std::env;
 use std::{net::SocketAddr, path::PathBuf};
-use strum::IntoEnumIterator;
 use tower_http::services::ServeDir;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 #[tokio::main]
 async fn main() {
+    dotenvy::dotenv().expect(".env should be valid");
+
     tracing_subscriber::registry()
         .with(
             tracing_subscriber::EnvFilter::try_from_default_env()
@@ -20,15 +26,33 @@ async fn main() {
         .with(tracing_subscriber::fmt::layer())
         .init();
 
-    let mut router = Router::new().fallback_service(
-        ServeDir::new(PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("public"))
-            .append_index_html_on_directories(true),
-    );
+    let pool = PgPoolOptions::new()
+        .max_connections(50)
+        .connect(&env::var("DATABASE_URL").expect("DATABASE_URL not set"))
+        .await
+        .expect("Could not connect to DATABASE_URL");
 
-    for route_name in RouteName::iter() {
-        let Route(path, method_router) = Route::from(route_name);
-        router = router.route(path, method_router);
-    }
+    let router = Router::new()
+        .route("/about", get(controllers::about))
+        .route("/built-with", get(controllers::help))
+        .route("/blog", get(controllers::blog))
+        .route("/clear", get(controllers::clear))
+        .route("/contact", get(controllers::help))
+        .route("/execute", post(controllers::execute))
+        .route("/exit", get(controllers::help))
+        .route("/features", get(controllers::help))
+        .route("/help", get(controllers::help))
+        .route("/", get(controllers::intro))
+        .route("/intro", get(controllers::intro))
+        .route("/menu", get(controllers::help))
+        .route("/projects", get(controllers::help))
+        .route("/social", get(controllers::help))
+        .route("/su", get(controllers::help))
+        .route("/whoami", get(controllers::help))
+        .with_state(pool)
+        .fallback_service(ServeDir::new(
+            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("public"),
+        ));
 
     let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
 
