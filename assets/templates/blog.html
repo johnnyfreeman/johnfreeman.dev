@@ -49,7 +49,7 @@
     </div>
 
     {% for post in posts %}
-        <div class="mt-4 group relative w-full max-w-xl">
+        <div class="mt-4 group relative w-full max-w-xl bg-nosferatu/80">
             <div>
                 <div class="flex items-center justify-between">
                     <a href="{{ post.url }}?ref=johnfreeman.dev" target="_blank" class="group flex items-center space-x-2">
@@ -62,7 +62,7 @@
         </div>
     {% endfor %}
 
-    <p class="mt-4 text-sm text-nosferatu-500">Read more over at <a href="https://www.eloquentarchitecture.com" target="_blank" class="text-nosferatu-500 underline">Eloquent Architecture</a><span class="text-marcelin">.</span></p>
+    <p class="mt-4 w-full max-w-xl text-sm text-nosferatu-500 bg-nosferatu/80">Read more over at <a href="https://www.eloquentarchitecture.com" target="_blank" class="text-nosferatu-500 underline">Eloquent Architecture</a><span class="text-marcelin">.</span></p>
 
   {% call scope::input_form(app.csrf) %}
 {% endblock %}
