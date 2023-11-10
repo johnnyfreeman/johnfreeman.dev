@@ -8,6 +8,7 @@ use axum::{
     routing::{get, post},
     Router,
 };
+use dotenvy::dotenv;
 use sqlx::postgres::PgPoolOptions;
 use std::env;
 use std::{net::SocketAddr, path::PathBuf};
@@ -16,7 +17,10 @@ use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
 #[tokio::main]
 async fn main() {
-    dotenvy::dotenv().expect(".env should be valid");
+    match dotenv() {
+        Ok(path) => println!(".env read successfully from {}", path.display()),
+        Err(e) => eprintln!("Could not load .env file: {e}"),
+    };
 
     tracing_subscriber::registry()
         .with(
@@ -26,11 +30,12 @@ async fn main() {
         .with(tracing_subscriber::fmt::layer())
         .init();
 
+    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL not set");
     let pool = PgPoolOptions::new()
         .max_connections(50)
-        .connect(&env::var("DATABASE_URL").expect("DATABASE_URL not set"))
+        .connect(&database_url)
         .await
-        .expect("Could not connect to DATABASE_URL");
+        .unwrap_or_else(|_| panic!("Could not connect to DATABASE_URL {}", database_url));
 
     let router = Router::new()
         .route("/about", get(controllers::about))
@@ -54,7 +59,7 @@ async fn main() {
             PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("public"),
         ));
 
-    let addr = SocketAddr::from(([127, 0, 0, 1], 3000));
+    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
 
     tracing::debug!("listening on {}", addr);
 

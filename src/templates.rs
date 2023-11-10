@@ -31,28 +31,28 @@ where
 pub struct John {}
 
 impl John {
-    pub fn full_name(&self) -> &'static str {
-        return "John Freeman";
-    }
+    // pub fn full_name(&self) -> &'static str {
+    //     "John Freeman"
+    // }
 
-    pub fn nick_name(&self) -> &'static str {
-        return "John";
-    }
+    // pub fn nick_name(&self) -> &'static str {
+    //     "John"
+    // }
 
-    pub fn email(&self) -> &'static str {
-        return "john@johnfreeman.dev";
-    }
+    // pub fn email(&self) -> &'static str {
+    //     "john@johnfreeman.dev"
+    // }
 
-    pub fn birth(&self) -> HumanTime {
-        return Utc.with_ymd_and_hms(1985, 09, 07, 0, 0, 0).unwrap().into();
-    }
+    // pub fn birth(&self) -> HumanTime {
+    //     Utc.with_ymd_and_hms(1985, 9, 7, 0, 0, 0).unwrap().into()
+    // }
 
-    pub fn rv_life(&self) -> HumanTime {
-        return Utc.with_ymd_and_hms(2018, 07, 01, 0, 0, 0).unwrap().into();
-    }
+    // pub fn rv_life(&self) -> HumanTime {
+    //     Utc.with_ymd_and_hms(2018, 7, 1, 0, 0, 0).unwrap().into()
+    // }
 
     pub fn coding_passion(&self) -> HumanTime {
-        return Utc.with_ymd_and_hms(1998, 01, 01, 0, 0, 0).unwrap().into();
+        Utc.with_ymd_and_hms(1998, 1, 1, 0, 0, 0).unwrap().into()
     }
 }
 

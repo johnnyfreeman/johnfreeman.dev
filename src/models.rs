@@ -1,6 +1,6 @@
 use chrono::{DateTime, Utc};
 use serde::{Deserialize, Serialize};
-use sqlx::{types::Json, FromRow, PgPool};
+use sqlx::{types::Json, FromRow};
 
 #[derive(FromRow, Deserialize, Serialize)]
 pub struct Post {
@@ -14,17 +14,23 @@ pub struct Post {
     pub published_at: DateTime<Utc>,
 }
 
-#[sqlx::test(fixtures("posts"))]
-async fn post_can_be_deserialized(pool: PgPool) -> sqlx::Result<()> {
-    let sql = "SELECT * FROM posts".to_string();
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use sqlx::{PgPool, Result};
 
-    let post = sqlx::query_as::<_, Post>(&sql).fetch_one(&pool).await?;
+    #[sqlx::test(fixtures("posts"))]
+    async fn post_can_be_deserialized(pool: PgPool) -> Result<()> {
+        let sql = "SELECT * FROM posts".to_string();
 
-    assert_eq!(&vec!["test".to_string()], post.tags.as_ref());
-    assert_eq!(
-        "2023-11-07 05:04:31 UTC",
-        post.published_at.to_string().as_str()
-    );
+        let post = sqlx::query_as::<_, Post>(&sql).fetch_one(&pool).await?;
 
-    Ok(())
+        assert_eq!(&vec!["test".to_string()], post.tags.as_ref());
+        assert_eq!(
+            "2023-11-07 05:04:31 UTC",
+            post.published_at.to_string().as_str()
+        );
+
+        Ok(())
+    }
 }
