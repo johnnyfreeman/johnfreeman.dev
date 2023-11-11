@@ -23,17 +23,19 @@ pub async fn intro() -> impl IntoResponse {
 }
 
 pub async fn blog(State(pool): State<PgPool>) -> impl IntoResponse {
-    let sql = "SELECT * FROM posts ORDER BY published_at DESC LIMIT 4 OFFSET 1".to_string();
-    let posts = sqlx::query_as::<_, Post>(&sql)
-        .fetch_all(&pool)
-        .await
-        .unwrap();
+    let posts = sqlx::query_as::<_, Post>(
+        "SELECT * FROM posts ORDER BY published_at DESC LIMIT 4 OFFSET 1",
+    )
+    .fetch_all(&pool)
+    .await
+    .unwrap();
 
-    let sql = "SELECT * FROM posts ORDER BY published_at DESC LIMIT 1 OFFSET 0".to_string();
-    let featured_post = sqlx::query_as::<_, Post>(&sql)
-        .fetch_one(&pool)
-        .await
-        .unwrap();
+    let featured_post = sqlx::query_as::<_, Post>(
+        "SELECT * FROM posts ORDER BY published_at DESC LIMIT 1 OFFSET 0",
+    )
+    .fetch_one(&pool)
+    .await
+    .unwrap();
 
     let app = App::new().set_route(RouteName::Blog);
     templates::HtmlTemplate(templates::BlogTemplate {
