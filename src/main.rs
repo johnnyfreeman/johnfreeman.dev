@@ -37,6 +37,11 @@ async fn main() {
         .await
         .unwrap_or_else(|_| panic!("Could not connect to DATABASE_URL {}", database_url));
 
+    sqlx::migrate!()
+        .run(&pool)
+        .await
+        .expect("Could not run migrations");
+
     let router = Router::new()
         .route("/about", get(controllers::about))
         .route("/built-with", get(controllers::help))
