@@ -11,22 +11,15 @@
     <form action="{{ app.route(RouteName::Contact) }}" hx-post="{{ app.route(RouteName::Contact) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" class="relative mt-3 w-full max-w-2xl" method="POST">
     	{% call scope::csrf(app.csrf) %}
         {# TODO: @honeypot #}
-        <div class="absolute inset-0 bg-cyan-500 -rotate-1"></div>
-        <div class="absolute inset-0 bg-buffy-400 rotate-1"></div>
+        <div class="absolute inset-0 border-2 border-cyan-500 -rotate-1"></div>
+        <div class="absolute inset-0 border-2 border-buffy-400 rotate-1"></div>
 
-        <div class="relative bg-white p-6">
-            <div class="flex space-x-4 mb-6">
-                <div class="shrink-0 flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-dracula-500 to-indigo-500">
-                    <x-icons.hand-wave class="w-6 h-6 text-white light:text-blue-600" />
-                </div>
+        <div class="relative p-6 bg-nosferatu-900 border-2 border-white">
+            <h1 class="absolute top-[-1.1em] px-1 -ml-1 bg-nosferatu font-bold text-white">Say hi!</h1>
 
-                <div>
-                    <h1 class="text-2xl font-bold mb-2 text-nosferatu-800">Say hi!</h1>
-                    <p class="text-nosferatu-600 text-sm leading-relaxed">
-                        I'd love to hear from you. Please fill out the form below and I'll get back to you as soon as I can.
-                    </p>
-                </div>
-            </div>
+            <p class="text-nosferatu-100 text-sm leading-relaxed mb-4">
+                I'd love to hear from you. Please fill out the form below and I'll get back to you as soon as I can.
+            </p>
 
             <div class="flex flex-wrap -mx-3 mb-6">
                 <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
@@ -45,13 +38,13 @@
                 	{% call form::label("Your Message") %}
 
                 	{% call form::textarea("message", "", "") %}
-                    <p class="mt-2 text-nosferatu-600 text-xs italic">Make it as long and as crazy as you'd like</p>
+                    <p class="mt-2 text-nosferatu-100 text-xs italic">Make it as long and as crazy as you'd like</p>
                 </div>
             </div>
 
             <div class="flex flex-wrap -mx-3">
                 <div class="w-full px-3 flex justify-between space-x-4 items-center">
-                    <a hx-get="{{ app.route(RouteName::Blank) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" class="inline-block tracking-wide text-blue-600 text-xs" href="{{ app.route(RouteName::Blank) }}">Nevermind</a>
+                    <a hx-get="{{ app.route(RouteName::Blank) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" class="inline-block underline tracking-wide text-dracula text-xs" href="{{ app.route(RouteName::Blank) }}">Nevermind</a>
                 
                 	{% call form::submit_button("Send Message") %}
                 </div>

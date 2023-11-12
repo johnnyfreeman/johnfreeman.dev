@@ -1,9 +1,9 @@
 {% macro text(name, value, placeholder) %}
-<input name="{{ name }}" value="{{ value }}" placeholder="{{ placeholder }}" class="appearance-none block w-full bg-nosferatu-50/30 shadow-inner text-nosferatu-700 border border-nosferatu-50 h-10 px-4 leading-tight focus:outline-none focus:bg-white focus:border-buffy-500 light:focus:border-buffy-600">
+<input name="{{ name }}" value="{{ value }}" placeholder="{{ placeholder }}" class="appearance-none block w-full bg-nosferatu-900 shadow-inner text-white border border-nosferatu-600 h-10 px-4 leading-tight focus:outline-none focus:border-buffy-400 light:focus:border-buffy-600">
 {% endmacro %}
 
 {% macro textarea(name, slot, placeholder) %}
-<textarea name="{{ name }}" placeholder="{{ placeholder }}" class="appearance-none block w-full bg-nosferatu-50/30 shadow-inner text-nosferatu-700 border border-nosferatu-50 h-10 px-4 leading-tight focus:outline-none focus:bg-white focus:border-buffy-500 light:focus:border-buffy-600">{{ slot }}</textarea>
+<textarea name="{{ name }}" placeholder="{{ placeholder }}" class="appearance-none block w-full bg-nosferatu-900 shadow-inner text-white border border-nosferatu-600 py-3 px-4 leading-tight focus:outline-none focus:border-buffy-400 light:focus:border-buffy-600">{{ slot }}</textarea>
 {% endmacro %}
 
 {% macro submit_button(slot) %}
@@ -11,7 +11,7 @@
 {% endmacro %}
 
 {% macro label(slot) %}
-<label class="block uppercase tracking-wide text-nosferatu-700 text-xs font-bold mb-2">{{ slot }}</label>
+<label class="block uppercase tracking-wide text-nosferatu-200 text-xs font-bold mb-2">{{ slot }}</label>
 {% endmacro %}
 
 {% macro error(slot) %}

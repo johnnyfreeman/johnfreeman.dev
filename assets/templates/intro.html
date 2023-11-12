@@ -7,13 +7,13 @@
 
     {% match app.user %}
         {% when Some with (user) %}
-            <h1 class="text-xl max-w-md bg-nosferatu/80">👋 <strong>Welcome back</strong><span class="text-marcelin">,</span> John<span class="text-marcelin">!</span></h1>
+            <h1 class="text-xl max-w-md bg-nosferatu">👋 <strong>Welcome back</strong><span class="text-marcelin">,</span> John<span class="text-marcelin">!</span></h1>
 
-            <p class="mt-3 text-lg max-w-md bg-nosferatu/80">Made anything awesome lately<span class="text-marcelin">?</span></p>
+            <p class="mt-3 text-lg max-w-md bg-nosferatu">Made anything awesome lately<span class="text-marcelin">?</span></p>
         {% when None %}
-            <h1 class="text-xl max-w-md bg-nosferatu/80">👋 What<span class="text-marcelin">'</span>s up<span class="text-marcelin">!</span> <strong>I<span class="text-marcelin">'</span>m John</strong><span class="text-marcelin">.</span></h1>
+            <h1 class="text-xl max-w-md bg-nosferatu">👋 What<span class="text-marcelin">'</span>s up<span class="text-marcelin">!</span> <strong>I<span class="text-marcelin">'</span>m John</strong><span class="text-marcelin">.</span></h1>
 
-            <p class="mt-3 text-lg max-w-md bg-nosferatu/80">I build things<span class="text-marcelin">.</span> And I write about system design at <a href="https://www.eloquentarchitecture.com" target="_blank" class="text-dracula underline">eloquentarchitecture.com</a><span class="text-marcelin">.</span></p>
+            <p class="mt-3 text-lg max-w-md bg-nosferatu">I build things<span class="text-marcelin">.</span> And I write about system design at <a href="https://www.eloquentarchitecture.com" target="_blank" class="text-dracula underline">eloquentarchitecture.com</a><span class="text-marcelin">.</span></p>
     {% endmatch %}
 
     {% call scope::input_form(app.csrf) %}
