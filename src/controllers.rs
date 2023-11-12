@@ -1,44 +1,42 @@
 use crate::{
+    app::App,
     models::Post,
-    routes::{App, RouteName},
+    routes::RouteName,
     templates::{self, John},
 };
 use axum::{
     extract::{self, State},
     response::{IntoResponse, Response},
 };
-use lettre::message::header::ContentType;
-use lettre::transport::smtp::authentication::Credentials;
-use lettre::{Message, SmtpTransport, Transport};
+use lettre::Message;
+use lettre::{message::header::ContentType, Transport};
 use serde::Deserialize;
-use sqlx::PgPool;
-use std::env;
-use std::str::FromStr;
+use std::{env, str::FromStr};
 use strum_macros::EnumString;
 use validator::Validate;
 
-pub async fn about() -> impl IntoResponse {
-    let app = App::new().set_route(RouteName::About);
+pub async fn about(State(app): State<App>) -> impl IntoResponse {
+    let app = app.clone().set_route(RouteName::About);
     templates::HtmlTemplate(templates::AboutTemplate { app, john: John {} })
 }
 
-pub async fn intro() -> impl IntoResponse {
-    let app = App::new().set_route(RouteName::Intro);
+pub async fn intro(State(app): State<App>) -> impl IntoResponse {
+    let app = app.clone().set_route(RouteName::Intro);
     templates::HtmlTemplate(templates::IntroTemplate { app })
 }
 
-pub async fn blank() -> impl IntoResponse {
-    let app = App::new().set_route(RouteName::Blank);
+pub async fn blank(State(app): State<App>) -> impl IntoResponse {
+    let app = app.clone().set_route(RouteName::Blank);
     templates::HtmlTemplate(templates::BlankTemplate { app })
 }
 
-pub async fn blog(State(pool): State<PgPool>) -> Response {
-    let app = App::new().set_route(RouteName::Blog);
+pub async fn blog(State(app): State<App>) -> Response {
+    let app = app.clone().set_route(RouteName::Blog);
 
     let result = sqlx::query_as::<_, Post>(
         "SELECT * FROM posts ORDER BY published_at DESC LIMIT 5 OFFSET 0",
     )
-    .fetch_all(&pool)
+    .fetch_all(&app.db)
     .await;
 
     match result {
@@ -54,8 +52,8 @@ pub async fn blog(State(pool): State<PgPool>) -> Response {
     }
 }
 
-pub async fn clear() -> impl IntoResponse {
-    let app = App::new().set_route(RouteName::Clear);
+pub async fn clear(State(app): State<App>) -> impl IntoResponse {
+    let app = app.clone().set_route(RouteName::Clear);
     (
         [
             ("HX-Retarget", "#output"),
@@ -65,13 +63,13 @@ pub async fn clear() -> impl IntoResponse {
     )
 }
 
-pub async fn help() -> impl IntoResponse {
-    let app = App::new().set_route(RouteName::Help);
+pub async fn help(State(app): State<App>) -> impl IntoResponse {
+    let app = app.clone().set_route(RouteName::Help);
     templates::HtmlTemplate(templates::HelpTemplate { app })
 }
 
-pub async fn contact_form() -> impl IntoResponse {
-    let app = App::new().set_route(RouteName::Contact);
+pub async fn contact_form(State(app): State<App>) -> impl IntoResponse {
+    let app = app.clone().set_route(RouteName::Contact);
     templates::HtmlTemplate(templates::ContactTemplate { app })
 }
 
@@ -110,7 +108,10 @@ enum Command {
     Exit,
 }
 
-pub async fn execute(extract::Form(form): extract::Form<ExecuteForm>) -> Response {
+pub async fn execute(
+    State(_app): State<App>,
+    extract::Form(form): extract::Form<ExecuteForm>,
+) -> Response {
     let mut input = form.input.split_whitespace();
 
     match input.next() {
@@ -140,8 +141,11 @@ pub async fn execute(extract::Form(form): extract::Form<ExecuteForm>) -> Respons
     }
 }
 
-pub async fn send_message(extract::Form(form): extract::Form<ContactForm>) -> Response {
-    let app = App::new().set_route(RouteName::Contact);
+pub async fn send_message(
+    State(app): State<App>,
+    extract::Form(form): extract::Form<ContactForm>,
+) -> Response {
+    let app = app.clone().set_route(RouteName::Contact);
 
     if let Err(message) = form.validate() {
         return templates::HtmlTemplate(templates::ErrorTemplate {
@@ -168,25 +172,8 @@ pub async fn send_message(extract::Form(form): extract::Form<ContactForm>) -> Re
         .body(form.message)
         .unwrap();
 
-    let creds = Credentials::new(
-        env::var("MAIL_USERNAME").expect("MAIL_USERNAME not set"),
-        env::var("MAIL_PASSWORD").expect("MAIL_PASSWORD not set"),
-    );
-
-    let mailer = SmtpTransport::relay(&env::var("MAIL_HOST").expect("MAIL_HOST not set"))
-        .unwrap()
-        .port(
-            env::var("MAIL_PORT")
-                .expect("MAIL_PORT not set")
-                .parse::<u16>()
-                .expect("Could not convert MAIL_PORT into a u16"),
-        )
-        // .credentials(creds)
-        .tls(lettre::transport::smtp::client::Tls::None)
-        .build();
-
     // Send the email
-    match mailer.send(&email) {
+    match app.mailer.send(&email) {
         Ok(message) => templates::HtmlTemplate(templates::SuccessTemplate {
             app,
             input: "contact".to_string(),

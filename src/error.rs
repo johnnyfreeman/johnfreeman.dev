@@ -1,25 +1,19 @@
 use axum::response::{IntoResponse, Response};
 
-use crate::templates;
+use crate::{app::App, templates};
 
-pub struct AppError(anyhow::Error);
+pub struct AppError {
+    app: App,
+    error: anyhow::Error,
+}
 
 impl IntoResponse for AppError {
     fn into_response(self) -> Response {
         templates::HtmlTemplate(templates::ErrorTemplate {
-            app: crate::routes::App::new(),
+            app: self.app,
             input: "".to_string(),
-            message: format!("{}", self.0),
+            message: format!("{}", self.error),
         })
         .into_response()
-    }
-}
-
-impl<E> From<E> for AppError
-where
-    E: Into<anyhow::Error>,
-{
-    fn from(err: E) -> Self {
-        Self(err.into())
     }
 }

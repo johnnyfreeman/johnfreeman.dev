@@ -1,3 +1,4 @@
+#[derive(Clone)]
 pub struct User {
     pub email: &'static str,
     pub username: &'static str,

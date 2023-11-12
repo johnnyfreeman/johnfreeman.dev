@@ -1,7 +1,4 @@
-use crate::{
-    models::Post,
-    routes::{App, RouteName},
-};
+use crate::{app::App, models::Post, routes::RouteName};
 use askama::Template;
 use axum::{
     http::StatusCode,
@@ -123,13 +120,13 @@ mod tests {
     use sqlx::PgPool;
 
     #[sqlx::test(fixtures("posts"))]
-    async fn blog_posts(pool: PgPool) -> Result<()> {
+    async fn blog_posts(db: PgPool) -> Result<()> {
         let sql = "SELECT * FROM posts".to_string();
 
-        let posts = sqlx::query_as::<_, Post>(&sql).fetch_all(&pool).await?;
+        let posts = sqlx::query_as::<_, Post>(&sql).fetch_all(&db).await?;
 
         BlogTemplate {
-            app: App::new(),
+            app: App::new_with_db(db).await,
             posts,
         }
         .render()?;

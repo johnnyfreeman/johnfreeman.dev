@@ -1,3 +1,4 @@
+mod app;
 mod auth;
 mod controllers;
 mod error;
@@ -5,14 +6,13 @@ mod models;
 mod routes;
 mod templates;
 
+use crate::app::App;
 use axum::{
     routing::{get, post},
     Router,
 };
 use dotenvy::dotenv;
-use sqlx::postgres::PgPoolOptions;
-use std::env;
-use std::{net::SocketAddr, path::PathBuf};
+use std::{env, net::SocketAddr, path::PathBuf};
 use tower_http::services::ServeDir;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
@@ -31,15 +31,10 @@ async fn main() {
         .with(tracing_subscriber::fmt::layer())
         .init();
 
-    let database_url = env::var("DATABASE_URL").expect("DATABASE_URL not set");
-    let pool = PgPoolOptions::new()
-        .max_connections(50)
-        .connect(&database_url)
-        .await
-        .unwrap_or_else(|_| panic!("Could not connect to DATABASE_URL {}", database_url));
+    let app = App::new().await;
 
     sqlx::migrate!()
-        .run(&pool)
+        .run(&app.db)
         .await
         .expect("Could not run migrations");
 
@@ -64,7 +59,7 @@ async fn main() {
         .route("/social", get(controllers::help))
         .route("/su", get(controllers::help))
         .route("/whoami", get(controllers::help))
-        .with_state(pool)
+        .with_state(app)
         .fallback_service(ServeDir::new(
             PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("public"),
         ));

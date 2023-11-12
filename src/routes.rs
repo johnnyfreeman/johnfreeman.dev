@@ -1,9 +1,8 @@
-use crate::auth::user::User;
 use axum::response::{IntoResponse, Redirect, Response};
 use strum_macros::EnumIter;
 use strum_macros::EnumString;
 
-#[derive(Debug, EnumIter, EnumString, PartialEq)]
+#[derive(Clone, Debug, EnumIter, EnumString, PartialEq)]
 #[strum(serialize_all = "kebab-case")]
 pub enum RouteName {
     About,
@@ -53,35 +52,5 @@ impl std::fmt::Display for RouteName {
 impl IntoResponse for RouteName {
     fn into_response(self) -> Response {
         Redirect::to(&self.to_string()).into_response()
-    }
-}
-
-pub struct App {
-    pub route: Option<RouteName>,
-    pub user: Option<User>,
-    pub csrf: &'static str,
-}
-
-impl App {
-    pub fn new() -> Self {
-        Self {
-            route: None,
-            user: None,
-            csrf: "34r82oirfj",
-        }
-    }
-
-    pub fn current_route(&self) -> Option<&RouteName> {
-        self.route.as_ref()
-    }
-
-    pub fn route(&self, route_name: RouteName) -> RouteName {
-        route_name
-    }
-
-    pub fn set_route(mut self, route_name: RouteName) -> Self {
-        self.route = Some(self.route(route_name));
-
-        self
     }
 }
