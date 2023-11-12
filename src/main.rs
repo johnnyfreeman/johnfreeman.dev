@@ -46,9 +46,13 @@ async fn main() {
     let router = Router::new()
         .route("/about", get(controllers::about))
         .route("/built-with", get(controllers::help))
+        .route("/blank", get(controllers::blank))
         .route("/blog", get(controllers::blog))
         .route("/clear", get(controllers::clear))
-        .route("/contact", get(controllers::help))
+        .route(
+            "/contact",
+            get(controllers::contact_form).post(controllers::send_message),
+        )
         .route("/execute", post(controllers::execute))
         .route("/exit", get(controllers::help))
         .route("/features", get(controllers::help))

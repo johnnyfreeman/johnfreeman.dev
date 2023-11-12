@@ -72,8 +72,22 @@ pub struct ErrorTemplate {
 }
 
 #[derive(Template)]
+#[template(path = "success.html")]
+pub struct SuccessTemplate {
+    pub app: App,
+    pub input: String,
+    pub message: String,
+}
+
+#[derive(Template)]
 #[template(path = "intro.html")]
 pub struct IntroTemplate {
+    pub app: App,
+}
+
+#[derive(Template)]
+#[template(path = "blank.html")]
+pub struct BlankTemplate {
     pub app: App,
 }
 
@@ -94,6 +108,12 @@ pub struct ClearTemplate {
 pub struct BlogTemplate {
     pub app: App,
     pub posts: Vec<Post>,
+}
+
+#[derive(Template)]
+#[template(path = "contact.html")]
+pub struct ContactTemplate {
+    pub app: App,
 }
 
 #[cfg(test)]

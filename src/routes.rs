@@ -7,6 +7,7 @@ use strum_macros::EnumString;
 #[strum(serialize_all = "kebab-case")]
 pub enum RouteName {
     About,
+    Blank,
     Blog,
     BuiltWith,
     Clear,
@@ -30,6 +31,7 @@ impl std::fmt::Display for RouteName {
         match self {
             RouteName::About => write!(f, "/about"),
             RouteName::BuiltWith => write!(f, "/built-with"),
+            RouteName::Blank => write!(f, "/blank"),
             RouteName::Blog => write!(f, "/blog"),
             RouteName::Clear => write!(f, "/clear"),
             RouteName::Contact => write!(f, "/contact"),
