@@ -6,7 +6,7 @@
 {% block output %}
     {% call scope::input("contact", false) %}
 
-    <p>You can say hey to me on <a data-turbo-stream class="text-dracula underline" href="{{ app.route(RouteName::Social) }}" data-terminal-input="social">social</a><span class="text-marcelin">,</span> or shoot me an email<span class="text-marcelin">.</span></p>
+    <p>You can say hey to me on <a class="text-dracula underline" href="{{ app.route(RouteName::Social) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">social</a><span class="text-marcelin">,</span> or shoot me an email<span class="text-marcelin">.</span></p>
 
     <form action="{{ app.route(RouteName::Contact) }}" hx-post="{{ app.route(RouteName::Contact) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" class="relative mt-3 w-full max-w-2xl" method="POST">
     	{% call scope::csrf(app.csrf) %}
