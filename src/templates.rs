@@ -64,6 +64,14 @@ pub struct AboutTemplate {
 }
 
 #[derive(Template)]
+#[template(path = "error.html")]
+pub struct ErrorTemplate {
+    pub app: App,
+    pub input: String,
+    pub message: String,
+}
+
+#[derive(Template)]
 #[template(path = "intro.html")]
 pub struct IntroTemplate {
     pub app: App,
@@ -85,6 +93,27 @@ pub struct ClearTemplate {
 #[template(path = "blog.html")]
 pub struct BlogTemplate {
     pub app: App,
-    pub featured_post: Post,
     pub posts: Vec<Post>,
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use anyhow::Result;
+    use sqlx::PgPool;
+
+    #[sqlx::test(fixtures("posts"))]
+    async fn blog_posts(pool: PgPool) -> Result<()> {
+        let sql = "SELECT * FROM posts".to_string();
+
+        let posts = sqlx::query_as::<_, Post>(&sql).fetch_all(&pool).await?;
+
+        BlogTemplate {
+            app: App::new(),
+            posts,
+        }
+        .render()?;
+
+        Ok(())
+    }
 }

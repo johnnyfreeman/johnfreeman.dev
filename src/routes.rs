@@ -69,8 +69,8 @@ impl App {
         }
     }
 
-    pub fn current_route(&self) -> &RouteName {
-        self.route.as_ref().expect("Current route should be set")
+    pub fn current_route(&self) -> Option<&RouteName> {
+        self.route.as_ref()
     }
 
     pub fn route(&self, route_name: RouteName) -> RouteName {

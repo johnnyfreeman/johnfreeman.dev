@@ -22,27 +22,26 @@ pub async fn intro() -> impl IntoResponse {
     templates::HtmlTemplate(templates::IntroTemplate { app })
 }
 
-pub async fn blog(State(pool): State<PgPool>) -> impl IntoResponse {
-    let posts = sqlx::query_as::<_, Post>(
-        "SELECT * FROM posts ORDER BY published_at DESC LIMIT 4 OFFSET 1",
+pub async fn blog(State(pool): State<PgPool>) -> Response {
+    let app = App::new().set_route(RouteName::Blog);
+
+    let result = sqlx::query_as::<_, Post>(
+        "SELECT * FROM posts ORDER BY published_at DESC LIMIT 5 OFFSET 0",
     )
     .fetch_all(&pool)
-    .await
-    .unwrap();
+    .await;
 
-    let featured_post = sqlx::query_as::<_, Post>(
-        "SELECT * FROM posts ORDER BY published_at DESC LIMIT 1 OFFSET 0",
-    )
-    .fetch_one(&pool)
-    .await
-    .unwrap();
-
-    let app = App::new().set_route(RouteName::Blog);
-    templates::HtmlTemplate(templates::BlogTemplate {
-        app,
-        featured_post,
-        posts,
-    })
+    match result {
+        Ok(posts) => {
+            templates::HtmlTemplate(templates::BlogTemplate { app, posts }).into_response()
+        }
+        Err(message) => templates::HtmlTemplate(templates::ErrorTemplate {
+            app,
+            input: "blog".to_string(),
+            message: message.to_string(),
+        })
+        .into_response(),
+    }
 }
 
 pub async fn clear() -> impl IntoResponse {

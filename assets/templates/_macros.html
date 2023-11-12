@@ -1,5 +1,5 @@
 {% macro input(value, cache) %}
-<div class="group mt-8 text-vanHelsing light:text-dracula-600 h-12 flex items-center -mx-5 md:-mx-10 px-5 md:px-10"
+<div class="group mt-8 text-vanHelsing light:text-dracula-400-600 h-12 flex items-center -mx-5 md:-mx-10 px-5 md:px-10"
 	data-controller="clipboard">
 	{% call prompt() %}
 
@@ -7,15 +7,19 @@
 		data-output-target="cache" {%- endif %} data-terminal-target="history" data-clipboard-target="copyable" readonly
 		name="input" type="text" value="{{ value }}">
 
-	<a class="hidden group-hover:inline-block uppercase tracking-wide bg-dracula-600 border border-dracula-600 rounded text-white text-xs px-3 py-1 hover:bg-blue-400 hover:border-blue-400 light:bg-nosferatu-200 light:text-nosferatu-600 light:border-nosferatu-200 light:hover:bg-nosferatu-300 light:hover:border-nosferatu-300 mr-1"
+	<a class="hidden md:inline-block cursor-pointer uppercase tracking-wide bg-nosferatu-900 border border-dracula-400 text-dracula-300 font-medium text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:text-nosferatu-500 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]"
 		href="javascript:void(0)" data-action="click->clipboard#copy">Copy</a>
 
-	<a class="hidden group-hover:inline-block uppercase tracking-wide bg-dracula-600 border border-dracula-600 rounded text-white text-xs px-3 py-1 hover:bg-blue-400 hover:border-blue-400 light:bg-nosferatu-200 light:text-nosferatu-600 light:border-nosferatu-200 light:hover:bg-nosferatu-300 light:hover:border-nosferatu-300 mr-1"
-		href="{{ app.current_route() }}">Link</a>
+	{% match app.current_route() %}
+		{% when Some with (route) %}
+		<a class="hidden md:inline-block cursor-pointer uppercase tracking-wide bg-nosferatu-900 border border-dracula-400 text-dracula-300 font-medium text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:text-nosferatu-500 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]"
+			href="{{ route }}">Link</a>
 
-	<a data-turbo-stream
-		class="hidden group-hover:inline-block uppercase tracking-wide bg-dracula-600 border border-dracula-600 rounded text-white text-xs px-3 py-1 hover:bg-blue-400 hover:border-blue-400 light:bg-nosferatu-200 light:text-nosferatu-600 light:border-nosferatu-200 light:hover:bg-nosferatu-300 light:hover:border-nosferatu-300"
-		href="{{ app.current_route() }}" data-terminal-input="{{ app.current_route() }}">Execute</a>
+		<a data-turbo-stream
+			class="hidden md:inline-block cursor-pointer uppercase tracking-wide bg-nosferatu-900 border border-dracula-400 text-dracula-300 font-medium text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:text-nosferatu-500 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]"
+			href="{{ route }}" data-terminal-input="{{ route }}">Execute</a>
+		{% when None %}
+	{% endmatch %}
 </div>
 {% endmacro %}
 
@@ -30,11 +34,11 @@
 		class="bg-transparent w-full px-2 focus:outline-none placeholder-nosferatu-700 focus:placeholder-nosferatu-600"
 		data-terminal-target="inputField" name="input" type="text" placeholder="Type `help` for more information">
 
-	<a class="hidden md:inline-block cursor-pointer uppercase tracking-wide border border-dracula-600 rounded text-indigo-200 text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:text-nosferatu-500 light:hover:text-nosferatu-700"
+	<a class="hidden md:inline-block cursor-pointer uppercase tracking-wide bg-nosferatu-900 border border-dracula-400 text-dracula-300 font-medium text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:text-nosferatu-500 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]"
 		data-action="click->terminal#focus" href="javascript:void(0)" title="Press `/` to focus">/</a>
 
 	<button
-		class="hidden md:inline-block uppercase tracking-wide bg-dracula-600 border border-dracula-600 rounded text-white text-xs px-3 py-1 hover:bg-blue-500 hover:border-blue-500 light:bg-nosferatu-200 light:text-nosferatu-600 light:border-nosferatu-200 light:hover:bg-nosferatu-300 light:hover:border-nosferatu-300"
+		class="hidden md:inline-block uppercase tracking-wide bg-dracula-400 border border-dracula-400 text-nosferatu-900 font-medium font-medium text-xs px-3 py-1 hover:bg-dracula-500 hover:border-dracula-500 light:bg-nosferatu-200 light:text-nosferatu-600 light:border-nosferatu-200 light:hover:bg-nosferatu-300 light:hover:border-nosferatu-300 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]"
 		id="execute" type="submit">Execute</button>
 </form>
 {% endmacro %}
