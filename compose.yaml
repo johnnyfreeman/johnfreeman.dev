@@ -1,15 +1,28 @@
+version: '3'
+
 services:
-  # server:
-  #   build:
-  #     context: .
-  #     target: final
-  #   environment:
-  #     DATABASE_URL: '${DATABASE_URL}'
-  #   ports:
-  #     - 3000:3000
-  #   depends_on:
-  #     db:
-  #       condition: service_healthy
+  reverse-proxy:
+    image: traefik:v2.10
+    # Enables the web UI and tells Traefik to listen to docker
+    command: --api.insecure=true --providers.docker
+    ports:
+      - "80:3000"
+      # The Web UI (enabled by --api.insecure=true)
+      - "8080:8080"
+    volumes:
+      # So that Traefik can listen to the Docker events
+      - /var/run/docker.sock:/var/run/docker.sock
+  server:
+    build:
+      context: .
+      target: final
+    environment:
+      DATABASE_URL: '${DATABASE_URL}'
+    ports:
+      - 3000:3000
+    depends_on:
+      db:
+        condition: service_healthy
   db:
     image: postgres
     restart: always
@@ -28,11 +41,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
-  mailpit:
-    image: 'axllent/mailpit:latest'
-    ports:
-      - '1025:1025'
-      - '8025:8025'
 volumes:
   db-data:
     driver: local
+
