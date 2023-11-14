@@ -20,6 +20,11 @@ pub async fn about(State(app): State<App>) -> impl IntoResponse {
     templates::HtmlTemplate(templates::AboutTemplate { app, john: John {} })
 }
 
+pub async fn menu(State(app): State<App>) -> impl IntoResponse {
+    let app = app.clone().set_route(RouteName::Menu);
+    templates::HtmlTemplate(templates::MenuTemplate { app })
+}
+
 pub async fn intro(State(app): State<App>) -> impl IntoResponse {
     let app = app.clone().set_route(RouteName::Intro);
     templates::HtmlTemplate(templates::IntroTemplate { app })

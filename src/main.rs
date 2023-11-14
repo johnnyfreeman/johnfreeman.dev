@@ -54,7 +54,7 @@ async fn main() {
         .route("/help", get(controllers::help))
         .route("/", get(controllers::intro))
         .route("/intro", get(controllers::intro))
-        .route("/menu", get(controllers::help))
+        .route("/menu", get(controllers::menu))
         .route("/projects", get(controllers::help))
         .route("/social", get(controllers::help))
         .route("/su", get(controllers::help))

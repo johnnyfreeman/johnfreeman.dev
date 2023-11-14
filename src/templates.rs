@@ -83,6 +83,12 @@ pub struct IntroTemplate {
 }
 
 #[derive(Template)]
+#[template(path = "menu.html")]
+pub struct MenuTemplate {
+    pub app: App,
+}
+
+#[derive(Template)]
 #[template(path = "blank.html")]
 pub struct BlankTemplate {
     pub app: App,
