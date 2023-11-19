@@ -1,6 +1,4 @@
 ARG RUST_VERSION=1.71.0
-ARG APP_NAME=johnfreeman-dev
-ARG APP_NAME
 ARG NODE_MAJOR=20
 
 FROM rust:${RUST_VERSION}-slim-bullseye AS rust
@@ -18,6 +16,7 @@ RUN --mount=type=bind,source=src,target=src \
     <<EOF
 set -e
 cargo build --locked --release
+cp ./target/release/johnfreeman-dev /bin/johnfreeman-dev
 EOF
 
 FROM node:${NODE_MAJOR} AS node
@@ -25,9 +24,11 @@ FROM node:${NODE_MAJOR} AS node
 WORKDIR /app
 COPY . .
 RUN npm install
-RUN npmx tailwindcss -i ./assets/css/app.css -o ./public/css/app.css --minify
+RUN npx tailwindcss -i ./assets/css/app.css -o ./public/css/app.css --minify
 
 FROM debian:bullseye-slim AS final
+
+ENV PUBLIC_DIR=/var/www
 
 ARG UID=10001
 RUN adduser \
@@ -38,11 +39,16 @@ RUN adduser \
     --no-create-home \
     --uid "${UID}" \
     appuser
+
+RUN mkdir /var/www
+RUN chown -R appuser:appuser /var/www
+RUN chmod -R 0755 /var/www
+
 USER appuser
 
-COPY --from=rust /app/target/release/$APP_NAME /bin/
+COPY --from=rust /bin/johnfreeman-dev /bin/
 COPY --from=node /app/public /var/www
 
 EXPOSE 3000
 
-CMD ["/bin/${APP_NAME"]
+CMD ["/bin/johnfreeman-dev"]

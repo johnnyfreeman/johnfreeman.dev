@@ -60,9 +60,9 @@ async fn main() {
         .route("/su", get(controllers::help))
         .route("/whoami", get(controllers::help))
         .with_state(app)
-        .fallback_service(ServeDir::new(
-            PathBuf::from(env!("CARGO_MANIFEST_DIR")).join("public"),
-        ));
+        .fallback_service(ServeDir::new(PathBuf::from(
+            env::var("PUBLIC_DIR").unwrap_or("./public".to_string()),
+        )));
 
     let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
 
