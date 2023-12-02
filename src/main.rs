@@ -68,7 +68,7 @@ async fn main() {
             .append_index_html_on_directories(true),
         );
 
-    let listener = TcpListener::bind("0.0.0.0:3000").await.unwrap();
+    let listener = TcpListener::bind("0.0.0.0:80").await.unwrap();
 
     tracing::debug!("listening on {}", listener.local_addr().unwrap());
 
