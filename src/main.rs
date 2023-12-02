@@ -12,7 +12,8 @@ use axum::{
     Router,
 };
 use dotenvy::dotenv;
-use std::{env, net::SocketAddr, path::PathBuf};
+use std::{env, path::PathBuf};
+use tokio::net::TcpListener;
 use tower_http::services::ServeDir;
 use tracing_subscriber::{layer::SubscriberExt, util::SubscriberInitExt};
 
@@ -60,16 +61,16 @@ async fn main() {
         .route("/su", get(controllers::help))
         .route("/whoami", get(controllers::help))
         .with_state(app)
-        .fallback_service(ServeDir::new(PathBuf::from(
-            env::var("PUBLIC_DIR").unwrap_or("./public".to_string()),
-        )));
+        .fallback_service(
+            ServeDir::new(PathBuf::from(
+                env::var("PUBLIC_DIR").unwrap_or("./public".to_string()),
+            ))
+            .append_index_html_on_directories(true),
+        );
 
-    let addr = SocketAddr::from(([0, 0, 0, 0], 3000));
+    let listener = TcpListener::bind("0.0.0.0:3000").await.unwrap();
 
-    tracing::debug!("listening on {}", addr);
+    tracing::debug!("listening on {}", listener.local_addr().unwrap());
 
-    axum::Server::bind(&addr)
-        .serve(router.into_make_service())
-        .await
-        .unwrap();
+    axum::serve(listener, router).await.unwrap();
 }
