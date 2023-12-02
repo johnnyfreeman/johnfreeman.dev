@@ -1,39 +1,8 @@
 version: '3'
 
 services:
-  reverse-proxy:
-    image: traefik:v2.10
-    # Enables the web UI and tells Traefik to listen to docker
-    command: --api.insecure=true --providers.docker
-    ports:
-      - "80:80"
-      # The Web UI (enabled by --api.insecure=true)
-      - "8080:8080"
-    volumes:
-      # So that Traefik can listen to the Docker events
-      - /var/run/docker.sock:/var/run/docker.sock
-  server:
-    build:
-      context: .
-      target: final
-    environment:
-      DATABASE_URL: '${DATABASE_URL}'
-      MAIL_HOST: '${MAIL_HOST}'
-      MAIL_PORT: '${MAIL_PORT}'
-      MAIL_USERNAME: '${MAIL_USERNAME}'
-      MAIL_PASSWORD: '${MAIL_PASSWORD}'
-      MAIL_FROM_ADDRESS: '${MAIL_FROM_ADDRESS}'
-      MAIL_FROM_NAME: '${MAIL_FROM_NAME}'
-    ports:
-      - 3000:3000
-    labels:
-      - "traefik.http.routers.server.rule=PathPrefix(`/`)"
-    depends_on:
-      db:
-        condition: service_healthy
   db:
     image: postgres
-    restart: always
     volumes:
       - db-data:/var/lib/postgresql/data
     environment:
@@ -42,13 +11,16 @@ services:
       POSTGRES_PASSWORD: '${DB_PASSWORD}'
     ports:
       - 5432:5432
-    # expose:
-    #   - 5432
     healthcheck:
       test: [ "CMD", "pg_isready" ]
       interval: 10s
       timeout: 5s
       retries: 5
+  mailpit:
+    image: 'axllent/mailpit:latest'
+    ports:
+      - '${FORWARD_MAILPIT_PORT:-1025}:1025'
+      - '${FORWARD_MAILPIT_DASHBOARD_PORT:-8025}:8025'
 volumes:
   db-data:
     driver: local
