@@ -101,6 +101,12 @@ pub struct HelpTemplate {
 }
 
 #[derive(Template)]
+#[template(path = "built-with.html")]
+pub struct BuiltWithTemplate {
+    pub app: App,
+}
+
+#[derive(Template)]
 #[template(path = "clear.html")]
 pub struct ClearTemplate {
     pub app: App,

@@ -41,7 +41,7 @@ async fn main() {
 
     let router = Router::new()
         .route("/about", get(controllers::about))
-        .route("/built-with", get(controllers::help))
+        .route("/built-with", get(controllers::built_with))
         .route("/blank", get(controllers::blank))
         .route("/blog", get(controllers::blog))
         .route("/clear", get(controllers::clear))

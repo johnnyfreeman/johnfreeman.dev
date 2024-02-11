@@ -1,0 +1,28 @@
+{% extends "_layout.html" %}
+
+{%- import "_macros.html" as scope -%}
+
+{% block output %}
+{% call scope::input("built-with", false) %}
+
+    <p class="mt-2 w-full max-w-3xl">The basic idea here is simple; there is an output container, and an input form. When the input form is submitted, an ajax call is made to the server. The server returns an html partial, which is then appended to the output container. Easy peasy.</p>
+
+    <p class="mt-8 w-full max-w-3xl">The specific libraries and apis used are not that important. Most of them could easily be swapped out with something else that serves the same purpose, or even without a library at all in most cases. In fact, I tend to use this as a test bed for trying new technologies that I'm interested in. What once started out as a Laravel thing is now a Axum thing, written in rust btw.</p>
+
+    <h2 class="mt-8 text-lincoln-400 light:text-lincoln-600">Uses</h2>
+
+    <ul class="mt-2 list-inside list-disc">
+        <li><a class="text-dracula underline" href="https://laravel.com">Axum</a> for serving up html and handling form submissions</li>
+        <li><a class="text-dracula underline" href="https://tailwindcss.com/">Tailwind</a> for styling</li>
+        <li><a class="text-dracula underline" href="https://github.com/axios/axios">Htmx</a> for sending input to server via ajax and returning the response</li>
+        <li><a class="text-dracula underline" href="https://developer.mozilla.org/en-US/docs/Web/API/NavigatorOnLine/onLine">navigator.onLine</a> api displaying online/offline status in the footer</li>
+        <li><a class="text-dracula underline" href="https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Interact_with_the_clipboard">document.execCommand('copy')</a> for copying text to your clipboard</li>
+        <li><a class="text-dracula underline" href="https://github.com/substack/minimist">Minimist</a> to parse command line input into an object</li>
+        <li><a class="text-dracula underline" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-color-scheme">prefers-color-scheme</a> to override styling when user has requested the system use a light or dark color scheme</li>
+        <li><a class="text-dracula underline" href="https://developer.mozilla.org/en-US/docs/Web/API/Navigator/vibrate">navigator.vibrate</a> to initiate a slight vibration when the server responds with a status code of 400 or above</li>
+    </ul>
+
+{% call scope::input_form(app.csrf) %}
+{% endblock %}
+
+
