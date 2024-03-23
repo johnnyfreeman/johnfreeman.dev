@@ -5,8 +5,7 @@
 {% block output %}
 {% call scope::input("help", false) %}
 
-<p class="w-full max-w-3xl">My website is built like a command<span class="text-marcelin">-</span>line application<span
-    class="text-marcelin">.</span> Here are a list of commands you can execute<span class="text-marcelin">.</span> For
+<p class="w-full max-w-3xl">My website is <span class="inline-block bg-blade-500/10 text-blade-500 p-1 leading-none -skew-y-1">built like a command-line application</span><span class="text-marcelin">.</span> Here are a list of commands you can execute<span class="text-marcelin">.</span> For
   your convenience<span class="text-marcelin">,</span> you can also click around too<span class="text-marcelin">.</span>
 </p>
 
@@ -35,10 +34,6 @@
     <td class="pl-4">Get in touch with me</td>
   </tr>
   <tr>
-    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Features) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">features</a></th>
-    <td class="pl-4">List of features</td>
-  </tr>
-  <tr>
     <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Help) }}"
  hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">help</a></th>
     <td class="pl-4">You' re looking at it</td>
@@ -60,33 +55,7 @@
     <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Social) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">social</a></th>
     <td class="pl-4">Social links</td>
   </tr>
-  <tr>
-    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::WhoAmI) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">whoami</a></th>
-    <td class="pl-4">Who Am I?</td>
-  </tr>
-  <tr>
-    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Su) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">su</a></th>
-    <td class="pl-4">Log in</td>
-  </tr>
-  <tr>
-    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Exit) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">exit</a>
-    </th>
-    <td class="pl-4">Log out</td>
-  </tr>
 </table>
-
-<h2 class="mt-8 text-lincoln-400 light:text-lincoln-600">Options</h2>
-
-<table class="mt-2">
-  <tr>
-    <th class="text-left pt-1"><span class="bg-nosferatu-900 p-1 light:bg-nosferatu-200">--fresh</span></th>
-    <td class="pl-4">Ignore cached output and get fresh output</td>
-  </tr>
-</table>
-
-<h2 class="mt-8 text-lincoln-400 light:text-lincoln-600">Usage</h2>
-
-<blockquote class="mt-2 text-indigo-400 light:text-indigo-600">command [options]</blockquote>
 
 {% call scope::input_form(app.csrf) %}
 {% endblock %}
