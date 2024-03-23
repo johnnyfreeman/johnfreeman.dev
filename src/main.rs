@@ -50,16 +50,12 @@ async fn main() {
             get(controllers::contact_form).post(controllers::send_message),
         )
         .route("/execute", post(controllers::execute))
-        .route("/exit", get(controllers::help))
-        .route("/features", get(controllers::help))
         .route("/help", get(controllers::help))
         .route("/", get(controllers::intro))
         .route("/intro", get(controllers::intro))
         .route("/menu", get(controllers::menu))
         .route("/projects", get(controllers::help))
         .route("/social", get(controllers::help))
-        .route("/su", get(controllers::help))
-        .route("/whoami", get(controllers::help))
         .with_state(app)
         .fallback_service(
             ServeDir::new(PathBuf::from(
