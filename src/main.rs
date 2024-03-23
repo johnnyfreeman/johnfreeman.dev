@@ -54,7 +54,7 @@ async fn main() {
         .route("/", get(controllers::intro))
         .route("/intro", get(controllers::intro))
         .route("/menu", get(controllers::menu))
-        .route("/social", get(controllers::help))
+        .route("/social", get(controllers::social))
         .with_state(app)
         .fallback_service(
             ServeDir::new(PathBuf::from(

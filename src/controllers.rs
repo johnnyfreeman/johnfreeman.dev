@@ -73,6 +73,11 @@ pub async fn help(State(app): State<App>) -> impl IntoResponse {
     templates::HtmlTemplate(templates::HelpTemplate { app })
 }
 
+pub async fn social(State(app): State<App>) -> impl IntoResponse {
+    let app = app.clone().set_route(RouteName::Social);
+    templates::HtmlTemplate(templates::SocialTemplate { app })
+}
+
 pub async fn built_with(State(app): State<App>) -> impl IntoResponse {
     let app = app.clone().set_route(RouteName::BuiltWith);
     templates::HtmlTemplate(templates::BuiltWithTemplate { app })
