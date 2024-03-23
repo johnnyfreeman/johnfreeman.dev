@@ -1,0 +1,7 @@
+{% extends "_layout.html" %}
+
+{%- import "_macros.html" as scope -%}
+
+{% block output %}
+    {% call scope::input_form(app.csrf) %}
+{% endblock %}

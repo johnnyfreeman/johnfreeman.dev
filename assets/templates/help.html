@@ -1,0 +1,61 @@
+{% extends "_layout.html" %}
+
+{%- import "_macros.html" as scope -%}
+
+{% block output %}
+{% call scope::input("help", false) %}
+
+<p class="w-full max-w-3xl">My website is <span class="inline-block bg-blade-500/10 text-blade-500 p-1 leading-none -skew-y-1">built like a command-line application</span><span class="text-marcelin">.</span> Here are a list of commands you can execute<span class="text-marcelin">.</span> For
+  your convenience<span class="text-marcelin">,</span> you can also click around too<span class="text-marcelin">.</span>
+</p>
+
+<h2 class="mt-8 text-lincoln-400 light:text-lincoln-600">Commands</h2>
+
+<table class="mt-2">
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::About) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">about</a></th>
+    <td class="pl-4">A little about myself</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Blog) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">blog</a>
+    </th>
+    <td class="pl-4">Articles I've written</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::BuiltWith) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">built-with</a></th>
+    <td class="pl-4">Libraries and APIs used in building this</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Clear) }}" hx-target="#output" hx-select=".response" hx-push-url="/">clear</a></th>
+    <td class="pl-4">Clear all output</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Contact) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">contact</a></th>
+    <td class="pl-4">Get in touch with me</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Help) }}"
+ hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">help</a></th>
+    <td class="pl-4">You're looking at it</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Intro) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">intro</a></th>
+    <td class="pl-4">Let me introduce myself</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Menu) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">menu</a>
+    </th>
+    <td class="pl-4">Website menu</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Projects) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">projects</a></th>
+    <td class="pl-4">Recent projects</td>
+  </tr>
+  <tr>
+    <th class="text-left pt-1"><a class="text-dracula underline" href="{{ app.route(RouteName::Social) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true">social</a></th>
+    <td class="pl-4">Social links</td>
+  </tr>
+</table>
+
+{% call scope::input_form(app.csrf) %}
+{% endblock %}

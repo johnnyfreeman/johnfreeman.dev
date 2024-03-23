@@ -1,0 +1,17 @@
+{% extends "_layout.html" %}
+
+{%- import "_macros.html" as scope -%}
+
+{% block output %}
+    {% call scope::input("about", false) %}
+
+    <p class="w-full max-w-3xl bg-nosferatu">It all started {{ john.coding_passion() }} with Microsoft Frontpage and <span class="inline-block bg-dracula-400/10 text-dracula-400 p-1 leading-none -skew-y-1">a boy's dream</span>. 🚧 Search engines were still in their infancy, and I wanted to make something with links to all my favorite Quake 2 skins to share with my buddies<span class="text-marcelin">.</span> Classic story! Anyway<span class="text-marcelin">,</span> I had so much fun doing it that it remained a slow yet persistant hobby from then on<span class="text-marcelin">.</span> I soaked up anything I could get my hands on about my new craft from articles<span class="text-marcelin">,</span> books<span class="text-marcelin">,</span> then later youtube<span class="text-marcelin">,</span> podcasts<span class="text-marcelin">,</span> etc.<span class="text-marcelin">.</span> 👨‍🎓</p>
+
+    <p class="mt-8 w-full max-w-3xl bg-nosferatu">Fast forward to today<span class="text-marcelin">,</span> I work along side a small team of talented people at a <em>small</em> remote software company in the healthcare space<span class="text-marcelin">.</span> The <em>really</em> small kind of company where everybody wears multiple hats<span class="text-marcelin">.</span> Here, <span class="inline-block bg-buffy-400/10 text-buffy-400 p-1 leading-none skew-y-1">I've played a major role</span> in envisioning<span class="text-marcelin">,</span> planning<span class="text-marcelin">,</span> designing<span class="text-marcelin">,</span> executing, maintaining, and scaling our products<span class="text-marcelin">.</span> It's <span class="inline-block bg-blade-400/10 text-blade-400 p-1 leading-none -skew-y-1">challenges have grown and stretched me</span> as a programmer and... as a human! ❤️</p>
+
+    <p class="mt-8 w-full max-w-3xl bg-nosferatu">I work a lot<span class="text-marcelin">.</span> But in my off-hours<span class="text-marcelin">,</span> I still enjoy solving problems<span class="text-marcelin">!</span> 😆 Sometimes the solution is with software<span class="text-marcelin">,</span> other times with a table saw or a welding machine<span class="text-marcelin">.</span> I just enjoy the struggle and beauty of beating my head against the wall until the breakthrough occurs<span class="text-marcelin">.</span> So satisfying<span class="text-marcelin">!</span> And <span class="inline-block bg-cyan-500/10 text-cyan-500 p-1 leading-none skew-y-1">I enjoy writing about such shenanigans</span> over at <a href="https://www.eloquentarchitecture.com" target="_blank" class="text-dracula underline">eloquentarchitecture.com</a><span class="text-marcelin">.</span></p>
+
+    <p class="mt-8 w-full max-w-3xl bg-nosferatu">And I<span class="text-marcelin">'</span>m still learning<span class="text-marcelin">&hellip;</span></p>
+    
+    {% call scope::input_form(app.csrf) %}
+{% endblock %}
