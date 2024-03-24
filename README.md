@@ -11,15 +11,10 @@ The project is built to mimic the command line in certain ways. It doesn't aim t
 * `built-with` - Libraries and APIs used in building this.
 * `clear` - Clear all output.
 * `contact` - Get in touch with me.
-* `exit` - Log out.
-* `features` - List of features.
 * `help` - Instructions for usage.
 * `intro` - Let me introduce myself.
 * `menu` - Navigation menu.
-* `projects` - Recent projects.
 * `social` - Social links.
-* `su` - Log in.
-* `whoami` - Who Am I?
 
 ## Running as root user
 
