@@ -23,7 +23,7 @@ impl App {
             .await
             .unwrap_or_else(|_| panic!("Could not connect to DATABASE_URL {}", database_url));
 
-        let _creds = Credentials::new(
+        let creds = Credentials::new(
             env::var("MAIL_USERNAME").expect("MAIL_USERNAME not set"),
             env::var("MAIL_PASSWORD").expect("MAIL_PASSWORD not set"),
         );
@@ -36,7 +36,7 @@ impl App {
                     .parse::<u16>()
                     .expect("Could not convert MAIL_PORT into a u16"),
             )
-            // .credentials(creds)
+            .credentials(creds)
             .tls(lettre::transport::smtp::client::Tls::None)
             .build();
 
@@ -50,7 +50,7 @@ impl App {
     }
 
     pub async fn new_with_db(db: PgPool) -> Self {
-        let _creds = Credentials::new(
+        let creds = Credentials::new(
             env::var("MAIL_USERNAME").expect("MAIL_USERNAME not set"),
             env::var("MAIL_PASSWORD").expect("MAIL_PASSWORD not set"),
         );
@@ -63,7 +63,7 @@ impl App {
                     .parse::<u16>()
                     .expect("Could not convert MAIL_PORT into a u16"),
             )
-            // .credentials(creds)
+            .credentials(creds)
             .tls(lettre::transport::smtp::client::Tls::None)
             .build();
 
