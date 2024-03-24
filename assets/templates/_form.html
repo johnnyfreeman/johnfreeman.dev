@@ -1,9 +1,9 @@
 {% macro text(name, value, placeholder) %}
-<input name="{{ name }}" value="{{ value }}" placeholder="{{ placeholder }}" class="appearance-none block w-full bg-nosferatu-900 shadow-inner text-white border border-nosferatu-600 h-10 px-4 leading-tight focus:outline-none focus:border-buffy-400 light:focus:border-buffy-600">
+<input name="{{ name }}" value="{{ value }}" placeholder="{{ placeholder }}" class="appearance-none block w-full bg-nosferatu-900 light:bg-white light:text-nosferatu-800 shadow-inner text-white border border-nosferatu-600 light:border-nosferatu-400 h-10 px-4 leading-tight focus:outline-none focus:border-buffy-400 light:focus:border-buffy-600">
 {% endmacro %}
 
 {% macro textarea(name, slot, placeholder) %}
-<textarea name="{{ name }}" placeholder="{{ placeholder }}" class="appearance-none block w-full bg-nosferatu-900 shadow-inner text-white border border-nosferatu-600 py-3 px-4 leading-tight focus:outline-none focus:border-buffy-400 light:focus:border-buffy-600">{{ slot }}</textarea>
+<textarea name="{{ name }}" placeholder="{{ placeholder }}" class="appearance-none block w-full bg-nosferatu-900 light:bg-white shadow-inner text-white light:text-nosferatu-800 border border-nosferatu-600 light:border-nosferatu-400 py-3 px-4 leading-tight focus:outline-none focus:border-buffy-400 light:focus:border-buffy-600">{{ slot }}</textarea>
 {% endmacro %}
 
 {% macro submit_button(slot) %}
@@ -15,5 +15,5 @@
 {% endmacro %}
 
 {% macro error(slot) %}
-<p class="mt-3 text-red-500 text-xs italic">{{ slot }}</p>
+<p class="mt-3 text-red-500 light:text-red-700 text-xs italic">{{ slot }}</p>
 {% endmacro %}
