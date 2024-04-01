@@ -13,16 +13,11 @@ pub enum RouteName {
     Contact,
     Execute,
     Exit,
-    Features,
     Help,
     Home,
     Intro,
     Menu,
-    Projects,
     Social,
-    Su,
-    #[strum(serialize = "whoami")]
-    WhoAmI,
 }
 
 impl std::fmt::Display for RouteName {
@@ -36,15 +31,11 @@ impl std::fmt::Display for RouteName {
             RouteName::Contact => write!(f, "/contact"),
             RouteName::Execute => write!(f, "/execute"),
             RouteName::Exit => write!(f, "/exit"),
-            RouteName::Features => write!(f, "/features"),
             RouteName::Help => write!(f, "/help"),
             RouteName::Home => write!(f, "/"),
             RouteName::Intro => write!(f, "/intro"),
             RouteName::Menu => write!(f, "/menu"),
-            RouteName::Projects => write!(f, "/projects"),
             RouteName::Social => write!(f, "/social"),
-            RouteName::Su => write!(f, "/su"),
-            RouteName::WhoAmI => write!(f, "/whoami"),
         }
     }
 }

@@ -111,16 +111,10 @@ enum Command {
     BuiltWith,
     Clear,
     Contact,
-    Features,
     Help,
     Intro,
     Menu,
-    Projects,
     Social,
-    #[strum(serialize = "whoami")]
-    WhoAmI,
-    Su,
-    Exit,
 }
 
 pub async fn execute(
@@ -140,15 +134,10 @@ pub async fn execute(
                 Command::BuiltWith => RouteName::BuiltWith.into_response(),
                 Command::Clear => RouteName::Clear.into_response(),
                 Command::Contact => RouteName::Contact.into_response(),
-                Command::Features => RouteName::Features.into_response(),
                 Command::Help => RouteName::Help.into_response(),
                 Command::Intro => RouteName::Intro.into_response(),
                 Command::Menu => RouteName::Menu.into_response(),
-                Command::Projects => RouteName::Projects.into_response(),
                 Command::Social => RouteName::Social.into_response(),
-                Command::WhoAmI => RouteName::WhoAmI.into_response(),
-                Command::Su => RouteName::Su.into_response(),
-                Command::Exit => RouteName::Exit.into_response(),
             },
             // TODO: return error response
             Err(_error) => RouteName::Help.into_response(),
