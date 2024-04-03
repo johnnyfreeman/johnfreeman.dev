@@ -3,22 +3,30 @@
 {%- import "_macros.html" as scope -%}
 
 {% block output %}
-    {% call scope::input("menu", false) %}
+{% call scope::input("menu", false) %}
 
-    <ul class="mt-2 flex flex-wrap space-x-4">
-        <li class="inline">
-            <a href="{{ app.route(RouteName::About) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true" class="cursor-pointer uppercase tracking-wide bg-nosferatu-900 light:bg-white border border-dracula-400 text-dracula-300 light:text-dracula-700 font-semibold text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:text-nosferatu-500 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]">about</a>
-        </li>
-        <li class="inline">
-            <a href="{{ app.route(RouteName::Blog) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true" class="cursor-pointer uppercase tracking-wide bg-nosferatu-900 light:bg-white border border-dracula-400 text-dracula-300 light:text-dracula-700 font-semibold text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:text-nosferatu-500 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]">blog</a>
-        </li>
-        <li class="inline">
-            <a href="{{ app.route(RouteName::BuiltWith) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true" class="cursor-pointer uppercase tracking-wide bg-nosferatu-900 light:bg-white border border-dracula-400 text-dracula-300 light:text-dracula-700 font-semibold text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:text-nosferatu-500 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]">built-with</a>
-        </li>
-        <li class="inline">
-            <a href="{{ app.route(RouteName::Contact) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" hx-push-url="true" class="cursor-pointer uppercase tracking-wide bg-nosferatu-900 light:bg-white border border-dracula-400 text-dracula-300 light:text-dracula-700 font-semibold text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:text-nosferatu-500 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]">contact</a>
-        </li>
-    </ul>
+<ul class="mt-2 flex flex-wrap space-x-4">
+    <li class="inline">
+        <a href="{{ app.route(RouteName::About) }}" hx-target="#input-form" hx-swap="outerHTML show:top"
+            hx-select=".response" hx-push-url="true"
+            class="cursor-pointer uppercase tracking-wide bg-nosferatu-900 light:bg-white border border-dracula-400 text-dracula-300 light:text-dracula-700 font-semibold text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]">about</a>
+    </li>
+    <li class="inline">
+        <a href="{{ app.route(RouteName::Blog) }}" hx-target="#input-form" hx-swap="outerHTML show:top"
+            hx-select=".response" hx-push-url="true"
+            class="cursor-pointer uppercase tracking-wide bg-nosferatu-900 light:bg-white border border-dracula-400 text-dracula-300 light:text-dracula-700 font-semibold text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]">blog</a>
+    </li>
+    <li class="inline">
+        <a href="{{ app.route(RouteName::BuiltWith) }}" hx-target="#input-form" hx-swap="outerHTML show:top"
+            hx-select=".response" hx-push-url="true"
+            class="cursor-pointer uppercase tracking-wide bg-nosferatu-900 light:bg-white border border-dracula-400 text-dracula-300 light:text-dracula-700 font-semibold text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]">built-with</a>
+    </li>
+    <li class="inline">
+        <a href="{{ app.route(RouteName::Contact) }}" hx-target="#input-form" hx-swap="outerHTML show:top"
+            hx-select=".response" hx-push-url="true"
+            class="cursor-pointer uppercase tracking-wide bg-nosferatu-900 light:bg-white border border-dracula-400 text-dracula-300 light:text-dracula-700 font-semibold text-xs px-3 py-1 mr-2 hover:text-white light:border-nosferatu-200 light:hover:text-nosferatu-700 relative before:block before:absolute before:inset-0 before:top-[3px] before:left-[3px] before:w-full before:h-full before:border before:border-dracula-400 before:z-[-1]">contact</a>
+    </li>
+</ul>
 
-    {% call scope::input_form(app.csrf) %}
+{% call scope::input_form(app.csrf) %}
 {% endblock %}
