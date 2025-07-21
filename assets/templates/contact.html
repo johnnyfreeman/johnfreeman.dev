@@ -10,7 +10,10 @@
 
     <form action="{{ app.route(RouteName::Contact) }}" hx-post="{{ app.route(RouteName::Contact) }}" hx-target="#input-form" hx-swap="outerHTML show:top" hx-select=".response" class="relative mt-6 w-full max-w-2xl" method="POST">
     	{% call scope::csrf(app.csrf) %}
-        {# TODO: @honeypot #}
+        {# Honeypot field - hidden from users but visible to bots #}
+        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+            <input type="text" name="website" tabindex="-1" autocomplete="off">
+        </div>
         <div class="absolute inset-0 border border-cyan-500 -rotate-1"></div>
         <div class="absolute inset-0 border border-cyan-500/30 -rotate-2"></div>
         <div class="absolute inset-0 border border-buffy-400 rotate-1"></div>

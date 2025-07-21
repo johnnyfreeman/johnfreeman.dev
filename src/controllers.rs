@@ -101,6 +101,9 @@ pub struct ContactForm {
     pub email: String,
     #[validate(length(min = 1, message = "Your message is required"))]
     pub message: String,
+    // Honeypot field - should be empty for legitimate submissions
+    #[serde(default)]
+    pub website: String,
 }
 
 #[derive(Debug, EnumString, PartialEq)]
@@ -156,6 +159,17 @@ pub async fn send_message(
             app,
             input: "contact".to_string(),
             message: message.to_string(),
+        })
+        .into_response();
+    }
+
+    // Check honeypot field - if filled, it's likely a bot
+    if !form.website.is_empty() {
+        // Silently reject but show success to confuse bots
+        return templates::HtmlTemplate(templates::SuccessTemplate {
+            app,
+            input: "contact".to_string(),
+            message: "Message sent successfully!".to_string(),
         })
         .into_response();
     }
