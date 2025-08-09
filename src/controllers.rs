@@ -5,8 +5,8 @@ use crate::{
     templates::{self, John},
 };
 use axum::{
-    extract::{self, State},
-    response::{IntoResponse, Response},
+    extract::{self, Query, State},
+    response::{IntoResponse, Redirect, Response},
 };
 use lettre::Message;
 use lettre::{message::header::ContentType, Transport};
@@ -68,6 +68,22 @@ pub async fn clear(State(app): State<App>) -> impl IntoResponse {
     )
 }
 
+#[derive(Deserialize)]
+pub struct CommandErrorQuery {
+    cmd: String,
+}
+
+pub async fn command_error(
+    State(app): State<App>,
+    Query(query): Query<CommandErrorQuery>,
+) -> impl IntoResponse {
+    let app = app.clone().set_route(RouteName::CommandError);
+    templates::HtmlTemplate(templates::CommandErrorTemplate { 
+        app, 
+        command: query.cmd,
+    })
+}
+
 pub async fn help(State(app): State<App>) -> impl IntoResponse {
     let app = app.clone().set_route(RouteName::Help);
     templates::HtmlTemplate(templates::HelpTemplate { app })
@@ -127,9 +143,8 @@ pub async fn execute(
     let mut input = form.input.split_whitespace();
 
     match input.next() {
-        // TODO: instead of redirecting to clear when there is no input, we
-        // should redirect to a dedicated "empty" route or "new_line" route
-        None => RouteName::Clear.into_response(),
+        // Handle empty input by showing a new prompt line
+        None => RouteName::Blank.into_response(),
         Some(command) => match Command::from_str(command) {
             Ok(command) => match command {
                 Command::About => RouteName::About.into_response(),
@@ -142,8 +157,11 @@ pub async fn execute(
                 Command::Menu => RouteName::Menu.into_response(),
                 Command::Social => RouteName::Social.into_response(),
             },
-            // TODO: return error response
-            Err(_error) => RouteName::Help.into_response(),
+            // Return error response for invalid command
+            Err(_error) => {
+                let redirect_url = format!("/command-error?cmd={}", command);
+                Redirect::to(&redirect_url).into_response()
+            },
         },
     }
 }

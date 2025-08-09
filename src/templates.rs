@@ -119,6 +119,13 @@ pub struct ClearTemplate {
 }
 
 #[derive(Template)]
+#[template(path = "command-error.html")]
+pub struct CommandErrorTemplate {
+    pub app: App,
+    pub command: String,
+}
+
+#[derive(Template)]
 #[template(path = "blog.html")]
 pub struct BlogTemplate {
     pub app: App,

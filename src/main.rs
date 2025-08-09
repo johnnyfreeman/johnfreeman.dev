@@ -45,6 +45,7 @@ async fn main() {
         .route("/blank", get(controllers::blank))
         .route("/blog", get(controllers::blog))
         .route("/clear", get(controllers::clear))
+        .route("/command-error", get(controllers::command_error))
         .route(
             "/contact",
             get(controllers::contact_form).post(controllers::send_message),

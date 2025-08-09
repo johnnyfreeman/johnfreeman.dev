@@ -4,10 +4,23 @@
 
 {% block output %}
     {% call scope::input(input, false) %}
-
-    <p class="bg-marcelin text-white p-3">
-        <span class="font-bold">500</span> {{ message }}
-    </p>
+    
+    <div class="my-4 max-w-3xl">
+        <div class="border-l-4 border-marcelin pl-4 py-2">
+            <div class="flex items-start space-x-2">
+                <span class="inline-block mt-1 text-marcelin text-xs font-bold uppercase tracking-wide">✕</span>
+                <div class="flex-1 space-y-2">
+                    <p>
+                        <span class="inline-block bg-marcelin/10 text-marcelin px-1 leading-none -skew-y-1">Error</span>
+                        <span class="text-nosferatu-400 light:text-nosferatu-600 ml-2">Operation failed</span>
+                    </p>
+                    <div class="text-nosferatu-300 light:text-nosferatu-700 text-sm">
+                        {{ message }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     {% call scope::input_form(app.csrf) %}
 {% endblock %}

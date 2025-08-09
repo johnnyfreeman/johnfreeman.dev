@@ -1,0 +1,28 @@
+{% extends "_layout.html" %}
+
+{%- import "_macros.html" as scope -%}
+
+{% block output %}
+    {% call scope::input(command, false) %}
+    
+    <div class="my-4 max-w-3xl">
+        <div class="border-l-4 border-marcelin pl-4 py-2">
+            <div class="flex items-start space-x-2">
+                <span class="inline-block mt-1 text-marcelin text-xs font-bold uppercase tracking-wide">!</span>
+                <div class="flex-1 space-y-2">
+                    <p>
+                        <span class="text-marcelin font-semibold">{{ command }}</span>
+                        <span class="text-nosferatu-400 light:text-nosferatu-600">: command not found</span>
+                    </p>
+                    <p class="text-nosferatu-300 light:text-nosferatu-700 text-sm">
+                        Try <span class="inline-block bg-blade-400/10 text-blade-400 light:text-blade-700 px-1 leading-none -skew-y-1">help</span> 
+                        or <span class="inline-block bg-blade-400/10 text-blade-400 light:text-blade-700 px-1 leading-none skew-y-1">menu</span> 
+                        for available commands<span class="text-marcelin">.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    {% call scope::input_form(app.csrf) %}
+{% endblock %}
