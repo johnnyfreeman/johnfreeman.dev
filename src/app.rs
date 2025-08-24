@@ -49,32 +49,6 @@ impl App {
         }
     }
 
-    pub async fn new_with_db(db: PgPool) -> Self {
-        let creds = Credentials::new(
-            env::var("MAIL_USERNAME").expect("MAIL_USERNAME not set"),
-            env::var("MAIL_PASSWORD").expect("MAIL_PASSWORD not set"),
-        );
-
-        let mailer = SmtpTransport::relay(&env::var("MAIL_HOST").expect("MAIL_HOST not set"))
-            .unwrap()
-            .port(
-                env::var("MAIL_PORT")
-                    .expect("MAIL_PORT not set")
-                    .parse::<u16>()
-                    .expect("Could not convert MAIL_PORT into a u16"),
-            )
-            .credentials(creds)
-            .tls(lettre::transport::smtp::client::Tls::None)
-            .build();
-
-        Self {
-            route: None,
-            user: None,
-            csrf: "34r82oirfj",
-            db,
-            mailer,
-        }
-    }
 
     pub fn current_route(&self) -> Option<&RouteName> {
         self.route.as_ref()
